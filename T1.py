@@ -3,6 +3,10 @@ from datetime import datetime
 from collections import deque
 import json
 from math import radians, cos, sin, asin, sqrt
+import heapq
+from datetime import datetime, timedelta
+
+
 
 
 # READ IN PASSENGER/DRIVER DATA
@@ -20,7 +24,6 @@ passengers_filepath = 'passengers.csv'
 drivers_data = read_csv_file(drivers_filepath)
 passengers_data = read_csv_file(passengers_filepath)
 
-print(drivers_data[100], passengers_data[0])
 
 # READ IN NODE DATA
 # Function to read a JSON file
@@ -57,7 +60,7 @@ for start_node_id, connections in node_connections.items():
 # At this point, `graph` is a dictionary representing the graph structure,
 # where each node has 'coordinates' and 'connections' to other nodes with specific attributes.
 
-print(graph)
+# print(graph)
 
 def haversine(lon1, lat1, lon2, lat2):
     """
@@ -91,84 +94,148 @@ def find_nearest_node(graph, latitude, longitude):
     return nearest_node
 
 
-
-# for each node in drivers_data, find the nearest node in graph and add it to the dictionary
-for driver in drivers_data:
-    driver['node'] = find_nearest_node(graph, float(driver['Source Lat']), float(driver['Source Lon']))
-
-# for each node in passengers_data, find the nearest node in graph and add it to the dictionary
-for passenger in passengers_data:
-    passenger['node'] = find_nearest_node(graph, float(passenger['Source Lat']), float(passenger['Source Lon']))
+# print('Finding nearest node for each driver...')
+# # for each node in drivers_data, find the nearest node in graph and add it to the dictionary
+# for driver in drivers_data:
+#     driver['node'] = find_nearest_node(graph, float(driver['Source Lat']), float(driver['Source Lon']))
 
 
+# print('Finding nearest node for each passenger...')
+# # for each node in passengers_data, find the nearest node in graph and add it to the dictionary
+# for passenger in passengers_data:
+#     passenger['node'] = find_nearest_node(graph, float(passenger['Source Lat']), float(passenger['Source Lon']))
+#     passenger['destination_node'] = find_nearest_node(graph, float(passenger['Dest Lat']), float(passenger['Dest Lon']))
+
+
+drivers_file = 'updated_drivers.json'
+passengers_file = 'updated_passengers.json'
+
+
+# print('Writing updated driver data to file...')
+# with open(drivers_file, 'w') as f:
+#     json.dump(drivers_data, f, indent=4)  # Use indent=4 for pretty-printing
+
+# print('Writing updated passenger data to file...')
+# with open(passengers_file, 'w') as f:
+#     json.dump(passengers_data, f, indent=4)
+
+
+
+with open(drivers_file, 'r') as f:
+    drivers_data = json.load(f)
+
+with open(passengers_file, 'r') as f:
+    passengers_data = json.load(f)
 
 
 # Function to parse the datetime string
 def parse_datetime(datetime_str):
-    return datetime.datetime.strptime(datetime_str, '%m/%d/%Y %H:%M:%S')
+    return datetime.strptime(datetime_str, '%m/%d/%Y %H:%M:%S')
 
-import heapq
-passenger_queue = [(p['Date/Time'], p) for p in passengers]
+
+# Create a priority queue for passengers with a secondary sort key
+passenger_queue = [(parse_datetime(p['Date/Time']), id(p), p) for p in passengers_data]
 heapq.heapify(passenger_queue)
 
-driver_queue = [(d['available_since'], d) for d in drivers]
+# Create a priority queue for drivers with a secondary sort key
+driver_queue = [(parse_datetime(d["Date/Time"]), id(d), d) for d in drivers_data]
 heapq.heapify(driver_queue)
 
-# Function to find a driver for the longest waiting passenger
-def assign_driver(passengers, drivers):
-    if not passengers or not drivers:
-        return None, None  # No assignment possible
 
-    # Find the longest waiting passenger
-    longest_waiting_passenger = passengers.popleft()
+print(' \n Starting to match drivers and passengers... \n')
+
+def dijkstra(graph, start, end):
+    # Priority queue to hold the nodes to visit next, initialized with the start node
+    queue = [(0, start)]  # (cumulative_time, node)
+    visited = set()
+    while queue:
+        # Get the node with the smallest cumulative time
+        cumulative_time, node = heapq.heappop(queue)
+        if node not in visited:
+            visited.add(node)
+            if node == end:
+                # We've reached the destination
+                return cumulative_time
+            # Visit all neighbors of the current node
+            for neighbor, edge in graph[node]['connections'].items():
+                if neighbor not in visited:
+                    # Add the travel time for this edge to the cumulative time
+                    travel_time = edge['time'] * 60  # Convert hours to minutes
+                    heapq.heappush(queue, (cumulative_time + travel_time, neighbor))
+    # If the destination is not reachable, return infinity
+    return float('inf')
+
+
+
+
+def calculate_driving_time(graph, from_node, to_node, current_time=0):
+    """
+    Calculates the driving time between two nodes using Dijkstra's algorithm.
     
-    # Assign the first available driver
-    assigned_driver = drivers.popleft()
-    
-    return longest_waiting_passenger, assigned_driver
+    :param graph: The graph data containing nodes and connections.
+    :param from_node: The starting node ID as a string.
+    :param to_node: The destination node ID as a string.
+    :param current_time: The current time as a datetime object.
+    :return: Driving time in minutes as a float.
+    """
+    # Run Dijkstra's algorithm to find the shortest path
+    return dijkstra(graph, from_node, to_node)
 
 
-# def calculate_driving_time(graph, from_node, to_node, current_time):
-#     # Lookup the edge in the graph
-#     # Here you would consider 'current_time' to check 'day_type' and 'hour'
-#     # and then calculate the driving time based on 'length' and 'max_speed'
-#     # This is a placeholder function, you'll need to implement the actual logic
-#     return graph[from_node]['connections'][to_node]['time']
 
+def assign_drivers(graph, passenger_queue, driver_queue):
+    matches = []
 
-# # Function to assign drivers to passengers
-# def assign_drivers(graph, passenger_queue, driver_queue):
-#     matches = []
+    # We will track the time spent driving to pick up passengers and the time driving passengers to drop-off
+    total_pickup_time = 0
+    total_ride_time = 0
 
-#     while passenger_queue and driver_queue:
-#         # Get the passenger who has been waiting the longest
-#         passenger_wait_time, passenger = heapq.heappop(passenger_queue)
+    while passenger_queue and driver_queue:
+        # Get the passenger who has been waiting the longest
+        passenger_wait_time, _, passenger = heapq.heappop(passenger_queue)  # Adjusted here
 
-#         # Find the closest available driver
-#         closest_driver = None
-#         closest_time = float('inf')
-#         for driver_wait_time, driver in driver_queue:
-#             driving_time = calculate_driving_time(graph, driver['node'], passenger['node'], passenger['Date/Time'])
-#             if driving_time < closest_time:
-#                 closest_driver = driver
-#                 closest_time = driving_time
-        
-#         if closest_driver:
-#             # Assign the driver to the passenger
-#             matches.append((passenger, closest_driver))
+        # Find the closest available driver using the graph data
+        closest_driver = None
+        closest_driver_time = None
+        shortest_pickup_time = float('inf')
+        closest_driver_index = -1
+        for i, (driver_available_since, _, driver) in enumerate(driver_queue):  # Adjusted here
+            # Calculate driving time to the passenger's pickup location
+            pickup_time = calculate_driving_time(graph, driver['node'], passenger['node'])
             
-#             # Simulate the driver's trip and update the driver's availability time
-#             # For now, we'll just add a fixed amount of time for simplicity
-#             closest_driver['available_since'] = passenger['Date/Time'] + datetime.timedelta(minutes=closest_time + 30)
+            if pickup_time < shortest_pickup_time:
+                closest_driver = driver
+                closest_driver_time = driver_available_since  # Already a datetime object
+                shortest_pickup_time = pickup_time
+                closest_driver_index = i
+
+        if closest_driver_index >= 0:  # Check if we found a driver
+            # Assign the driver to the passenger
+            matches.append((passenger, closest_driver))
+            total_pickup_time += shortest_pickup_time
             
-#             # Push the driver back into the driver queue
-#             heapq.heappush(driver_queue, (closest_driver['available_since'], closest_driver))
+            # Calculate the drop-off time using the graph data
+            ride_time = calculate_driving_time(graph, passenger['node'], passenger['destination_node'])
+            total_ride_time += ride_time
 
-#     return matches
+            # Update the driver's next available time based on the ride time
+            driver_dropoff_time = closest_driver_time + timedelta(minutes=(shortest_pickup_time + ride_time))
+            driver_queue[closest_driver_index] = (driver_dropoff_time, id(closest_driver), closest_driver)
+            
+            # Since we've modified a queue element, we need to re-heapify
+            heapq.heapify(driver_queue)
 
-# # Run the assignment algorithm
-# matches = assign_drivers(graph, passenger_queue, driver_queue)
+    # Calculate profits (D2) as total ride time minus time spent for pickups
+    total_profit = total_ride_time - total_pickup_time
 
-# # Output the results
-# for passenger, driver in matches:
-#     print(f"Passenger at node {passenger['node']} matched with driver at node {driver['node']}")
+    return matches, total_profit, total_pickup_time, total_ride_time
+
+# Run the assignment algorithm
+matches, total_profit, total_pickup_time, total_ride_time = assign_drivers(graph, passenger_queue, driver_queue)
+
+# Output the results
+for match in matches:
+    print(f"Passenger {match[0]['node']} picked up by Driver {match[1]['node']}")
+print(f"Total Profit: {total_profit} minutes")
+print(f"Total Pickup Time: {total_pickup_time} minutes")
+print(f"Total Ride Time: {total_ride_time} minutes")
