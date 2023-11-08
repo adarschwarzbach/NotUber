@@ -144,19 +144,18 @@ heapq.heapify(driver_queue)
 
 print(' \n Starting to match drivers and passengers... \n')
 
+
+# GOTTA FIX THIS IMPLEMENTATION
 def dijkstra(graph, start, end):
-    # Priority queue to hold the nodes to visit next, initialized with the start node
     queue = [(0, start)]  # (cumulative_time, node)
     visited = set()
     while queue:
-        # Get the node with the smallest cumulative time
         cumulative_time, node = heapq.heappop(queue)
         if node not in visited:
             visited.add(node)
             if node == end:
-                # We've reached the destination
                 return cumulative_time
-            # Visit all neighbors of the current node
+            
             for neighbor, edge in graph[node]['connections'].items():
                 if neighbor not in visited:
                     # Add the travel time for this edge to the cumulative time
@@ -183,59 +182,62 @@ def calculate_driving_time(graph, from_node, to_node, current_time=0):
 
 
 
-def assign_drivers(graph, passenger_queue, driver_queue):
-    matches = []
 
-    # We will track the time spent driving to pick up passengers and the time driving passengers to drop-off
-    total_pickup_time = 0
-    total_ride_time = 0
+# def assign_drivers(graph, passenger_queue, driver_queue):
+#     matches = []
 
-    while passenger_queue and driver_queue:
-        # Get the passenger who has been waiting the longest
-        passenger_wait_time, _, passenger = heapq.heappop(passenger_queue)  # Adjusted here
+#     # We will track the time spent driving to pick up passengers
+#     total_pickup_time = 0
+#     total_wait_time = 0  # D1: Total wait time for all passengers
 
-        # Find the closest available driver using the graph data
-        closest_driver = None
-        closest_driver_time = None
-        shortest_pickup_time = float('inf')
-        closest_driver_index = -1
-        for i, (driver_available_since, _, driver) in enumerate(driver_queue):  # Adjusted here
-            # Calculate driving time to the passenger's pickup location
-            pickup_time = calculate_driving_time(graph, driver['node'], passenger['node'])
-            
-            if pickup_time < shortest_pickup_time:
-                closest_driver = driver
-                closest_driver_time = driver_available_since  # Already a datetime object
-                shortest_pickup_time = pickup_time
-                closest_driver_index = i
+#     while passenger_queue:
+#         # Get the passenger who has been waiting the longest
+#         passenger_wait_time, _, passenger = heapq.heappop(passenger_queue)
 
-        if closest_driver_index >= 0:  # Check if we found a driver
-            # Assign the driver to the passenger
-            matches.append((passenger, closest_driver))
-            total_pickup_time += shortest_pickup_time
-            
-            # Calculate the drop-off time using the graph data
-            ride_time = calculate_driving_time(graph, passenger['node'], passenger['destination_node'])
-            total_ride_time += ride_time
+#         if not driver_queue:
+#             # If there are no drivers available, we break out of the loop
+#             break
+        
+#         # Get the first available driver
+#         driver_available_since, _, driver = heapq.heappop(driver_queue)
 
-            # Update the driver's next available time based on the ride time
-            driver_dropoff_time = closest_driver_time + timedelta(minutes=(shortest_pickup_time + ride_time))
-            driver_queue[closest_driver_index] = (driver_dropoff_time, id(closest_driver), closest_driver)
-            
-            # Since we've modified a queue element, we need to re-heapify
-            heapq.heapify(driver_queue)
+#         # Calculate driving time to the passenger's pickup location using Dijkstra's algorithm
+#         pickup_time = calculate_driving_time(graph, driver['node'], passenger['node'])
 
-    # Calculate profits (D2) as total ride time minus time spent for pickups
-    total_profit = total_ride_time - total_pickup_time
+#         if pickup_time == float('inf'):
+#             # If there is no path to the passenger, we cannot service this passenger.
+#             continue  # Skip to the next passenger
 
-    return matches, total_profit, total_pickup_time, total_ride_time
+#         # Calculate wait time for the passenger
+#         # This is the current time plus the time it takes for the driver to reach them minus the time they started waiting
+#         now = datetime.now()
+#         wait_time_minutes = (now + timedelta(minutes=pickup_time) - passenger_wait_time).total_seconds() / 60
+#         total_wait_time += wait_time_minutes
+#         total_pickup_time += pickup_time
 
-# Run the assignment algorithm
-matches, total_profit, total_pickup_time, total_ride_time = assign_drivers(graph, passenger_queue, driver_queue)
+#         # Store the passenger-driver match with the wait time
+#         matches.append((passenger, driver, wait_time_minutes))
 
-# Output the results
-for match in matches:
-    print(f"Passenger {match[0]['node']} picked up by Driver {match[1]['node']}")
-print(f"Total Profit: {total_profit} minutes")
-print(f"Total Pickup Time: {total_pickup_time} minutes")
-print(f"Total Ride Time: {total_ride_time} minutes")
+#         ride_time = calculate_driving_time(graph, passenger['node'], passenger['destination_node'])
+
+#         # Update the driver's next available time based on the ride time
+#         driver['available_since'] = now + timedelta(minutes=(pickup_time + ride_time))
+
+#         # Re-add the driver to the driver queue with the updated available time
+#         heapq.heappush(driver_queue, (driver['available_since'], id(driver), driver))
+
+#     # D1 is the average wait time, which we can calculate by dividing the total wait time by the number of matches
+#     average_wait_time = total_wait_time / len(matches) if matches else 0
+#     # D2 and D3 are not calculated here as they require more information
+
+#     return matches, total_pickup_time, average_wait_time
+
+# # Run the assignment algorithm
+# # matches, total_pickup_time, average_wait_time = assign_drivers(graph, passenger_queue, driver_queue)
+
+# # Output the results
+# print(f"Total pickup time: {total_pickup_time} minutes")
+# print(f"Average wait time (D1): {average_wait_time} minutes")
+# for match in matches:
+#     passenger, driver, wait_time = match
+#     print(f"Passenger {passenger['node']} was picked up by Driver {driver['node']} after waiting {wait_time:.2f} minutes")
