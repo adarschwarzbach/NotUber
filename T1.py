@@ -182,6 +182,7 @@ def construct_queues(drivers_data, passengers_data):
             d['Date/Time'] = unix_time
             d['Hour'] = hour
             d['DayType'] = day_type
+            d['number_of_trips'] = 0
 
     # Construct queues
     # Use index as a secondary sort key to ensure dictionaries are not compared
@@ -197,7 +198,7 @@ def construct_queues(drivers_data, passengers_data):
 
 
 # Djikstra's implementation to determine time for a given trip
-
+# ToDo: Update hour based on traversal time
 def dijkstra(graph, start, end, hour, day_type):
     queue = [(0, start)]  # (cumulative_time, node)
     visited = set()
@@ -219,8 +220,8 @@ def dijkstra(graph, start, end, hour, day_type):
             for neighbor, edges in graph[node]['connections'].items():
                 # Filter edges based on day_type and hour
                 valid_edges = [edge for edge in edges if edge['day_type'] == day_type and edge['hour'] == hour]
+
                 if not valid_edges:
-                    # If there are no valid edges for this time, continue to the next neighbor
                     continue
 
                 edge = valid_edges[0]
@@ -242,16 +243,27 @@ def simulate(graph, passenger_queue, driver_queue):
     total_time_drivers_travel_to_passengers = 0
     total_in_car_time = 0
     failute_count = 0
+
+    #test on smaller queue
+    # passenger_queue = passenger_queue[1000:1200]
     
     while passenger_queue:  # Continue until one of the queues is empty
         # Passenger and driver details
-        _, _, passenger = passenger_queue.pop()  
+        passenger_request_time, _, passenger = passenger_queue.pop()  
         driver_time, _, driver = heapq.heappop(driver_queue)  # Pop the first available driver
         
         # Get the driver's current location and passenger's pickup location
         driver_location = driver['node']
         passenger_pickup = passenger['node']
         
+        # Calculate time from passenger making request to driver becoming available
+        wait_from_passenger_request = 0
+        if passenger_request_time < driver_time:
+            wait_from_passenger_request = (driver_time - passenger_request_time) / 60
+
+            # print('wait_from_passenger_request', wait_from_passenger_request)
+
+
         # Calculate time for driver to reach passenger
         travel_to_pickup_time = dijkstra(graph, driver_location, passenger_pickup, driver['Hour'], driver['DayType'])
         
@@ -271,10 +283,20 @@ def simulate(graph, passenger_queue, driver_queue):
             continue
         
         # Calculate the driver's new available time
-        new_driver_time = driver_time + travel_to_pickup_time + dropoff_time
+        new_driver_time = driver_time + travel_to_pickup_time  * 60 + dropoff_time * 60
         
         # Update the driver's location to the passenger's destination
         driver['node'] = passenger_destination
+
+        # update the driver hour and day type
+        driver['Hour'] = passenger['Hour']
+        driver['DayType'] = passenger['DayType']
+
+        # update driver time 
+        driver['Date/Time'] = new_driver_time
+
+        # update number of trips
+        driver['number_of_trips'] += 1
         
         # Add this trip to the matches list
         matches.append({
@@ -283,7 +305,8 @@ def simulate(graph, passenger_queue, driver_queue):
             'passenger_destination': passenger_destination,
             'pickup_wait_time': travel_to_pickup_time,
             'dropoff_time': dropoff_time,
-            'total_wait': travel_to_pickup_time + dropoff_time,
+            'wait_from_passenger_request': wait_from_passenger_request,
+            'total_wait': travel_to_pickup_time + dropoff_time + wait_from_passenger_request,
         })
         
         # Re-insert the driver into the priority queue with the new available time
@@ -292,10 +315,17 @@ def simulate(graph, passenger_queue, driver_queue):
         total_time_drivers_travel_to_passengers += travel_to_pickup_time
         total_in_car_time += dropoff_time
         
-        print(len(passenger_queue))
+
+        if len(passenger_queue) % 100 == 0:
+            print(len(passenger_queue))
 
 
-    return matches, total_time_drivers_travel_to_passengers, total_in_car_time, failute_count
+    trips_per_driver = []
+    for driver in driver_queue:
+        trips_per_driver.append(driver[2]['number_of_trips'])
+
+
+    return matches, total_time_drivers_travel_to_passengers, total_in_car_time, wait_from_passenger_request, failute_count, trips_per_driver
 
 
 # Compute dependencies and run simulation
@@ -325,13 +355,20 @@ def wrapper(reprocess_data=False, rebuild_graph=False):
     passenger_queue, driver_queue = construct_queues(drivers_data, passengers_data)
 
     # Run simulation
-    matches, total_time_drivers_travel_to_passengers, total_in_car_time, failute_count = simulate(graph, passenger_queue, driver_queue)
+    matches, total_time_drivers_travel_to_passengers, total_in_car_time, wait_from_passenger_request, failute_count, trips_per_driver = simulate(graph, passenger_queue, driver_queue)
 
     # Print results
     print(f"Total failures: {failute_count}")
     print(f"Total pickup time: {total_time_drivers_travel_to_passengers}")
     print(f"Total in car time: {total_in_car_time}")
-    print(f"Average total trip time: {(total_time_drivers_travel_to_passengers +  total_in_car_time)/ len(matches)}")
+    print(f"Average total trip time: {(total_time_drivers_travel_to_passengers +  total_in_car_time + wait_from_passenger_request)/ len(matches)}")
+    print(f"Average number of trips per driver: {sum(trips_per_driver)/len(trips_per_driver)}")
+    print(f"Number of drivers with zero trips: {len([driver for driver in trips_per_driver if driver == 0])}")
+
+    # Write results to file
+    results_file = 'T1_results.json'
+    with open(results_file, 'w') as f:
+        json.dump(matches, f, indent=4)
 
 
 
