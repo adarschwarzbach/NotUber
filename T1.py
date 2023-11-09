@@ -53,14 +53,14 @@ for node_id, coords in node_coordinates.items():
 # Add the edges to the graph
 for start_node_id, connections in node_connections.items():
     for end_node_id, attributes in connections.items():
-        # Ensure both nodes exist in the graph before adding the connection
         if start_node_id in graph and end_node_id in node_coordinates:
             graph[start_node_id]['connections'][end_node_id] = attributes
 
-# At this point, `graph` is a dictionary representing the graph structure,
-# where each node has 'coordinates' and 'connections' to other nodes with specific attributes.
 
-# print(graph)
+
+json_string = json.dumps(graph, indent=4)
+print(json_string)
+
 
 def haversine(lon1, lat1, lon2, lat2):
     """
@@ -128,59 +128,77 @@ with open(passengers_file, 'r') as f:
     passengers_data = json.load(f)
 
 
-# Function to parse the datetime string
-def parse_datetime(datetime_str):
-    return datetime.strptime(datetime_str, '%m/%d/%Y %H:%M:%S')
+def parse_datetime_to_unix(datetime_str):
+    try:
+        # Convert the datetime string to a datetime object
+        dt = datetime.strptime(datetime_str, '%m/%d/%Y %H:%M:%S')
+        # Convert the datetime object to a Unix timestamp
+        return int(dt.timestamp())
+    except ValueError as e:
+        # Handle the error: log it, return None, or use a default value
+        print(f"Error parsing datetime: {e}")
+        return None
 
+# Convert Date/Time for all passengers and drivers to Unix timestamps within the data
+for p in passengers_data:
+    unix_time = parse_datetime_to_unix(p['Date/Time'])
+    if unix_time is not None:
+        p['Date/Time'] = unix_time
 
-# Create a priority queue for passengers with a secondary sort key
-passenger_queue = [(parse_datetime(p['Date/Time']), id(p), p) for p in passengers_data]
-heapq.heapify(passenger_queue)
+for d in drivers_data:
+    unix_time = parse_datetime_to_unix(d['Date/Time'])
+    if unix_time is not None:
+        d['Date/Time'] = unix_time
 
-# Create a priority queue for drivers with a secondary sort key
-driver_queue = [(parse_datetime(d["Date/Time"]), id(d), d) for d in drivers_data]
+# Construct queues
+passenger_queue = [(p['Date/Time'], p) for p in passengers_data if 'Date/Time' in p]
+
+driver_queue = [(d['Date/Time'], d) for d in drivers_data if 'Date/Time' in d]
 heapq.heapify(driver_queue)
 
 
 print(' \n Starting to match drivers and passengers... \n')
 
 
-# GOTTA FIX THIS IMPLEMENTATION
 def dijkstra(graph, start, end):
     queue = [(0, start)]  # (cumulative_time, node)
     visited = set()
+    # Map to store shortest distance to a node
+    distances = {node: float('inf') for node in graph}
+    distances[start] = 0
+
     while queue:
+        # Get the node with the smallest cumulative time
         cumulative_time, node = heapq.heappop(queue)
         if node not in visited:
             visited.add(node)
+
+            # Return if we have reached the destination
             if node == end:
                 return cumulative_time
-            
+
             for neighbor, edge in graph[node]['connections'].items():
-                if neighbor not in visited:
-                    # Add the travel time for this edge to the cumulative time
-                    travel_time = edge['time'] * 60  # Convert hours to minutes
-                    heapq.heappush(queue, (cumulative_time + travel_time, neighbor))
+                travel_time = edge['time'] * 60  # Convert hours to minutes
+                new_time = cumulative_time + travel_time
+
+
+                if new_time < distances[neighbor]:
+                    distances[neighbor] = new_time
+                    heapq.heappush(queue, (new_time, neighbor))
+
     # If the destination is not reachable, return infinity
     return float('inf')
 
 
+print(passenger_queue[0])
+
+def simulate(graph, passenger_queue, driver_queue):
+    matches = []
+    total_pickup_time = 0
+    total_wait_time = 0  # D1: Total wait time for all passengers
 
 
-def calculate_driving_time(graph, from_node, to_node, current_time=0):
-    """
-    Calculates the driving time between two nodes using Dijkstra's algorithm.
-    
-    :param graph: The graph data containing nodes and connections.
-    :param from_node: The starting node ID as a string.
-    :param to_node: The destination node ID as a string.
-    :param current_time: The current time as a datetime object.
-    :return: Driving time in minutes as a float.
-    """
-    # Run Dijkstra's algorithm to find the shortest path
-    return dijkstra(graph, from_node, to_node)
-
-
+    pass
 
 
 # def assign_drivers(graph, passenger_queue, driver_queue):
@@ -232,12 +250,6 @@ def calculate_driving_time(graph, from_node, to_node, current_time=0):
 
 #     return matches, total_pickup_time, average_wait_time
 
-# # Run the assignment algorithm
-# # matches, total_pickup_time, average_wait_time = assign_drivers(graph, passenger_queue, driver_queue)
 
-# # Output the results
-# print(f"Total pickup time: {total_pickup_time} minutes")
-# print(f"Average wait time (D1): {average_wait_time} minutes")
-# for match in matches:
-#     passenger, driver, wait_time = match
-#     print(f"Passenger {passenger['node']} was picked up by Driver {driver['node']} after waiting {wait_time:.2f} minutes")
+# if __name__ == "__main__":
+#     pass
