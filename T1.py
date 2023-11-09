@@ -5,6 +5,7 @@ import json
 from math import radians, cos, sin, asin, sqrt
 import heapq
 from datetime import datetime, timedelta
+from collections import defaultdict
 
 
 
@@ -40,6 +41,7 @@ def read_json_file(filepath):
 
 # Build the graph from the node and connection data
 def build_graph():
+    print('Building graph...')
     # Reading the node data and connection data from JSON files
     node_coordinates_filepath = 'node_data.json'
     node_connections_filepath = 'adjacency.json'
@@ -56,13 +58,17 @@ def build_graph():
             'connections': {}
         }
 
+
     # Add the edges to the graph
     for start_node_id, connections in node_connections.items():
         for end_node_id, attributes in connections.items():
-            if start_node_id in graph and end_node_id in node_coordinates:
-                graph[start_node_id]['connections'][end_node_id] = attributes
+             graph[start_node_id]['connections'][end_node_id] = attributes
+             graph[end_node_id]['connections'][start_node_id] = attributes
 
-    return graph
+    print('Writing graph data to file...')
+    graph_file = 'graph.json'
+    with open(graph_file, 'w') as f:
+        json.dump(graph, f, indent=4)  # Use indent=4 for pretty-printing
 
 
 
@@ -137,32 +143,45 @@ def load_updated_data():
 
     return drivers_data, passengers_data
 
+def load_graph():
+    graph_file = 'graph.json'
+    with open(graph_file, 'r') as f:
+        graph = json.load(f)
+
+    return graph
 
 # Helper to convert a datetime string to a Unix timestamp
 def parse_datetime_to_unix(datetime_str):
     try:
         # Convert the datetime string to a datetime object
         dt = datetime.strptime(datetime_str, '%m/%d/%Y %H:%M:%S')
+        # Determine if the day is a weekday or weekend
+        day_type = 'weekday' if dt.weekday() < 5 else 'weekend'
+        # Extract the hour of the day
+        hour = dt.hour
         # Convert the datetime object to a Unix timestamp
-        return int(dt.timestamp())
+        unix_timestamp = int(dt.timestamp())
+        return unix_timestamp, hour, day_type
     except ValueError as e:
         # Handle the error: log it, return None, or use a default value
         print(f"Error parsing datetime: {e}")
-        return None
+        return None, None, None
 
-
-# Build passenger queue and driver priority queue
 def construct_queues(drivers_data, passengers_data):
     # Convert Date/Time for all passengers and drivers to Unix timestamps within the data
     for p in passengers_data:
-        unix_time = parse_datetime_to_unix(p['Date/Time'])
+        unix_time, hour, day_type = parse_datetime_to_unix(p['Date/Time'])
         if unix_time is not None:
             p['Date/Time'] = unix_time
+            p['Hour'] = hour
+            p['DayType'] = day_type
 
     for d in drivers_data:
-        unix_time = parse_datetime_to_unix(d['Date/Time'])
+        unix_time, hour, day_type = parse_datetime_to_unix(d['Date/Time'])
         if unix_time is not None:
             d['Date/Time'] = unix_time
+            d['Hour'] = hour
+            d['DayType'] = day_type
 
     # Construct queues
     # Use index as a secondary sort key to ensure dictionaries are not compared
@@ -172,12 +191,14 @@ def construct_queues(drivers_data, passengers_data):
     driver_queue = [(d['Date/Time'], i, d) for i, d in enumerate(drivers_data) if 'Date/Time' in d]
     heapq.heapify(driver_queue)
 
+    print(passenger_queue[0], driver_queue[0])
     return passenger_queue, driver_queue
 
 
 
 # Djikstra's implementation to determine time for a given trip
-def dijkstra(graph, start, end):
+
+def dijkstra(graph, start, end, hour, day_type):
     queue = [(0, start)]  # (cumulative_time, node)
     visited = set()
     # Map to store shortest distance to a node
@@ -190,14 +211,20 @@ def dijkstra(graph, start, end):
         if node not in visited:
             visited.add(node)
 
-            # Return if we have reached the destination
+            # Reached destination
             if node == end:
                 return cumulative_time
 
-            for neighbor, edge in graph[node]['connections'].items():
+            for neighbor, edges in graph[node]['connections'].items():
+                # Filter edges based on day_type and hour
+                valid_edges = [edge for edge in edges if edge['day_type'] == day_type and edge['hour'] == hour]
+                if not valid_edges:
+                    # If there are no valid edges for this time, continue to the next neighbor
+                    continue
+
+                edge = valid_edges[0]
                 travel_time = edge['time'] * 60  # Convert hours to minutes
                 new_time = cumulative_time + travel_time
-
 
                 if new_time < distances[neighbor]:
                     distances[neighbor] = new_time
@@ -207,7 +234,7 @@ def dijkstra(graph, start, end):
     return float('inf')
 
 
-
+#Update to take into account idle time
 # Main function to run simulation
 def simulate(graph, passenger_queue, driver_queue):
     matches = []  # Track every trip
@@ -215,10 +242,9 @@ def simulate(graph, passenger_queue, driver_queue):
     total_in_car_time = 0
     failute_count = 0
     
-
     while passenger_queue:  # Continue until one of the queues is empty
         # Passenger and driver details
-        _, _, passenger = passenger_queue.pop(0)  # Pop from the front of the list (FIFO)
+        _, _, passenger = passenger_queue.pop()  
         driver_time, _, driver = heapq.heappop(driver_queue)  # Pop the first available driver
         
         # Get the driver's current location and passenger's pickup location
@@ -226,7 +252,7 @@ def simulate(graph, passenger_queue, driver_queue):
         passenger_pickup = passenger['node']
         
         # Calculate time for driver to reach passenger
-        travel_to_pickup_time = dijkstra(graph, driver_location, passenger_pickup)
+        travel_to_pickup_time = dijkstra(graph, driver_location, passenger_pickup, driver['Hour'], driver['DayType'])
         
         if travel_to_pickup_time == float('inf'):
             print('No path to passenger', passenger, driver)
@@ -236,7 +262,7 @@ def simulate(graph, passenger_queue, driver_queue):
         
         # Calculate time for driver to drop passenger at the destination
         passenger_destination = passenger['destination_node']
-        dropoff_time = dijkstra(graph, passenger_pickup, passenger_destination)
+        dropoff_time = dijkstra(graph, passenger_pickup, passenger_destination, passenger['Hour'], passenger['DayType'])
 
         if dropoff_time == float('inf'):
             print('No path to destination', passenger, driver)
@@ -270,11 +296,19 @@ def simulate(graph, passenger_queue, driver_queue):
 
     return matches, total_time_drivers_travel_to_passengers, total_in_car_time, failute_count
 
+
 # Compute dependencies and run simulation
-def wrapper(reprocess_data=False):
+def wrapper(reprocess_data=False, rebuild_graph=False):
 
     # Build graph
-    graph = build_graph()
+    if rebuild_graph:
+       build_graph()
+    
+    # Load graph
+    graph = load_graph()
+    
+    # pretty_graph = json.dumps(graph, indent=4)
+    # print(pretty_graph)
 
     if reprocess_data:
         # Read in un-proccessed data
@@ -302,4 +336,4 @@ def wrapper(reprocess_data=False):
 
 
 if __name__ == "__main__":
-    wrapper()
+    wrapper(False, False)
