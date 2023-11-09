@@ -205,6 +205,7 @@ def dijkstra(graph, start, end, hour, day_type):
     distances = {node: float('inf') for node in graph}
     distances[start] = 0
 
+
     while queue:
         # Get the node with the smallest cumulative time
         cumulative_time, node = heapq.heappop(queue)
