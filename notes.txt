@@ -8,9 +8,12 @@ Number of drivers with zero trips: 249
 
 
 T1 results with removing drivers:
-Total failures: 0
-Total pickup time: 65720.83353237933
-Total in car time: 65125.575235316704
-Average total trip time: 26.418008580284685
+Average waiting time:  428.5150557987751
+Number of trips over 100:  4683
+
+
+T1 results removing drivers at slower rate:
+Average waiting time:  34.996842746679306
+Number of trips over 100:  89
 Average number of trips per driver: 10.024048096192384
-Number of drivers with zero trips: 0
+Number of drivers with zero trips: 12

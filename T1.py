@@ -312,9 +312,9 @@ def simulate(graph, passenger_queue, driver_queue):
         
         # simulate drivers stopping to drive
         if driver['number_of_trips'] > 10 and len(driver_queue) > 20:
-            random_number = random.randint(1, 9)
+            random_number = random.randint(1, 10)
 
-            # 1/9 chance of driver stopping after 10 trips
+            # 1/10 chance of driver stopping after 10 trips
             if random_number == 1:
                 heapq.heappush(driver_queue, (new_driver_time, id(driver), driver))
             else:
@@ -370,13 +370,14 @@ def wrapper(reprocess_data=False, rebuild_graph=False):
     # Run simulation
     matches, total_time_drivers_travel_to_passengers, total_in_car_time, wait_from_passenger_request, failute_count, trips_per_driver = simulate(graph, passenger_queue, driver_queue)
 
-    # Print results
-    print(f"Total failures: {failute_count}")
-    print(f"Total pickup time: {total_time_drivers_travel_to_passengers}")
-    print(f"Total in car time: {total_in_car_time}")
-    print(f"Average total trip time: {(total_time_drivers_travel_to_passengers +  total_in_car_time + wait_from_passenger_request)/ len(matches)}")
-    print(f"Average number of trips per driver: {sum(trips_per_driver)/len(trips_per_driver)}")
-    print(f"Number of drivers with zero trips: {len([driver for driver in trips_per_driver if driver == 0])}")
+    # # Print results
+    ## FAULTY AT THE MOMENT DON"T UNCOMMENT
+    # print(f"Total failures: {failute_count}")
+    # print(f"Total pickup time: {total_time_drivers_travel_to_passengers}")
+    # print(f"Total in car time: {total_in_car_time}")
+    # print(f"Average total trip time: {(total_time_drivers_travel_to_passengers +  total_in_car_time + wait_from_passenger_request)/ len(matches)}")
+    # print(f"Average number of trips per driver: {sum(trips_per_driver)/len(trips_per_driver)}")
+    # print(f"Number of drivers with zero trips: {len([driver for driver in trips_per_driver if driver == 0])}")
 
     # Write results to file
     results_file = 'T1_results.json'
