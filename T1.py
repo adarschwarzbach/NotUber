@@ -5,7 +5,7 @@ import json
 from math import radians, cos, sin, asin, sqrt
 import heapq
 from datetime import datetime, timedelta
-from collections import defaultdict
+import random
 
 
 
@@ -243,6 +243,7 @@ def simulate(graph, passenger_queue, driver_queue):
     total_time_drivers_travel_to_passengers = 0
     total_in_car_time = 0
     failute_count = 0
+    exited_drivers = []
 
     #test on smaller queue
     # passenger_queue = passenger_queue[1000:1200]
@@ -309,23 +310,35 @@ def simulate(graph, passenger_queue, driver_queue):
             'total_wait': travel_to_pickup_time + dropoff_time + wait_from_passenger_request,
         })
         
-        # Re-insert the driver into the priority queue with the new available time
-        heapq.heappush(driver_queue, (new_driver_time, id(driver), driver))
+        # simulate drivers stopping to drive
+        if driver['number_of_trips'] > 10 and len(driver_queue) > 20:
+            random_number = random.randint(1, 9)
+
+            # 1/9 chance of driver stopping after 10 trips
+            if random_number == 1:
+                heapq.heappush(driver_queue, (new_driver_time, id(driver), driver))
+            else:
+                exited_drivers.append(driver)
+        else:
+            # Re-insert the driver into the priority queue with the new available time
+            heapq.heappush(driver_queue, (new_driver_time, id(driver), driver))
         
         total_time_drivers_travel_to_passengers += travel_to_pickup_time
         total_in_car_time += dropoff_time
         
 
         if len(passenger_queue) % 100 == 0:
-            print(len(passenger_queue))
+            print(len(passenger_queue), 'passengers in queue')
+            print(len(driver_queue), 'drivers in queue')
 
 
     trips_per_driver = []
-    for driver in driver_queue:
-        trips_per_driver.append(driver[2]['number_of_trips'])
+    all_drivers = [driver for _, _, driver in driver_queue] + exited_drivers
+    for driver in all_drivers:
+        trips_per_driver.append(driver['number_of_trips'])
+        
 
-
-    return matches, total_time_drivers_travel_to_passengers, total_in_car_time, wait_from_passenger_request, failute_count, trips_per_driver
+    return matches, total_time_drivers_travel_to_passengers, total_in_car_time, wait_from_passenger_request, failute_count, trips_per_driver, 
 
 
 # Compute dependencies and run simulation
