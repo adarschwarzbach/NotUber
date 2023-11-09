@@ -1,0 +1,7 @@
+Current T1 Results:
+Total failures: 0
+Total pickup time: 65518.55507613311
+Total in car time: 65125.575235316704
+Average total trip time: 26.11837871080564
+Average number of trips per driver: 10.024048096192384
+Number of drivers with zero trips: 249
