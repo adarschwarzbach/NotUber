@@ -9,7 +9,7 @@ from datetime import datetime, timedelta
 
 
 
-# READ IN PASSENGER/DRIVER DATA
+# Function to read a CSV file
 def read_csv_file(filepath):
     data = []
     with open(filepath, newline='') as csvfile:
@@ -18,55 +18,56 @@ def read_csv_file(filepath):
             data.append(row)
     return data
 
-drivers_filepath = 'drivers.csv'
-passengers_filepath = 'passengers.csv'
 
-drivers_data = read_csv_file(drivers_filepath)
-passengers_data = read_csv_file(passengers_filepath)
+# Read in un-proccessed data
+def read_base_data():
+    drivers_filepath = 'drivers.csv'
+    passengers_filepath = 'passengers.csv'
+
+    drivers_data = read_csv_file(drivers_filepath)
+    passengers_data = read_csv_file(passengers_filepath)
+
+    return drivers_data, passengers_data
 
 
-# READ IN NODE DATA
-# Function to read a JSON file
+
+# Helper to read a JSON file
 def read_json_file(filepath):
     with open(filepath, 'r') as file:
         data = json.load(file)
     return data
 
-# Reading the node data and connection data from JSON files
-node_coordinates_filepath = 'node_data.json'
-node_connections_filepath = 'adjacency.json'
 
-node_coordinates = read_json_file(node_coordinates_filepath)
-node_connections = read_json_file(node_connections_filepath)
+# Build the graph from the node and connection data
+def build_graph():
+    # Reading the node data and connection data from JSON files
+    node_coordinates_filepath = 'node_data.json'
+    node_connections_filepath = 'adjacency.json'
 
+    node_coordinates = read_json_file(node_coordinates_filepath)
+    node_connections = read_json_file(node_connections_filepath)
 
-# Building the graph
-graph = {}
+    graph = {}
 
-# Add the nodes to the graph
-for node_id, coords in node_coordinates.items():
-    graph[node_id] = {
-        'coordinates': coords,
-        'connections': {}
-    }
+    # Add the nodes to the graph
+    for node_id, coords in node_coordinates.items():
+        graph[node_id] = {
+            'coordinates': coords,
+            'connections': {}
+        }
 
-# Add the edges to the graph
-for start_node_id, connections in node_connections.items():
-    for end_node_id, attributes in connections.items():
-        if start_node_id in graph and end_node_id in node_coordinates:
-            graph[start_node_id]['connections'][end_node_id] = attributes
+    # Add the edges to the graph
+    for start_node_id, connections in node_connections.items():
+        for end_node_id, attributes in connections.items():
+            if start_node_id in graph and end_node_id in node_coordinates:
+                graph[start_node_id]['connections'][end_node_id] = attributes
 
-
-
-json_string = json.dumps(graph, indent=4)
-print(json_string)
+    return graph
 
 
+
+# Helper to calculate the great-circle distance between two points
 def haversine(lon1, lat1, lon2, lat2):
-    """
-    Calculate the great-circle distance between two points
-    on the Earth surface given their longitude and latitude in degrees.
-    """
     # Convert decimal degrees to radians
     lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
 
@@ -75,10 +76,11 @@ def haversine(lon1, lat1, lon2, lat2):
     dlat = lat2 - lat1
     a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
     c = 2 * asin(sqrt(a))
-    r = 6371 # Radius of Earth in kilometers. Use 3956 for miles.
+    r = 3956 # in miles
     return c * r
 
 
+# Helper to find the nearest node in the graph to a given lat/lon
 def find_nearest_node(graph, latitude, longitude):
     nearest_node = None
     nearest_distance = float('inf')
@@ -94,40 +96,49 @@ def find_nearest_node(graph, latitude, longitude):
     return nearest_node
 
 
-# print('Finding nearest node for each driver...')
-# # for each node in drivers_data, find the nearest node in graph and add it to the dictionary
-# for driver in drivers_data:
-#     driver['node'] = find_nearest_node(graph, float(driver['Source Lat']), float(driver['Source Lon']))
+# Pre-process data to determine closest node to driver/pickup/destination
+def simple_pre_processing(graph, drivers_data, passengers_data):
+    print('Finding nearest node for each driver...')
+    # for each node in drivers_data, find the nearest node in graph and add it to the dictionary
+    for driver in drivers_data:
+        driver['node'] = find_nearest_node(graph, float(driver['Source Lat']), float(driver['Source Lon']))
 
 
-# print('Finding nearest node for each passenger...')
-# # for each node in passengers_data, find the nearest node in graph and add it to the dictionary
-# for passenger in passengers_data:
-#     passenger['node'] = find_nearest_node(graph, float(passenger['Source Lat']), float(passenger['Source Lon']))
-#     passenger['destination_node'] = find_nearest_node(graph, float(passenger['Dest Lat']), float(passenger['Dest Lon']))
+    print('Finding nearest node for each passenger...')
+    # for each node in passengers_data, find the nearest node in graph and add it to the dictionary
+    for passenger in passengers_data:
+        passenger['node'] = find_nearest_node(graph, float(passenger['Source Lat']), float(passenger['Source Lon']))
+        passenger['destination_node'] = find_nearest_node(graph, float(passenger['Dest Lat']), float(passenger['Dest Lon']))
 
 
-drivers_file = 'updated_drivers.json'
-passengers_file = 'updated_passengers.json'
+    drivers_file = 'updated_drivers.json'
+    passengers_file = 'updated_passengers.json'
 
 
-# print('Writing updated driver data to file...')
-# with open(drivers_file, 'w') as f:
-#     json.dump(drivers_data, f, indent=4)  # Use indent=4 for pretty-printing
+    print('Writing updated driver data to file...')
+    with open(drivers_file, 'w') as f:
+        json.dump(drivers_data, f, indent=4)  # Use indent=4 for pretty-printing
 
-# print('Writing updated passenger data to file...')
-# with open(passengers_file, 'w') as f:
-#     json.dump(passengers_data, f, indent=4)
-
-
-
-with open(drivers_file, 'r') as f:
-    drivers_data = json.load(f)
-
-with open(passengers_file, 'r') as f:
-    passengers_data = json.load(f)
+    print('Writing updated passenger data to file...')
+    with open(passengers_file, 'w') as f:
+        json.dump(passengers_data, f, indent=4)
 
 
+# Load pre-processed data
+def load_updated_data():
+    drivers_file = 'updated_drivers.json'
+    passengers_file = 'updated_passengers.json'
+
+    with open(drivers_file, 'r') as f:
+        drivers_data = json.load(f)
+
+    with open(passengers_file, 'r') as f:
+        passengers_data = json.load(f)
+
+    return drivers_data, passengers_data
+
+
+# Helper to convert a datetime string to a Unix timestamp
 def parse_datetime_to_unix(datetime_str):
     try:
         # Convert the datetime string to a datetime object
@@ -139,27 +150,33 @@ def parse_datetime_to_unix(datetime_str):
         print(f"Error parsing datetime: {e}")
         return None
 
-# Convert Date/Time for all passengers and drivers to Unix timestamps within the data
-for p in passengers_data:
-    unix_time = parse_datetime_to_unix(p['Date/Time'])
-    if unix_time is not None:
-        p['Date/Time'] = unix_time
 
-for d in drivers_data:
-    unix_time = parse_datetime_to_unix(d['Date/Time'])
-    if unix_time is not None:
-        d['Date/Time'] = unix_time
+# Build passenger queue and driver priority queue
+def construct_queues(drivers_data, passengers_data):
+    # Convert Date/Time for all passengers and drivers to Unix timestamps within the data
+    for p in passengers_data:
+        unix_time = parse_datetime_to_unix(p['Date/Time'])
+        if unix_time is not None:
+            p['Date/Time'] = unix_time
 
-# Construct queues
-passenger_queue = [(p['Date/Time'], p) for p in passengers_data if 'Date/Time' in p]
+    for d in drivers_data:
+        unix_time = parse_datetime_to_unix(d['Date/Time'])
+        if unix_time is not None:
+            d['Date/Time'] = unix_time
 
-driver_queue = [(d['Date/Time'], d) for d in drivers_data if 'Date/Time' in d]
-heapq.heapify(driver_queue)
+    # Construct queues
+    # Use index as a secondary sort key to ensure dictionaries are not compared
+    passenger_queue = [(p['Date/Time'], i, p) for i, p in enumerate(passengers_data) if 'Date/Time' in p]
+    passenger_queue = passenger_queue[::-1]  # Reverse the list so that the earliest passengers are at the front
+
+    driver_queue = [(d['Date/Time'], i, d) for i, d in enumerate(drivers_data) if 'Date/Time' in d]
+    heapq.heapify(driver_queue)
+
+    return passenger_queue, driver_queue
 
 
-print(' \n Starting to match drivers and passengers... \n')
 
-
+# Djikstra's implementation to determine time for a given trip
 def dijkstra(graph, start, end):
     queue = [(0, start)]  # (cumulative_time, node)
     visited = set()
@@ -190,66 +207,99 @@ def dijkstra(graph, start, end):
     return float('inf')
 
 
-print(passenger_queue[0])
 
+# Main function to run simulation
 def simulate(graph, passenger_queue, driver_queue):
-    matches = []
-    total_pickup_time = 0
-    total_wait_time = 0  # D1: Total wait time for all passengers
+    matches = []  # Track every trip
+    total_time_drivers_travel_to_passengers = 0
+    total_in_car_time = 0
+    failute_count = 0
+    
 
-
-    pass
-
-
-# def assign_drivers(graph, passenger_queue, driver_queue):
-#     matches = []
-
-#     # We will track the time spent driving to pick up passengers
-#     total_pickup_time = 0
-#     total_wait_time = 0  # D1: Total wait time for all passengers
-
-#     while passenger_queue:
-#         # Get the passenger who has been waiting the longest
-#         passenger_wait_time, _, passenger = heapq.heappop(passenger_queue)
-
-#         if not driver_queue:
-#             # If there are no drivers available, we break out of the loop
-#             break
+    while passenger_queue:  # Continue until one of the queues is empty
+        # Passenger and driver details
+        _, _, passenger = passenger_queue.pop(0)  # Pop from the front of the list (FIFO)
+        driver_time, _, driver = heapq.heappop(driver_queue)  # Pop the first available driver
         
-#         # Get the first available driver
-#         driver_available_since, _, driver = heapq.heappop(driver_queue)
+        # Get the driver's current location and passenger's pickup location
+        driver_location = driver['node']
+        passenger_pickup = passenger['node']
+        
+        # Calculate time for driver to reach passenger
+        travel_to_pickup_time = dijkstra(graph, driver_location, passenger_pickup)
+        
+        if travel_to_pickup_time == float('inf'):
+            print('No path to passenger', passenger, driver)
+            failute_count += 1
+            continue
 
-#         # Calculate driving time to the passenger's pickup location using Dijkstra's algorithm
-#         pickup_time = calculate_driving_time(graph, driver['node'], passenger['node'])
+        
+        # Calculate time for driver to drop passenger at the destination
+        passenger_destination = passenger['destination_node']
+        dropoff_time = dijkstra(graph, passenger_pickup, passenger_destination)
 
-#         if pickup_time == float('inf'):
-#             # If there is no path to the passenger, we cannot service this passenger.
-#             continue  # Skip to the next passenger
+        if dropoff_time == float('inf'):
+            print('No path to destination', passenger, driver)
+            failute_count += 1
+            continue
+        
+        # Calculate the driver's new available time
+        new_driver_time = driver_time + travel_to_pickup_time + dropoff_time
+        
+        # Update the driver's location to the passenger's destination
+        driver['node'] = passenger_destination
+        
+        # Add this trip to the matches list
+        matches.append({
+            'driver_location': driver_location,
+            'passenger_pickup': passenger_pickup,
+            'passenger_destination': passenger_destination,
+            'pickup_wait_time': travel_to_pickup_time,
+            'dropoff_time': dropoff_time,
+            'total_wait': travel_to_pickup_time + dropoff_time,
+        })
+        
+        # Re-insert the driver into the priority queue with the new available time
+        heapq.heappush(driver_queue, (new_driver_time, id(driver), driver))
+        
+        total_time_drivers_travel_to_passengers += travel_to_pickup_time
+        total_in_car_time += dropoff_time
+        
+        print(len(passenger_queue))
 
-#         # Calculate wait time for the passenger
-#         # This is the current time plus the time it takes for the driver to reach them minus the time they started waiting
-#         now = datetime.now()
-#         wait_time_minutes = (now + timedelta(minutes=pickup_time) - passenger_wait_time).total_seconds() / 60
-#         total_wait_time += wait_time_minutes
-#         total_pickup_time += pickup_time
 
-#         # Store the passenger-driver match with the wait time
-#         matches.append((passenger, driver, wait_time_minutes))
+    return matches, total_time_drivers_travel_to_passengers, total_in_car_time, failute_count
 
-#         ride_time = calculate_driving_time(graph, passenger['node'], passenger['destination_node'])
+# Compute dependencies and run simulation
+def wrapper(reprocess_data=False):
 
-#         # Update the driver's next available time based on the ride time
-#         driver['available_since'] = now + timedelta(minutes=(pickup_time + ride_time))
+    # Build graph
+    graph = build_graph()
 
-#         # Re-add the driver to the driver queue with the updated available time
-#         heapq.heappush(driver_queue, (driver['available_since'], id(driver), driver))
+    if reprocess_data:
+        # Read in un-proccessed data
+        drivers_data, passengers_data = read_base_data()
 
-#     # D1 is the average wait time, which we can calculate by dividing the total wait time by the number of matches
-#     average_wait_time = total_wait_time / len(matches) if matches else 0
-#     # D2 and D3 are not calculated here as they require more information
+        # Pre-process data
+        simple_pre_processing(graph, drivers_data, passengers_data)
 
-#     return matches, total_pickup_time, average_wait_time
+    # Load pre-processed data
+    drivers_data, passengers_data = load_updated_data()
+
+    # Construct queues
+    passenger_queue, driver_queue = construct_queues(drivers_data, passengers_data)
+
+    # Run simulation
+    matches, total_time_drivers_travel_to_passengers, total_in_car_time, failute_count = simulate(graph, passenger_queue, driver_queue)
+
+    # Print results
+    print(f"Total failures: {failute_count}")
+    print(f"Total pickup time: {total_time_drivers_travel_to_passengers}")
+    print(f"Total in car time: {total_in_car_time}")
+    print(f"Average total trip time: {(total_time_drivers_travel_to_passengers +  total_in_car_time)/ len(matches)}")
 
 
-# if __name__ == "__main__":
-#     pass
+
+
+if __name__ == "__main__":
+    wrapper()
