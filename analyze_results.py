@@ -1,7 +1,7 @@
 import json
 
-# load T1_results.json
-with open('T1_results.json', 'r') as f:
+#  T1_results.json | T1_extra.txt | T2_results.json
+with open('T2_results.json', 'r') as f:
     T1_results = json.load(f)
 
 average_waiting_time = 0

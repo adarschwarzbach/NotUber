@@ -185,9 +185,10 @@ def construct_queues(drivers_data, passengers_data):
     passenger_queue = passenger_queue[::-1]  # Reverse the list so that the earliest passengers are at the front
 
     driver_queue = [(d['Date/Time'], i, d) for i, d in enumerate(drivers_data) if 'Date/Time' in d]
+    print(driver_queue[0], passenger_queue[0])
     heapq.heapify(driver_queue)
 
-    print(passenger_queue[0], driver_queue[0])
+
     return passenger_queue, driver_queue
 
 
@@ -336,7 +337,7 @@ def simulate_t2(graph, passenger_queue, driver_queue):
     failute_count = 0
     exited_drivers = []
 
-    passenger_queue = passenger_queue[:100]
+    # passenger_queue = passenger_queue[4900:5100]
 
     #test on smaller queue
     # passenger_queue = passenger_queue[1000:1200]
@@ -352,25 +353,33 @@ def simulate_t2(graph, passenger_queue, driver_queue):
             available_drivers.append(heapq.heappop(driver_queue))
 
                 # Pop all available drivers whose availability time is less than or equal to the passenger request time
-        while driver_queue and driver_queue[0][0] <= passenger_request_time:
-            available_drivers.append(heapq.heappop(driver_queue))
-
         driver = None
         if available_drivers:
+            # print(len(available_drivers), 'drivers available')
             # Calculate Haversine distance from each available driver to the passenger
             passenger_coords = graph[passenger['node']]['coordinates']
+
             driver_distances = []
-            for driver_time, _, driver in available_drivers:
+            for driver_time, id, driver in available_drivers:
                 driver_coords = graph[driver['node']]['coordinates']
+
                 distance = haversine(passenger_coords['lat'], passenger_coords['lon'], 
                                      driver_coords['lat'], driver_coords['lon'])
-                driver_distances.append((distance, driver_time, driver))
+                driver_distances.append((distance, driver_time, id, driver))
 
+
+            driver_distances.sort()
             # Select the driver with the shortest distance
-            _, driver_time, driver = min(driver_distances, key=lambda x: x[0])
+            _, driver_time, id, driver = driver_distances[0]
+            
+            # Re-insert the other drivers into the priority queue
+            for d_time, id, d in available_drivers:
+                if d != driver:
+                    heapq.heappush(driver_queue, (d_time, id, d))
+
         else:
             # If no drivers are available yet, take the earliest available driver
-            driver_time, _, driver = heapq.heappop(driver_queue)
+            driver_time, id, driver = heapq.heappop(driver_queue)
 
         ###
         # Get the driver's current location and passenger's pickup location
@@ -430,12 +439,12 @@ def simulate_t2(graph, passenger_queue, driver_queue):
 
             # 1/10 chance of driver stopping after 10 trips
             if random_number == 1:
-                heapq.heappush(driver_queue, (new_driver_time, id(driver), driver))
+                heapq.heappush(driver_queue, (new_driver_time, id, driver))
             else:
                 exited_drivers.append(driver)
         else:
             # Re-insert the driver into the priority queue with the new available time
-            heapq.heappush(driver_queue, (new_driver_time, id(driver), driver))
+            heapq.heappush(driver_queue, (new_driver_time, id, driver))
         
         total_time_drivers_travel_to_passengers += travel_to_pickup_time
         total_in_car_time += dropoff_time
@@ -458,7 +467,7 @@ def simulate_t2(graph, passenger_queue, driver_queue):
 
 
 # Compute dependencies and run simulation
-def wrapper(reprocess_data=False, rebuild_graph=False):
+def wrapper(given_simulation = 'T1', reprocess_data=False, rebuild_graph=False):
 
     # Build graph
     if rebuild_graph:
@@ -484,15 +493,33 @@ def wrapper(reprocess_data=False, rebuild_graph=False):
     passenger_queue, driver_queue = construct_queues(drivers_data, passengers_data)
 
     # Run simulation
-    matches, total_time_drivers_travel_to_passengers, total_in_car_time, wait_from_passenger_request, failute_count, trips_per_driver = simulate_t2(graph, passenger_queue, driver_queue)
+    if given_simulation == 'T1':
+        matches, total_time_drivers_travel_to_passengers, total_in_car_time, wait_from_passenger_request, failute_count, trips_per_driver = simulate_t1(graph, passenger_queue, driver_queue)
+    elif given_simulation == 'T2':
+        matches, total_time_drivers_travel_to_passengers, total_in_car_time, wait_from_passenger_request, failute_count, trips_per_driver = simulate_t2(graph, passenger_queue, driver_queue)
+    else:
+        matches, total_time_drivers_travel_to_passengers, total_in_car_time, wait_from_passenger_request, failute_count, trips_per_driver = simulate_t3(graph, passenger_queue, driver_queue)
 
     # Write results to file
-    results_file = 'T2_results.json'
+    if given_simulation == 'T1':
+        results_file = 'T1_results.json'
+    elif given_simulation == 'T2':
+        results_file = 'T2_results.json'
+    else:
+        results_file = 'T3_results.json'
+
     with open(results_file, 'w') as f:
         json.dump(matches, f, indent=4)
+
+
+    # matches, total_time_drivers_travel_to_passengers, total_in_car_time, wait_from_passenger_request, failute_count, trips_per_driver = simulate_t1(graph, passenger_queue, driver_queue)
+    # # Write results to file
+    # results_file = 'T1_extra.json'
+    # with open(results_file, 'w') as f:
+    #     json.dump(matches, f, indent=4)
 
 
 
 
 if __name__ == "__main__":
-    wrapper(False, False)
+    wrapper('T1', False, False)
