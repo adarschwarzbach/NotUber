@@ -153,17 +153,12 @@ def load_graph():
 # Helper to convert a datetime string to a Unix timestamp
 def parse_datetime_to_unix(datetime_str):
     try:
-        # Convert the datetime string to a datetime object
         dt = datetime.strptime(datetime_str, '%m/%d/%Y %H:%M:%S')
-        # Determine if the day is a weekday or weekend
         day_type = 'weekday' if dt.weekday() < 5 else 'weekend'
-        # Extract the hour of the day
         hour = dt.hour
-        # Convert the datetime object to a Unix timestamp
         unix_timestamp = int(dt.timestamp())
         return unix_timestamp, hour, day_type
     except ValueError as e:
-        # Handle the error: log it, return None, or use a default value
         print(f"Error parsing datetime: {e}")
         return None, None, None
 
@@ -198,7 +193,6 @@ def construct_queues(drivers_data, passengers_data):
 
 
 # Djikstra's implementation to determine time for a given trip
-# ToDo: Update hour based on traversal time
 def dijkstra(graph, start, end, hour, day_type):
     queue = [(0, start)]  # (cumulative_time, node)
     visited = set()
@@ -286,17 +280,11 @@ def simulate(graph, passenger_queue, driver_queue):
         # Calculate the driver's new available time
         new_driver_time = driver_time + travel_to_pickup_time  * 60 + dropoff_time * 60
         
-        # Update the driver's location to the passenger's destination
+        # Update the driver's information
         driver['node'] = passenger_destination
-
-        # update the driver hour and day type
         driver['Hour'] = passenger['Hour']
         driver['DayType'] = passenger['DayType']
-
-        # update driver time 
         driver['Date/Time'] = new_driver_time
-
-        # update number of trips
         driver['number_of_trips'] += 1
         
         # Add this trip to the matches list
