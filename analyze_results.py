@@ -4,6 +4,7 @@ import json
 with open('T3_results.json', 'r') as f:
     T1_results = json.load(f)
 
+print('--T3 Results--')
 average_waiting_time = 0
 for result in T1_results:
     average_waiting_time += result['total_wait']

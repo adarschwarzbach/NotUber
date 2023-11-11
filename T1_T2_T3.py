@@ -471,7 +471,7 @@ def simulate_t3(graph, passenger_queue, driver_queue):
     failute_count = 0
     exited_drivers = []
 
-    passenger_queue = passenger_queue[4900:5100]
+    # passenger_queue = passenger_queue[4900:5100]
 
     
     while passenger_queue:  # Continue until one of the queues is empty
@@ -645,14 +645,6 @@ def wrapper(given_simulation = 'T1', reprocess_data=False, rebuild_graph=False):
         json.dump(matches, f, indent=4)
 
 
-    # matches, total_time_drivers_travel_to_passengers, total_in_car_time, wait_from_passenger_request, failute_count, trips_per_driver = simulate_t1(graph, passenger_queue, driver_queue)
-    # # Write results to file
-    # results_file = 'T1_extra.json'
-    # with open(results_file, 'w') as f:
-    #     json.dump(matches, f, indent=4)
-
-
-
 
 if __name__ == "__main__":
-    wrapper('T3', False, False)
+    wrapper('T1', False, False)
