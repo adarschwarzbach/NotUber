@@ -635,11 +635,11 @@ def wrapper(given_simulation = 'T1', reprocess_data=False, rebuild_graph=False):
 
     # Write results to file
     if given_simulation == 'T1':
-        results_file = 'T1_results.json'
+        results_file = 'T1_extra.json'
     elif given_simulation == 'T2':
-        results_file = 'T2_results.json'
+        results_file = 'T2_extra.json'
     else:
-        results_file = 'T3_results.json'
+        results_file = 'T3_extra.json'
 
     with open(results_file, 'w') as f:
         json.dump(matches, f, indent=4)
