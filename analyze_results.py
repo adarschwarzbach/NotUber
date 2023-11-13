@@ -22,3 +22,8 @@ for result in T1_results:
 print('Number of trips over 100 mins: ', number_of_trips_over_100)
 
 
+
+# with open('graph.json', 'r') as f:
+#     g = json.load(f)
+
+# print(len(g))

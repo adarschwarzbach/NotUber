@@ -1,4 +1,7 @@
 import math
+import json
+from collections import Counter
+import random
 
 def haversine(lon1, lat1, lon2, lat2):
     R = 3959.87433 # Radius of Earth in miles
@@ -14,16 +17,15 @@ def haversine(lon1, lat1, lon2, lat2):
     return distance
 
 
-def initalize_cluster_centers():
-    # SELECT NODES
+def initialize_cluster_centers(node_data):
+    # Adjusted grid resolution
+    num_rows = 35  # Adjust the number of rows as needed
+    num_cols = 30  # Adjust the number of columns as needed
+
     min_lat = min(node['lat'] for node in node_data.values())
     max_lat = max(node['lat'] for node in node_data.values())
     min_lon = min(node['lon'] for node in node_data.values())
     max_lon = max(node['lon'] for node in node_data.values())
-    # Example: 5x4 grid for 20 cells
-
-    num_rows = 5
-    num_cols = 4
 
     lat_step = (max_lat - min_lat) / num_rows
     lon_step = (max_lon - min_lon) / num_cols
@@ -32,24 +34,33 @@ def initalize_cluster_centers():
 
     # Assign nodes to grid cells
     for node_id, node in node_data.items():
-        row = int((node['lat'] - min_lat) / lat_step)
-        col = int((node['lon'] - min_lon) / lon_step)
-
-        # Adjust for edge cases
-        row = min(row, num_rows - 1)
-        col = min(col, num_cols - 1)
-
+        row = min(int((node['lat'] - min_lat) / lat_step), num_rows - 1)
+        col = min(int((node['lon'] - min_lon) / lon_step), num_cols - 1)
         grid[row][col].append(node_id)
 
-    # SELECT NODES
+    # Select nodes
     selected_nodes = []
+    additional_nodes_needed = 550
     for row in grid:
         for cell in row:
             if cell:
                 selected_nodes.append(cell[0])  # Selecting the first node in each cell
+                additional_nodes_needed -= 1
 
-    # HANDLE SPARSE REGIONS
+    # If more nodes are needed, randomly select from populated cells
+    if additional_nodes_needed > 0:
+        for row in grid:
+            for cell in row:
+                if len(cell) > 1:
+                    random.shuffle(cell)  # Shuffle the nodes in the cell
+                    for node_id in cell:
+                        if additional_nodes_needed > 0 and node_id not in selected_nodes:
+                            selected_nodes.append(node_id)
+                            additional_nodes_needed -= 1
+                        else:
+                            break
 
+    return selected_nodes
 
 
 
@@ -68,35 +79,82 @@ def assign_to_nearest_cluster(node, clusters):
 
     return assigned_cluster
 
-def update_cluster_centers(clusters, nodes):
-    for cluster in clusters.values():
-        members = cluster['members']
-        avg_lat = sum(nodes[node_id]['lat'] for node_id in members) / len(members)
-        avg_lon = sum(nodes[node_id]['lon'] for node_id in members) / len(members)
-        cluster['center'] = {'lat': avg_lat, 'lon': avg_lon}
-
-def geospatial_clustering(nodes, initial_cluster_centers, max_iterations=100):
+def assign_nodes_to_clusters(nodes, initial_cluster_centers):
+    # Initialize clusters
     clusters = {i: {'center': center, 'members': set()} for i, center in enumerate(initial_cluster_centers)}
 
-    for _ in range(max_iterations):
-        changes = False
-
-        # Assign nodes to the nearest cluster
-        for node_id, node in nodes.items():
-            assigned_cluster = assign_to_nearest_cluster(node, clusters)
-
-            if node_id not in clusters[assigned_cluster]['members']:
-                for cluster in clusters.values():
-                    cluster['members'].discard(node_id)
-                clusters[assigned_cluster]['members'].add(node_id)
-                changes = True
-
-        if not changes:
-            break
-
-        # Recalculate cluster centers
-        update_cluster_centers(clusters, nodes)
+    # Assign each node to the nearest cluster center
+    for node_id, node in nodes.items():
+        assigned_cluster = assign_to_nearest_cluster(node, clusters)
+        clusters[assigned_cluster]['members'].add(node_id)
 
     return clusters
+
+
+def test_all_nodes_assigned(nodes, clusters):
+    unassigned_nodes = set(nodes.keys())
+    
+    for cluster in clusters.values():
+        unassigned_nodes -= cluster['members']
+
+    if not unassigned_nodes:
+        print("All nodes have been successfully assigned to a cluster.")
+    else:
+        print("Some nodes are not assigned to any cluster:")
+        for node_id in unassigned_nodes:
+            print(f"Unassigned Node ID: {node_id}")
+
+
+
+def average_cluster_connections(cluster_connections):
+    averaged_connections = {}
+
+    for cluster_id, connections in cluster_connections.items():
+        averaged_connections[cluster_id] = {}
+        for connected_cluster_id, connection_list in connections.items():
+            connection_counter = Counter()
+            for connection in connection_list:
+                key = (connection['day_type'], connection['hour'])
+                connection_counter[key] += 1
+                if key not in averaged_connections[cluster_id]:
+                    averaged_connections[cluster_id][key] = {k: v for k, v in connection.items() if k in ['length', 'max_speed', 'time']}
+                else:
+                    for k in ['length', 'max_speed', 'time']:
+                        averaged_connections[cluster_id][key][k] += connection[k]
+
+            # Calculate averages
+            for key, count in connection_counter.items():
+                for k in ['length', 'max_speed', 'time']:
+                    averaged_connections[cluster_id][key][k] /= count
+
+    return averaged_connections
+
+def knn_wrapper():
+    # Load node data from your JSON file
+    print('Loading graph data...')
+    with open('graph.json', 'r') as file:
+        graph_data = json.load(file)
+    
+
+    # Assuming graph_data is a dictionary with node IDs as keys and {'lat': ..., 'lon': ...} as values
+    node_data = {node_id: {'lat': graph_data[node_id]['coordinates']['lat'], 'lon': graph_data[node_id]['coordinates']['lon']} for node_id in graph_data}
+
+    print('Initializing cluster centers...')
+    selected_nodes = initialize_cluster_centers(node_data)
+
+    print('Running geospatial clustering...')
+    initial_cluster_centers = [{'lat': node_data[node_id]['lat'], 'lon': node_data[node_id]['lon']} for node_id in selected_nodes]
+    clusters = clusters = assign_nodes_to_clusters(node_data, initial_cluster_centers)
+
+
+    # luster_connections = aggregate_cluster_connections(nodes, clusters)
+    # averaged_connections = average_cluster_connections(cluster_connections)
+
+if __name__ == "__main__":
+    knn_wrapper()
+
+
+
+
 
 
