@@ -599,6 +599,15 @@ def simulate_t3(graph, passenger_queue, driver_queue):
 
 
 
+
+
+
+
+
+
+
+
+
 # Compute dependencies and run simulation
 def wrapper(given_simulation = 'T1', reprocess_data=False, rebuild_graph=False):
 
