@@ -1,6 +1,6 @@
 import math
 import json
-from collections import Counter
+from collections import Counter, defaultdict
 import random
 
 def haversine(lon1, lat1, lon2, lat2):
@@ -111,23 +111,68 @@ def average_cluster_connections(cluster_connections):
 
     for cluster_id, connections in cluster_connections.items():
         averaged_connections[cluster_id] = {}
-        for connected_cluster_id, connection_list in connections.items():
-            connection_counter = Counter()
-            for connection in connection_list:
-                key = (connection['day_type'], connection['hour'])
-                connection_counter[key] += 1
-                if key not in averaged_connections[cluster_id]:
-                    averaged_connections[cluster_id][key] = {k: v for k, v in connection.items() if k in ['length', 'max_speed', 'time']}
-                else:
-                    for k in ['length', 'max_speed', 'time']:
-                        averaged_connections[cluster_id][key][k] += connection[k]
+        for connected_cluster_id, conn_list in connections.items():
+            times = defaultdict(list)
+            for day_type, hour, time in conn_list:
+                times[(day_type, hour)].append(time)
 
             # Calculate averages
-            for key, count in connection_counter.items():
-                for k in ['length', 'max_speed', 'time']:
-                    averaged_connections[cluster_id][key][k] /= count
+            averaged_connections[cluster_id][connected_cluster_id] = {
+                key: sum(time_list) / len(time_list) for key, time_list in times.items()
+            }
 
     return averaged_connections
+
+def aggregate_cluster_connections(nodes, clusters):
+    cluster_connections = {cluster_id: defaultdict(list) for cluster_id in clusters.keys()}
+
+    for cluster_id, cluster in clusters.items():
+        for node_id in cluster['members']:
+            node = nodes[node_id]
+            for connected_node_id, connections in node['connections'].items():
+                connected_cluster_id = find_node_cluster(connected_node_id, clusters)
+                if connected_cluster_id != cluster_id:
+                    for conn in connections:
+                        cluster_connections[cluster_id][connected_cluster_id].append(
+                            (conn['day_type'], conn['hour'], conn['time'])
+                        )
+
+    return cluster_connections
+
+def find_node_cluster(node_id, clusters):
+    for cluster_id, cluster in clusters.items():
+        if node_id in cluster['members']:
+            return cluster_id
+    return None
+
+def add_cluster_data_to_nodes(tiny_graph, clusters):
+    graph_with_connections = {id:{} for id in tiny_graph.keys()}
+    for node_id, data in tiny_graph.items():
+        graph_with_connections[node_id]['connections'] = data
+        graph_with_connections[node_id]['members'] = list(clusters[int(node_id)]['members'])
+        graph_with_connections[node_id]['center'] = clusters[int(node_id)]['center']
+
+    return graph_with_connections
+
+        
+
+def convert_graph_to_json(averaged_connections):
+    json_compatible_graph = {}
+
+    for cluster_id, connections in averaged_connections.items():
+        json_compatible_cluster = {}
+        for connected_cluster_id, conn_times in connections.items():
+            json_compatible_cluster[str(connected_cluster_id)] = {}
+            for key, value in conn_times.items():
+                # Convert tuple keys to string
+                day_type, hour = key
+                string_key = f"{day_type}_{hour}"
+                json_compatible_cluster[str(connected_cluster_id)][string_key] = value
+
+        json_compatible_graph[str(cluster_id)] = json_compatible_cluster
+
+    return json_compatible_graph
+
 
 def knn_wrapper():
     # Load node data from your JSON file
@@ -144,11 +189,22 @@ def knn_wrapper():
 
     print('Running geospatial clustering...')
     initial_cluster_centers = [{'lat': node_data[node_id]['lat'], 'lon': node_data[node_id]['lon']} for node_id in selected_nodes]
-    clusters = clusters = assign_nodes_to_clusters(node_data, initial_cluster_centers)
+    clusters = assign_nodes_to_clusters(node_data, initial_cluster_centers)
 
+    cluster_connections = aggregate_cluster_connections(graph_data, clusters)
 
-    # luster_connections = aggregate_cluster_connections(nodes, clusters)
-    # averaged_connections = average_cluster_connections(cluster_connections)
+    print('Building new graph...')
+    tiny_graph = average_cluster_connections(cluster_connections)
+
+    print('Refining new graph...')
+    json_graph = convert_graph_to_json(tiny_graph)
+
+    graph_with_full_metadata = add_cluster_data_to_nodes(json_graph, clusters)
+
+    results_file = 'tiny_graph.json'
+
+    with open(results_file, 'w') as f:
+        json.dump(graph_with_full_metadata, f, indent=4)
 
 if __name__ == "__main__":
     knn_wrapper()
