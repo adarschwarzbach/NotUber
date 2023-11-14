@@ -1,6 +1,6 @@
 import json
 
-#  T1_results.json | T1_extra.txt | T2_results.json | T2_extra.txt | T3_results.json | T3_extra.txt
+#  T1_results.json | T1_extra.txt | T2_results.json | T2_extra.txt | T3_results.json | T3_extra.json | T5_results.json
 with open('T3_results.json', 'r') as f:
     T1_results = json.load(f)
 
@@ -23,12 +23,21 @@ print('Number of trips over 100 mins: ', number_of_trips_over_100)
 
 
 average_driver_profit = 0
+average_pickup_wait_time = 0
+average_dropoff_wait_time = 0
 for result in T1_results:
     average_driver_profit += result['dropoff_time'] - result['pickup_wait_time']
+    average_pickup_wait_time += result['pickup_wait_time']
+    average_dropoff_wait_time += result['dropoff_time']
+
 
 average_driver_profit /= len(T1_results)
+average_pickup_wait_time /= len(T1_results)
+average_dropoff_wait_time /= len(T1_results)
 
 print('Average driver profit: ', average_driver_profit)
+print('Average dropoff wait time: ', average_dropoff_wait_time)
+print('Average pickup wait time: ', average_pickup_wait_time)
 
 # with open('graph.json', 'r') as f:
 #     g = json.load(f)

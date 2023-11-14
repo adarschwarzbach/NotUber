@@ -378,7 +378,7 @@ def simulate_t1(graph, passenger_queue, driver_queue):
     total_stops = 0
 
     #test on smaller queue
-    passenger_queue = passenger_queue[1000:1200]
+    passenger_queue = passenger_queue[-400:]
     
     while passenger_queue:  # Continue until one of the queues is empty
         # Passenger and driver details
@@ -918,12 +918,16 @@ def simulate_t5(graph, passenger_queue, driver_queue):
         else:
         # Determine the best passenger for this driver
             optimal_choice = None
-            min_travel_time = float('inf')
-            for passenger_request_time, _, passenger in top_passengers:
-                travel_time = dijkstra(graph, driver['node'], passenger['node'], driver['Hour'], driver['DayType'])
-                if travel_time < min_travel_time:
-                    min_travel_time = travel_time
-                    optimal_choice = (passenger_request_time, passenger)
+            optimal_score = float('-inf')
+            for passenger_request_time, _, p in top_passengers:
+                travel_time = dijkstra(graph, driver['node'], p['node'], driver['Hour'], driver['DayType'])
+                trip_distance = dijkstra(graph, p['node'], p['destination_node'], driver['Hour'], driver['DayType'])
+                
+                # Heuristic: prioritize longer trips while considering pickup time
+                score = trip_distance / (travel_time + 1)
+                if score > optimal_score:
+                    optimal_score = score
+                    optimal_choice = (passenger_request_time, p)
 
 
         if top_passengers:
@@ -936,7 +940,10 @@ def simulate_t5(graph, passenger_queue, driver_queue):
         passenger_pickup = optimal_choice[1]['node']
 
         # Calculate time from passenger making request to driver becoming available
-        wait_from_passenger_request = (driver_available_time - optimal_choice[0]) / 60
+        wait_from_passenger_request = 0
+        if optimal_choice[0] < driver_available_time:
+            wait_from_passenger_request = (driver_available_time - optimal_choice[0]) / 60
+
 
         # Calculate time for driver to reach the optimal passenger's pickup location
         travel_to_pickup_time = dijkstra(graph, driver_location, passenger_pickup, driver['Hour'], driver['DayType'])

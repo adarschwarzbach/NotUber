@@ -1,1802 +1,3602 @@
 [
     {
         "driver_location": "1942055181",
-        "passenger_pickup": "622204986",
-        "passenger_destination": "42799695",
-        "pickup_wait_time": 41.22962715435983,
-        "dropoff_time": 29.078858369087428,
-        "wait_from_passenger_request": 0,
-        "total_wait": 70.30848552344726
+        "passenger_pickup": "599036657",
+        "passenger_destination": "42430361",
+        "pickup_wait_time": 10.700044415827996,
+        "dropoff_time": 33.146523502973515,
+        "wait_from_passenger_request": 14.0,
+        "total_wait": 57.84656791880151
     },
     {
         "driver_location": "599047106",
-        "passenger_pickup": "42434085",
-        "passenger_destination": "42431024",
-        "pickup_wait_time": 32.647486865811125,
-        "dropoff_time": 9.04866231935372,
-        "wait_from_passenger_request": 0,
-        "total_wait": 41.69614918516484
+        "passenger_pickup": "42429637",
+        "passenger_destination": "42432068",
+        "pickup_wait_time": 32.9974748718906,
+        "dropoff_time": 1.7932538837992138,
+        "wait_from_passenger_request": 14.0,
+        "total_wait": 48.79072875568982
     },
     {
         "driver_location": "42430694",
-        "passenger_pickup": "42428579",
-        "passenger_destination": "42431519",
-        "pickup_wait_time": 2.919208118552448,
-        "dropoff_time": 10.777091890924876,
-        "wait_from_passenger_request": 0,
-        "total_wait": 13.696300009477323
+        "passenger_pickup": "4754091366",
+        "passenger_destination": "42429521",
+        "pickup_wait_time": 10.231363894047881,
+        "dropoff_time": 3.3467069468021946,
+        "wait_from_passenger_request": 23.0,
+        "total_wait": 36.578070840850074
     },
     {
         "driver_location": "42439830",
-        "passenger_pickup": "42449985",
-        "passenger_destination": "42427764",
-        "pickup_wait_time": 8.472012496162495,
-        "dropoff_time": 2.4383968354869894,
-        "wait_from_passenger_request": 0,
-        "total_wait": 10.910409331649484
+        "passenger_pickup": "42444954",
+        "passenger_destination": "42435657",
+        "pickup_wait_time": 3.2827210580724415,
+        "dropoff_time": 1.510574687549136,
+        "wait_from_passenger_request": 27.0,
+        "total_wait": 31.793295745621577
+    },
+    {
+        "driver_location": "42435657",
+        "passenger_pickup": "4443775464",
+        "passenger_destination": "42445896",
+        "pickup_wait_time": 1.6047773323799102,
+        "dropoff_time": 2.1247410077243702,
+        "wait_from_passenger_request": 27.79329574505488,
+        "total_wait": 31.522814085159162
     },
     {
         "driver_location": "42436431",
-        "passenger_pickup": "42430770",
-        "passenger_destination": "42432818",
-        "pickup_wait_time": 2.095164326498946,
-        "dropoff_time": 9.122843930581135,
-        "wait_from_passenger_request": 0,
-        "total_wait": 11.218008257080081
+        "passenger_pickup": "42440527",
+        "passenger_destination": "42432438",
+        "pickup_wait_time": 2.221201022646306,
+        "dropoff_time": 7.065134297846814,
+        "wait_from_passenger_request": 24.0,
+        "total_wait": 33.28633532049312
     },
     {
-        "driver_location": "42431519",
-        "passenger_pickup": "42454997",
-        "passenger_destination": "42434412",
-        "pickup_wait_time": 5.14745484247722,
-        "dropoff_time": 8.409349601830307,
-        "wait_from_passenger_request": 0,
-        "total_wait": 13.556804444307527
+        "driver_location": "42429521",
+        "passenger_pickup": "42446986",
+        "passenger_destination": "42439070",
+        "pickup_wait_time": 12.688525961738563,
+        "dropoff_time": 5.430323633876275,
+        "wait_from_passenger_request": 24.578070839246113,
+        "total_wait": 42.69692043486095
     },
     {
-        "driver_location": "42427764",
-        "passenger_pickup": "42427427",
-        "passenger_destination": "42730985",
-        "pickup_wait_time": 6.749378175516955,
-        "dropoff_time": 28.522115458330894,
-        "wait_from_passenger_request": 0,
-        "total_wait": 35.27149363384785
+        "driver_location": "42445896",
+        "passenger_pickup": "42428170",
+        "passenger_destination": "42514959",
+        "pickup_wait_time": 2.376259433412048,
+        "dropoff_time": 10.506691429839819,
+        "wait_from_passenger_request": 22.522814083099366,
+        "total_wait": 35.40576494635123
     },
     {
         "driver_location": "2844853152",
-        "passenger_pickup": "593839894",
-        "passenger_destination": "42436894",
-        "pickup_wait_time": 13.32193175765943,
-        "dropoff_time": 5.6557403925752565,
-        "wait_from_passenger_request": 0,
-        "total_wait": 18.977672150234685
+        "passenger_pickup": "42444829",
+        "passenger_destination": "42430643",
+        "pickup_wait_time": 12.558398620468473,
+        "dropoff_time": 8.538543833538517,
+        "wait_from_passenger_request": 25.0,
+        "total_wait": 46.09694245400699
     },
     {
-        "driver_location": "42432818",
-        "passenger_pickup": "591454081",
-        "passenger_destination": "42443950",
-        "pickup_wait_time": 10.040130885907793,
-        "dropoff_time": 7.293374505411623,
-        "wait_from_passenger_request": 0,
-        "total_wait": 17.333505391319417
+        "driver_location": "42432438",
+        "passenger_pickup": "42430811",
+        "passenger_destination": "42444909",
+        "pickup_wait_time": 5.499473571293094,
+        "dropoff_time": 2.205392175049698,
+        "wait_from_passenger_request": 28.286335321267448,
+        "total_wait": 35.99120106761024
     },
     {
-        "driver_location": "42434412",
-        "passenger_pickup": "42440326",
-        "passenger_destination": "42505482",
-        "pickup_wait_time": 9.218477670439633,
-        "dropoff_time": 16.29323985507839,
-        "wait_from_passenger_request": 0,
-        "total_wait": 25.511717525518023
+        "driver_location": "42432068",
+        "passenger_pickup": "42430338",
+        "passenger_destination": "4602414021",
+        "pickup_wait_time": 7.943347830710526,
+        "dropoff_time": 6.759975743246294,
+        "wait_from_passenger_request": 26.79072875579198,
+        "total_wait": 41.4940523297488
+    },
+    {
+        "driver_location": "42430361",
+        "passenger_pickup": "1773084405",
+        "passenger_destination": "42435645",
+        "pickup_wait_time": 7.4305115144160645,
+        "dropoff_time": 6.150831973137379,
+        "wait_from_passenger_request": 27.84656792084376,
+        "total_wait": 41.42791140839721
+    },
+    {
+        "driver_location": "42514959",
+        "passenger_pickup": "4754091366",
+        "passenger_destination": "42431614",
+        "pickup_wait_time": 9.83216404689985,
+        "dropoff_time": 0.6990468982474981,
+        "wait_from_passenger_request": 28.405764945348103,
+        "total_wait": 38.936975890495454
     },
     {
         "driver_location": "42444909",
-        "passenger_pickup": "42443817",
-        "passenger_destination": "42424864",
-        "pickup_wait_time": 14.784822523161706,
-        "dropoff_time": 19.241632982533268,
-        "wait_from_passenger_request": 0,
-        "total_wait": 34.026455505694976
+        "passenger_pickup": "42430317",
+        "passenger_destination": "42448338",
+        "pickup_wait_time": 4.351628092100491,
+        "dropoff_time": 3.400827075662592,
+        "wait_from_passenger_request": 28.991201066970824,
+        "total_wait": 36.743656234733905
     },
     {
-        "driver_location": "42431024",
-        "passenger_pickup": "42438891",
-        "passenger_destination": "42434807",
-        "pickup_wait_time": 8.982136275622583,
-        "dropoff_time": 5.703274541840376,
-        "wait_from_passenger_request": 0,
-        "total_wait": 14.685410817462959
+        "driver_location": "42444909",
+        "passenger_pickup": "42428434",
+        "passenger_destination": "42520484",
+        "pickup_wait_time": 4.957709097015925,
+        "dropoff_time": 24.483866188969063,
+        "wait_from_passenger_request": 28.0,
+        "total_wait": 57.44157528598499
     },
     {
-        "driver_location": "42436894",
-        "passenger_pickup": "42430519",
-        "passenger_destination": "42499524",
-        "pickup_wait_time": 3.1702817431056243,
-        "dropoff_time": 19.015988546899298,
-        "wait_from_passenger_request": 0,
-        "total_wait": 22.18627029000492
+        "driver_location": "42439070",
+        "passenger_pickup": "42456492",
+        "passenger_destination": "42436707",
+        "pickup_wait_time": 5.87522647212048,
+        "dropoff_time": 11.368357738111317,
+        "wait_from_passenger_request": 27.696920434633892,
+        "total_wait": 44.94050464486569
+    },
+    {
+        "driver_location": "42448338",
+        "passenger_pickup": "42437363",
+        "passenger_destination": "4142105813",
+        "pickup_wait_time": 3.4449239305385944,
+        "dropoff_time": 7.265433251864425,
+        "wait_from_passenger_request": 31.74365623394648,
+        "total_wait": 42.4540134163495
+    },
+    {
+        "driver_location": "42431614",
+        "passenger_pickup": "42436330",
+        "passenger_destination": "42428411",
+        "pickup_wait_time": 0.75091523511696,
+        "dropoff_time": 0.85425977167827,
+        "wait_from_passenger_request": 23.936975888411204,
+        "total_wait": 25.542150895206433
     },
     {
         "driver_location": "42454742",
-        "passenger_pickup": "42449945",
-        "passenger_destination": "42429394",
-        "pickup_wait_time": 6.351695798633874,
-        "dropoff_time": 7.850471057201316,
-        "wait_from_passenger_request": 0,
-        "total_wait": 14.202166855835191
-    },
-    {
-        "driver_location": "42443950",
-        "passenger_pickup": "42445702",
-        "passenger_destination": "42466204",
-        "pickup_wait_time": 7.967712315945781,
-        "dropoff_time": 12.346756926120982,
-        "wait_from_passenger_request": 0,
-        "total_wait": 20.314469242066764
-    },
-    {
-        "driver_location": "42434807",
-        "passenger_pickup": "42445909",
-        "passenger_destination": "42440682",
-        "pickup_wait_time": 2.975226885087654,
-        "dropoff_time": 8.980998355217704,
-        "wait_from_passenger_request": 0,
-        "total_wait": 11.956225240305358
-    },
-    {
-        "driver_location": "42730985",
-        "passenger_pickup": "42432135",
-        "passenger_destination": "42428287",
-        "pickup_wait_time": 32.0944808449029,
-        "dropoff_time": 7.912683908647217,
-        "wait_from_passenger_request": 0,
-        "total_wait": 40.007164753550114
-    },
-    {
-        "driver_location": "42505482",
-        "passenger_pickup": "42438784",
-        "passenger_destination": "277482097",
-        "pickup_wait_time": 15.732972261753288,
-        "dropoff_time": 20.236503570097756,
-        "wait_from_passenger_request": 0,
-        "total_wait": 35.96947583185104
-    },
-    {
-        "driver_location": "42429394",
-        "passenger_pickup": "1919595925",
-        "passenger_destination": "42435921",
-        "pickup_wait_time": 4.48786546438572,
-        "dropoff_time": 3.871292067026964,
-        "wait_from_passenger_request": 0,
-        "total_wait": 8.359157531412684
-    },
-    {
-        "driver_location": "42799695",
-        "passenger_pickup": "42453177",
-        "passenger_destination": "1692450029",
-        "pickup_wait_time": 25.49497915371673,
-        "dropoff_time": 3.6556652673646806,
-        "wait_from_passenger_request": 0,
-        "total_wait": 29.15064442108141
-    },
-    {
-        "driver_location": "42440682",
-        "passenger_pickup": "42431273",
-        "passenger_destination": "596775867",
-        "pickup_wait_time": 5.713563857974598,
-        "dropoff_time": 8.931063923924983,
-        "wait_from_passenger_request": 0,
-        "total_wait": 14.64462778189958
-    },
-    {
-        "driver_location": "42499524",
-        "passenger_pickup": "42431503",
-        "passenger_destination": "42434821",
-        "pickup_wait_time": 22.19584994416812,
-        "dropoff_time": 3.0777066654917635,
-        "wait_from_passenger_request": 0,
-        "total_wait": 25.273556609659884
-    },
-    {
-        "driver_location": "42435921",
-        "passenger_pickup": "42855824",
-        "passenger_destination": "42433286",
-        "pickup_wait_time": 13.953489507773002,
-        "dropoff_time": 13.12513841702898,
-        "wait_from_passenger_request": 0,
-        "total_wait": 27.07862792480198
-    },
-    {
-        "driver_location": "42466204",
-        "passenger_pickup": "42428714",
-        "passenger_destination": "42436700",
-        "pickup_wait_time": 28.213012387824183,
-        "dropoff_time": 8.982010990705957,
-        "wait_from_passenger_request": 0,
-        "total_wait": 37.19502337853014
-    },
-    {
-        "driver_location": "42424864",
-        "passenger_pickup": "42427335",
-        "passenger_destination": "4633522237",
-        "pickup_wait_time": 5.484627376461084,
-        "dropoff_time": 49.828445692290046,
-        "wait_from_passenger_request": 0,
-        "total_wait": 55.31307306875113
-    },
-    {
-        "driver_location": "596775867",
-        "passenger_pickup": "42448701",
-        "passenger_destination": "42439440",
-        "pickup_wait_time": 4.559860415422885,
-        "dropoff_time": 4.071068644106165,
-        "wait_from_passenger_request": 0,
-        "total_wait": 8.63092905952905
-    },
-    {
-        "driver_location": "42428428",
-        "passenger_pickup": "42466016",
-        "passenger_destination": "599029185",
-        "pickup_wait_time": 15.059440939067063,
-        "dropoff_time": 39.91351281170904,
-        "wait_from_passenger_request": 0,
-        "total_wait": 54.9729537507761
-    },
-    {
-        "driver_location": "42439440",
-        "passenger_pickup": "42452026",
-        "passenger_destination": "42448701",
-        "pickup_wait_time": 6.773482422604801,
-        "dropoff_time": 6.285054459976878,
-        "wait_from_passenger_request": 0,
-        "total_wait": 13.058536882581679
-    },
-    {
-        "driver_location": "1692450029",
-        "passenger_pickup": "42437142",
-        "passenger_destination": "42453468",
-        "pickup_wait_time": 18.2874084035055,
-        "dropoff_time": 16.117878802319023,
-        "wait_from_passenger_request": 0,
-        "total_wait": 34.40528720582452
-    },
-    {
-        "driver_location": "42434821",
-        "passenger_pickup": "42438503",
-        "passenger_destination": "1701651380",
-        "pickup_wait_time": 11.104664099333274,
-        "dropoff_time": 37.94325433473571,
-        "wait_from_passenger_request": 0,
-        "total_wait": 49.04791843406899
-    },
-    {
-        "driver_location": "42433286",
-        "passenger_pickup": "42435497",
-        "passenger_destination": "673008453",
-        "pickup_wait_time": 12.332797550634668,
-        "dropoff_time": 18.089688820955754,
-        "wait_from_passenger_request": 0,
-        "total_wait": 30.422486371590423
-    },
-    {
-        "driver_location": "277482097",
-        "passenger_pickup": "42465230",
-        "passenger_destination": "42477252",
-        "pickup_wait_time": 28.81223175131064,
-        "dropoff_time": 3.2188463243717225,
-        "wait_from_passenger_request": 0,
-        "total_wait": 32.031078075682366
-    },
-    {
-        "driver_location": "42436439",
-        "passenger_pickup": "42428441",
-        "passenger_destination": "42445189",
-        "pickup_wait_time": 4.16141792467441,
-        "dropoff_time": 19.591877926268047,
-        "wait_from_passenger_request": 0,
-        "total_wait": 23.753295850942457
-    },
-    {
-        "driver_location": "42428287",
-        "passenger_pickup": "42449589",
-        "passenger_destination": "42430673",
-        "pickup_wait_time": 6.908814554813393,
-        "dropoff_time": 8.934105105436075,
-        "wait_from_passenger_request": 0,
-        "total_wait": 15.842919660249468
-    },
-    {
-        "driver_location": "42448701",
-        "passenger_pickup": "42431508",
-        "passenger_destination": "42456598",
-        "pickup_wait_time": 6.705993419220186,
-        "dropoff_time": 10.283123863075943,
-        "wait_from_passenger_request": 0,
-        "total_wait": 16.989117282296128
-    },
-    {
-        "driver_location": "42436700",
-        "passenger_pickup": "42428012",
-        "passenger_destination": "1701651380",
-        "pickup_wait_time": 5.625616964399706,
-        "dropoff_time": 37.61825762115811,
-        "wait_from_passenger_request": 0,
-        "total_wait": 43.24387458555781
-    },
-    {
-        "driver_location": "42430673",
-        "passenger_pickup": "42434439",
-        "passenger_destination": "42465273",
-        "pickup_wait_time": 1.334516684067468,
-        "dropoff_time": 21.094020156062925,
-        "wait_from_passenger_request": 0,
-        "total_wait": 22.42853684013039
-    },
-    {
-        "driver_location": "42456598",
-        "passenger_pickup": "42433330",
-        "passenger_destination": "4633522237",
-        "pickup_wait_time": 14.026163807883288,
-        "dropoff_time": 45.563798315564284,
-        "wait_from_passenger_request": 0,
-        "total_wait": 59.58996212344757
-    },
-    {
-        "driver_location": "42445189",
-        "passenger_pickup": "42444832",
-        "passenger_destination": "42478396",
-        "pickup_wait_time": 18.823628717689534,
-        "dropoff_time": 12.906385241601443,
-        "wait_from_passenger_request": 0,
-        "total_wait": 31.73001395929098
-    },
-    {
-        "driver_location": "42453468",
-        "passenger_pickup": "42453038",
-        "passenger_destination": "1061531634",
-        "pickup_wait_time": 3.1359999812690162,
-        "dropoff_time": 13.291569193184138,
-        "wait_from_passenger_request": 0,
-        "total_wait": 16.427569174453154
-    },
-    {
-        "driver_location": "673008453",
-        "passenger_pickup": "42439830",
-        "passenger_destination": "685164634",
-        "pickup_wait_time": 8.174283454936134,
-        "dropoff_time": 5.755957757827679,
-        "wait_from_passenger_request": 0,
-        "total_wait": 13.930241212763814
-    },
-    {
-        "driver_location": "4633522237",
-        "passenger_pickup": "42430277",
-        "passenger_destination": "42435514",
-        "pickup_wait_time": 52.574641430508024,
-        "dropoff_time": 9.858289705605893,
-        "wait_from_passenger_request": 0,
-        "total_wait": 62.432931136113915
-    },
-    {
-        "driver_location": "42477252",
-        "passenger_pickup": "42436746",
-        "passenger_destination": "42432693",
-        "pickup_wait_time": 17.74131568505016,
-        "dropoff_time": 3.031513125268038,
-        "wait_from_passenger_request": 0,
-        "total_wait": 20.7728288103182
-    },
-    {
-        "driver_location": "42430673",
-        "passenger_pickup": "42429507",
-        "passenger_destination": "42440729",
-        "pickup_wait_time": 10.524987885630193,
-        "dropoff_time": 8.43855522676023,
-        "wait_from_passenger_request": 0,
-        "total_wait": 18.963543112390422
-    },
-    {
-        "driver_location": "42486705",
-        "passenger_pickup": "4597668041",
-        "passenger_destination": "42444049",
-        "pickup_wait_time": 13.41461999319479,
-        "dropoff_time": 3.688971741644586,
-        "wait_from_passenger_request": 0,
-        "total_wait": 17.103591734839377
-    },
-    {
-        "driver_location": "42465273",
-        "passenger_pickup": "42430277",
-        "passenger_destination": "42439583",
-        "pickup_wait_time": 17.616368903513266,
-        "dropoff_time": 5.843026117370551,
-        "wait_from_passenger_request": 0,
-        "total_wait": 23.459395020883818
-    },
-    {
-        "driver_location": "685164634",
-        "passenger_pickup": "42436913",
-        "passenger_destination": "4629486879",
-        "pickup_wait_time": 10.675232606815623,
-        "dropoff_time": 13.820287339788003,
-        "wait_from_passenger_request": 0,
-        "total_wait": 24.495519946603626
-    },
-    {
-        "driver_location": "1061531634",
-        "passenger_pickup": "42429688",
-        "passenger_destination": "42436700",
-        "pickup_wait_time": 4.942068133867885,
-        "dropoff_time": 3.6104608065102064,
-        "wait_from_passenger_request": 0,
-        "total_wait": 8.55252894037809
-    },
-    {
-        "driver_location": "1701651380",
-        "passenger_pickup": "42430529",
-        "passenger_destination": "42438060",
-        "pickup_wait_time": 39.56357064242882,
-        "dropoff_time": 1.756001378751342,
-        "wait_from_passenger_request": 0,
-        "total_wait": 41.319572021180164
-    },
-    {
-        "driver_location": "599029185",
-        "passenger_pickup": "42432451",
-        "passenger_destination": "42423565",
-        "pickup_wait_time": 35.31598943712298,
-        "dropoff_time": 3.0574923686533975,
-        "wait_from_passenger_request": 0,
-        "total_wait": 38.37348180577638
-    },
-    {
-        "driver_location": "42444049",
-        "passenger_pickup": "42430265",
-        "passenger_destination": "42445574",
-        "pickup_wait_time": 5.250180708149052,
-        "dropoff_time": 3.8047980030784205,
-        "wait_from_passenger_request": 0,
-        "total_wait": 9.054978711227472
-    },
-    {
-        "driver_location": "42432693",
-        "passenger_pickup": "42429636",
-        "passenger_destination": "42436551",
-        "pickup_wait_time": 10.482139003581405,
-        "dropoff_time": 15.560526789875977,
-        "wait_from_passenger_request": 0,
-        "total_wait": 26.04266579345738
-    },
-    {
-        "driver_location": "42436700",
-        "passenger_pickup": "42443052",
-        "passenger_destination": "42448979",
-        "pickup_wait_time": 7.298719594847286,
-        "dropoff_time": 6.742845876369875,
-        "wait_from_passenger_request": 0,
-        "total_wait": 14.041565471217162
-    },
-    {
-        "driver_location": "42440729",
-        "passenger_pickup": "42435456",
-        "passenger_destination": "42473595",
-        "pickup_wait_time": 4.326360207848053,
-        "dropoff_time": 9.620406110840776,
-        "wait_from_passenger_request": 0,
-        "total_wait": 13.946766318688828
-    },
-    {
-        "driver_location": "1701651380",
-        "passenger_pickup": "42455357",
-        "passenger_destination": "42452973",
-        "pickup_wait_time": 43.231884356005104,
-        "dropoff_time": 6.1887739487358955,
-        "wait_from_passenger_request": 0,
-        "total_wait": 49.420658304740996
-    },
-    {
-        "driver_location": "42478396",
-        "passenger_pickup": "42443666",
-        "passenger_destination": "42450426",
-        "pickup_wait_time": 12.860349849377476,
-        "dropoff_time": 14.37416980317419,
-        "wait_from_passenger_request": 0,
-        "total_wait": 27.23451965255167
-    },
-    {
-        "driver_location": "42445574",
-        "passenger_pickup": "42443050",
-        "passenger_destination": "42445356",
-        "pickup_wait_time": 16.054371298149572,
-        "dropoff_time": 18.053507771360582,
-        "wait_from_passenger_request": 0,
-        "total_wait": 34.107879069510155
-    },
-    {
-        "driver_location": "42452975",
-        "passenger_pickup": "42432679",
-        "passenger_destination": "42534052",
-        "pickup_wait_time": 9.596549820172877,
-        "dropoff_time": 7.643275247669887,
-        "wait_from_passenger_request": 0,
-        "total_wait": 17.239825067842766
-    },
-    {
-        "driver_location": "42439583",
-        "passenger_pickup": "246649427",
-        "passenger_destination": "42429682",
-        "pickup_wait_time": 4.073703595010196,
-        "dropoff_time": 11.477832937842743,
-        "wait_from_passenger_request": 0,
-        "total_wait": 15.55153653285294
-    },
-    {
-        "driver_location": "42448979",
-        "passenger_pickup": "42436586",
-        "passenger_destination": "42448593",
-        "pickup_wait_time": 16.156193441574374,
-        "dropoff_time": 8.811167639049804,
-        "wait_from_passenger_request": 0,
-        "total_wait": 24.96736108062418
-    },
-    {
-        "driver_location": "42473595",
-        "passenger_pickup": "42516074",
-        "passenger_destination": "42473213",
-        "pickup_wait_time": 5.329634492282268,
-        "dropoff_time": 14.188460306412356,
-        "wait_from_passenger_request": 0,
-        "total_wait": 19.518094798694623
-    },
-    {
-        "driver_location": "4629486879",
-        "passenger_pickup": "42439070",
-        "passenger_destination": "4557517552",
-        "pickup_wait_time": 3.955328206654992,
-        "dropoff_time": 3.700571871815268,
-        "wait_from_passenger_request": 0,
-        "total_wait": 7.65590007847026
-    },
-    {
-        "driver_location": "4557517552",
-        "passenger_pickup": "42432818",
-        "passenger_destination": "42815175",
-        "pickup_wait_time": 8.190056405802917,
-        "dropoff_time": 30.072926196853295,
-        "wait_from_passenger_request": 0,
-        "total_wait": 38.26298260265621
-    },
-    {
-        "driver_location": "42436551",
-        "passenger_pickup": "42431490",
-        "passenger_destination": "42430271",
-        "pickup_wait_time": 12.819830245037915,
-        "dropoff_time": 1.9148545666873806,
-        "wait_from_passenger_request": 0,
-        "total_wait": 14.734684811725295
-    },
-    {
-        "driver_location": "42534052",
-        "passenger_pickup": "561042190",
-        "passenger_destination": "42453038",
-        "pickup_wait_time": 14.522571760643519,
-        "dropoff_time": 8.389605834740546,
-        "wait_from_passenger_request": 0,
-        "total_wait": 22.912177595384065
-    },
-    {
-        "driver_location": "42429682",
-        "passenger_pickup": "42524905",
-        "passenger_destination": "42490303",
-        "pickup_wait_time": 23.642382096549216,
-        "dropoff_time": 11.40479068467073,
-        "wait_from_passenger_request": 0,
-        "total_wait": 35.04717278121994
-    },
-    {
-        "driver_location": "42441670",
-        "passenger_pickup": "2987758869",
-        "passenger_destination": "561042200",
-        "pickup_wait_time": 13.280684897689051,
-        "dropoff_time": 9.489094021909512,
-        "wait_from_passenger_request": 0,
-        "total_wait": 22.769778919598565
-    },
-    {
-        "driver_location": "4633522237",
-        "passenger_pickup": "42448238",
-        "passenger_destination": "4872623863",
-        "pickup_wait_time": 62.195038491461624,
-        "dropoff_time": 12.890834886079618,
-        "wait_from_passenger_request": 0,
-        "total_wait": 75.08587337754125
-    },
-    {
-        "driver_location": "42450426",
-        "passenger_pickup": "42431008",
-        "passenger_destination": "42429756",
-        "pickup_wait_time": 6.0679516132413776,
-        "dropoff_time": 16.17433702214735,
-        "wait_from_passenger_request": 0,
-        "total_wait": 22.242288635388725
-    },
-    {
-        "driver_location": "42423565",
-        "passenger_pickup": "42440326",
-        "passenger_destination": "42472255",
-        "pickup_wait_time": 5.990310739790472,
-        "dropoff_time": 11.084917215309696,
-        "wait_from_passenger_request": 0,
-        "total_wait": 17.075227955100168
-    },
-    {
-        "driver_location": "42438060",
-        "passenger_pickup": "42438173",
-        "passenger_destination": "42430333",
-        "pickup_wait_time": 7.2675803591993375,
-        "dropoff_time": 4.691984481980076,
-        "wait_from_passenger_request": 0,
-        "total_wait": 11.959564841179414
-    },
-    {
-        "driver_location": "42473213",
-        "passenger_pickup": "42439236",
-        "passenger_destination": "42487074",
-        "pickup_wait_time": 14.768650986010842,
-        "dropoff_time": 12.392451117619904,
-        "wait_from_passenger_request": 0,
-        "total_wait": 27.161102103630746
-    },
-    {
-        "driver_location": "42448593",
-        "passenger_pickup": "42428220",
-        "passenger_destination": "42486798",
-        "pickup_wait_time": 9.114183478398289,
-        "dropoff_time": 23.092347939883847,
-        "wait_from_passenger_request": 0,
-        "total_wait": 32.20653141828214
-    },
-    {
-        "driver_location": "42435514",
-        "passenger_pickup": "42429637",
-        "passenger_destination": "42520377",
-        "pickup_wait_time": 14.78051014607831,
-        "dropoff_time": 10.343323480133314,
-        "wait_from_passenger_request": 0,
-        "total_wait": 25.123833626211624
-    },
-    {
-        "driver_location": "42430271",
-        "passenger_pickup": "42437503",
-        "passenger_destination": "4597668043",
-        "pickup_wait_time": 9.256199964620876,
-        "dropoff_time": 8.35495312989545,
-        "wait_from_passenger_request": 0,
-        "total_wait": 17.611153094516325
-    },
-    {
-        "driver_location": "42445356",
-        "passenger_pickup": "42445033",
-        "passenger_destination": "42431452",
-        "pickup_wait_time": 11.758366449583825,
-        "dropoff_time": 8.683334283068088,
-        "wait_from_passenger_request": 0,
-        "total_wait": 20.441700732651913
-    },
-    {
-        "driver_location": "42430333",
-        "passenger_pickup": "42433821",
-        "passenger_destination": "42434285",
-        "pickup_wait_time": 5.8517737759781285,
-        "dropoff_time": 4.338589106426472,
-        "wait_from_passenger_request": 0,
-        "total_wait": 10.1903628824046
-    },
-    {
-        "driver_location": "42457728",
-        "passenger_pickup": "42456066",
-        "passenger_destination": "42428010",
-        "pickup_wait_time": 11.40809317151883,
-        "dropoff_time": 2.198958938058738,
-        "wait_from_passenger_request": 0,
-        "total_wait": 13.607052109577568
-    },
-    {
-        "driver_location": "42472255",
-        "passenger_pickup": "42430384",
-        "passenger_destination": "4597668040",
-        "pickup_wait_time": 12.901987785397825,
-        "dropoff_time": 6.296810556691632,
-        "wait_from_passenger_request": 0,
-        "total_wait": 19.198798342089457
-    },
-    {
-        "driver_location": "42453038",
-        "passenger_pickup": "42437626",
-        "passenger_destination": "42436381",
-        "pickup_wait_time": 4.3541220326740735,
-        "dropoff_time": 3.816985546506,
-        "wait_from_passenger_request": 0,
-        "total_wait": 8.171107579180074
-    },
-    {
-        "driver_location": "42452973",
-        "passenger_pickup": "42439583",
-        "passenger_destination": "42437078",
-        "pickup_wait_time": 7.9031887714300755,
-        "dropoff_time": 4.248460600088334,
-        "wait_from_passenger_request": 0,
-        "total_wait": 12.15164937151841
-    },
-    {
-        "driver_location": "561042200",
-        "passenger_pickup": "42445899",
-        "passenger_destination": "42445520",
-        "pickup_wait_time": 1.8250695980582818,
-        "dropoff_time": 5.484016529361876,
-        "wait_from_passenger_request": 0,
-        "total_wait": 7.309086127420158
-    },
-    {
-        "driver_location": "42429756",
-        "passenger_pickup": "42443032",
-        "passenger_destination": "42516043",
-        "pickup_wait_time": 13.959948409906477,
-        "dropoff_time": 14.592215655319674,
-        "wait_from_passenger_request": 0,
-        "total_wait": 28.55216406522615
-    },
-    {
-        "driver_location": "42434285",
-        "passenger_pickup": "1918039898",
-        "passenger_destination": "42520404",
-        "pickup_wait_time": 6.91830085291244,
-        "dropoff_time": 8.680607107674703,
-        "wait_from_passenger_request": 0,
-        "total_wait": 15.598907960587143
-    },
-    {
-        "driver_location": "42436381",
-        "passenger_pickup": "1919595926",
-        "passenger_destination": "42452951",
-        "pickup_wait_time": 2.049642621509424,
-        "dropoff_time": 13.322232352469005,
-        "wait_from_passenger_request": 0,
-        "total_wait": 15.371874973978429
-    },
-    {
-        "driver_location": "4597668043",
-        "passenger_pickup": "42430371",
-        "passenger_destination": "42430342",
-        "pickup_wait_time": 4.875438966713039,
-        "dropoff_time": 1.4435266781779381,
-        "wait_from_passenger_request": 0,
-        "total_wait": 6.3189656448909775
-    },
-    {
-        "driver_location": "42445520",
-        "passenger_pickup": "42450044",
-        "passenger_destination": "42445417",
-        "pickup_wait_time": 14.139309608071645,
-        "dropoff_time": 10.143026857219851,
-        "wait_from_passenger_request": 0,
-        "total_wait": 24.282336465291497
-    },
-    {
-        "driver_location": "42428010",
-        "passenger_pickup": "42443677",
-        "passenger_destination": "42437082",
-        "pickup_wait_time": 12.905005140768248,
-        "dropoff_time": 8.69807950375502,
-        "wait_from_passenger_request": 0,
-        "total_wait": 21.603084644523268
-    },
-    {
-        "driver_location": "42487074",
-        "passenger_pickup": "42465561",
-        "passenger_destination": "42430292",
-        "pickup_wait_time": 15.788398059134561,
-        "dropoff_time": 25.534864559016377,
-        "wait_from_passenger_request": 0,
-        "total_wait": 41.323262618150935
-    },
-    {
-        "driver_location": "42815175",
-        "passenger_pickup": "42514451",
-        "passenger_destination": "1398594289",
-        "pickup_wait_time": 25.52369885759209,
-        "dropoff_time": 20.62934872284591,
-        "wait_from_passenger_request": 0,
-        "total_wait": 46.153047580438
-    },
-    {
-        "driver_location": "42431452",
-        "passenger_pickup": "599047098",
-        "passenger_destination": "42450025",
-        "pickup_wait_time": 37.90826129167206,
-        "dropoff_time": 36.37325308916475,
-        "wait_from_passenger_request": 0,
-        "total_wait": 74.28151438083681
-    },
-    {
-        "driver_location": "42437078",
-        "passenger_pickup": "42492239",
-        "passenger_destination": "42827533",
-        "pickup_wait_time": 10.400828581043909,
-        "dropoff_time": 17.47417450502195,
-        "wait_from_passenger_request": 0,
-        "total_wait": 27.87500308606586
-    },
-    {
-        "driver_location": "42490303",
-        "passenger_pickup": "42427319",
-        "passenger_destination": "42437626",
-        "pickup_wait_time": 13.433631322671216,
-        "dropoff_time": 2.920251959463035,
-        "wait_from_passenger_request": 0,
-        "total_wait": 16.35388328213425
-    },
-    {
-        "driver_location": "42430342",
-        "passenger_pickup": "685164636",
-        "passenger_destination": "42451665",
-        "pickup_wait_time": 7.0553965239208924,
-        "dropoff_time": 4.189351347204139,
-        "wait_from_passenger_request": 0,
-        "total_wait": 11.244747871125032
-    },
-    {
-        "driver_location": "42520377",
-        "passenger_pickup": "42469494",
-        "passenger_destination": "42452353",
-        "pickup_wait_time": 3.057836880162732,
-        "dropoff_time": 16.13774253187498,
-        "wait_from_passenger_request": 0,
-        "total_wait": 19.195579412037713
-    },
-    {
-        "driver_location": "4597668040",
-        "passenger_pickup": "42445936",
-        "passenger_destination": "4461990857",
-        "pickup_wait_time": 5.443805638698883,
-        "dropoff_time": 4.485800001865008,
-        "wait_from_passenger_request": 0,
-        "total_wait": 9.929605640563892
-    },
-    {
-        "driver_location": "42520404",
-        "passenger_pickup": "42433275",
-        "passenger_destination": "599044149",
-        "pickup_wait_time": 12.822787379882605,
-        "dropoff_time": 41.74643780931225,
-        "wait_from_passenger_request": 0,
-        "total_wait": 54.56922518919485
-    },
-    {
-        "driver_location": "42486798",
-        "passenger_pickup": "42435265",
-        "passenger_destination": "42435714",
-        "pickup_wait_time": 27.0779200663505,
-        "dropoff_time": 1.919439887335932,
-        "wait_from_passenger_request": 0,
-        "total_wait": 28.997359953686434
-    },
-    {
-        "driver_location": "42445039",
-        "passenger_pickup": "42427797",
-        "passenger_destination": "42439406",
-        "pickup_wait_time": 4.623616295281121,
-        "dropoff_time": 9.653791659575626,
-        "wait_from_passenger_request": 0,
-        "total_wait": 14.277407954856747
-    },
-    {
-        "driver_location": "42452951",
-        "passenger_pickup": "42841760",
-        "passenger_destination": "42437663",
-        "pickup_wait_time": 14.883112033000108,
-        "dropoff_time": 17.61566178923789,
-        "wait_from_passenger_request": 0,
-        "total_wait": 32.498773822238
-    },
-    {
-        "driver_location": "4461990857",
-        "passenger_pickup": "42432165",
-        "passenger_destination": "42449341",
-        "pickup_wait_time": 7.7819860315271905,
-        "dropoff_time": 6.2013914102488785,
-        "wait_from_passenger_request": 0,
-        "total_wait": 13.983377441776069
-    },
-    {
-        "driver_location": "42437626",
-        "passenger_pickup": "42430269",
-        "passenger_destination": "599041406",
-        "pickup_wait_time": 4.3781014848193855,
-        "dropoff_time": 39.80147991779659,
-        "wait_from_passenger_request": 0,
-        "total_wait": 44.17958140261598
-    },
-    {
-        "driver_location": "42516043",
-        "passenger_pickup": "42520415",
-        "passenger_destination": "42430253",
-        "pickup_wait_time": 6.128420574938976,
-        "dropoff_time": 11.89713069927293,
-        "wait_from_passenger_request": 0,
-        "total_wait": 18.025551274211907
-    },
-    {
-        "driver_location": "42437082",
-        "passenger_pickup": "561042194",
-        "passenger_destination": "42437084",
-        "pickup_wait_time": 8.329817947405344,
-        "dropoff_time": 7.934854352486022,
-        "wait_from_passenger_request": 0,
-        "total_wait": 16.264672299891366
-    },
-    {
-        "driver_location": "42445417",
-        "passenger_pickup": "42444909",
-        "passenger_destination": "42428039",
-        "pickup_wait_time": 7.214723464989581,
-        "dropoff_time": 14.751179733882676,
-        "wait_from_passenger_request": 0,
-        "total_wait": 21.965903198872258
-    },
-    {
-        "driver_location": "42452353",
-        "passenger_pickup": "42449685",
-        "passenger_destination": "1701651380",
-        "pickup_wait_time": 2.9652503508647214,
-        "dropoff_time": 35.86296050415549,
-        "wait_from_passenger_request": 0,
-        "total_wait": 38.82821085502021
-    },
-    {
-        "driver_location": "42439406",
-        "passenger_pickup": "42430187",
-        "passenger_destination": "42431165",
-        "pickup_wait_time": 13.601397600118684,
-        "dropoff_time": 2.329344165336306,
-        "wait_from_passenger_request": 0,
-        "total_wait": 15.93074176545499
-    },
-    {
-        "driver_location": "42827533",
-        "passenger_pickup": "42445411",
-        "passenger_destination": "42438060",
-        "pickup_wait_time": 13.937153938377197,
-        "dropoff_time": 8.362600239600612,
-        "wait_from_passenger_request": 0,
-        "total_wait": 22.29975417797781
-    },
-    {
-        "driver_location": "42449341",
-        "passenger_pickup": "42435714",
-        "passenger_destination": "42443614",
-        "pickup_wait_time": 6.859823022825263,
-        "dropoff_time": 3.7409431331334484,
-        "wait_from_passenger_request": 0,
-        "total_wait": 10.600766155958711
-    },
-    {
-        "driver_location": "42430378",
-        "passenger_pickup": "4597668040",
-        "passenger_destination": "42446991",
-        "pickup_wait_time": 4.756238176833905,
-        "dropoff_time": 4.6084645174099075,
-        "wait_from_passenger_request": 0,
-        "total_wait": 9.364702694243812
-    },
-    {
-        "driver_location": "42437084",
-        "passenger_pickup": "596775930",
-        "passenger_destination": "42499999",
-        "pickup_wait_time": 11.28975657642573,
-        "dropoff_time": 18.18153416721398,
-        "wait_from_passenger_request": 0,
-        "total_wait": 29.47129074363971
-    },
-    {
-        "driver_location": "42430253",
-        "passenger_pickup": "42430811",
-        "passenger_destination": "42429633",
-        "pickup_wait_time": 1.448376484293942,
-        "dropoff_time": 5.189084739817866,
-        "wait_from_passenger_request": 0,
-        "total_wait": 6.637461224111808
-    },
-    {
-        "driver_location": "42435714",
-        "passenger_pickup": "42436770",
-        "passenger_destination": "42431508",
-        "pickup_wait_time": 10.534707295945317,
-        "dropoff_time": 4.582986798999546,
-        "wait_from_passenger_request": 0,
-        "total_wait": 15.117694094944863
-    },
-    {
-        "driver_location": "42443614",
-        "passenger_pickup": "42428179",
-        "passenger_destination": "42504285",
-        "pickup_wait_time": 6.537333619369884,
-        "dropoff_time": 11.14636279953743,
-        "wait_from_passenger_request": 0,
-        "total_wait": 17.683696418907314
-    },
-    {
-        "driver_location": "42446991",
-        "passenger_pickup": "42445291",
-        "passenger_destination": "42445936",
-        "pickup_wait_time": 13.066735878303987,
-        "dropoff_time": 12.864474073002926,
-        "wait_from_passenger_request": 0,
-        "total_wait": 25.93120995130691
-    },
-    {
-        "driver_location": "42430292",
-        "passenger_pickup": "42443975",
-        "passenger_destination": "592643533",
-        "pickup_wait_time": 2.9802635499753,
-        "dropoff_time": 12.300106573099518,
-        "wait_from_passenger_request": 0,
-        "total_wait": 15.280370123074817
-    },
-    {
-        "driver_location": "42431165",
-        "passenger_pickup": "42424225",
-        "passenger_destination": "42446994",
-        "pickup_wait_time": 13.404744456094262,
-        "dropoff_time": 6.305601663040998,
-        "wait_from_passenger_request": 0,
-        "total_wait": 19.71034611913526
-    },
-    {
-        "driver_location": "4872623863",
-        "passenger_pickup": "42440823",
-        "passenger_destination": "42517374",
-        "pickup_wait_time": 5.062493870982114,
-        "dropoff_time": 20.317763395737185,
-        "wait_from_passenger_request": 0,
-        "total_wait": 25.380257266719298
-    },
-    {
-        "driver_location": "42429633",
-        "passenger_pickup": "42446800",
-        "passenger_destination": "42472055",
-        "pickup_wait_time": 0.24939874770770398,
-        "dropoff_time": 27.2078924134474,
-        "wait_from_passenger_request": 0,
-        "total_wait": 27.457291161155105
-    },
-    {
-        "driver_location": "42437663",
-        "passenger_pickup": "42445037",
-        "passenger_destination": "42445617",
-        "pickup_wait_time": 3.589661070655296,
-        "dropoff_time": 14.33202351112374,
-        "wait_from_passenger_request": 0,
-        "total_wait": 17.921684581779036
-    },
-    {
-        "driver_location": "42428039",
-        "passenger_pickup": "42478127",
-        "passenger_destination": "42484051",
-        "pickup_wait_time": 25.034329391873474,
-        "dropoff_time": 0.925674865122108,
-        "wait_from_passenger_request": 0,
-        "total_wait": 25.960004256995582
-    },
-    {
-        "driver_location": "1398594289",
-        "passenger_pickup": "42536642",
-        "passenger_destination": "42429661",
-        "pickup_wait_time": 23.360706048845117,
-        "dropoff_time": 14.430595090375942,
-        "wait_from_passenger_request": 0,
-        "total_wait": 37.79130113922106
-    },
-    {
-        "driver_location": "42438060",
-        "passenger_pickup": "42435642",
-        "passenger_destination": "42442255",
-        "pickup_wait_time": 7.351475118431856,
-        "dropoff_time": 8.21091330965774,
-        "wait_from_passenger_request": 0,
-        "total_wait": 15.562388428089594
-    },
-    {
-        "driver_location": "42431508",
-        "passenger_pickup": "42430394",
-        "passenger_destination": "42516815",
-        "pickup_wait_time": 9.398528556868408,
-        "dropoff_time": 27.594934240931117,
-        "wait_from_passenger_request": 0,
-        "total_wait": 36.99346279779952
-    },
-    {
-        "driver_location": "592643533",
-        "passenger_pickup": "42430342",
-        "passenger_destination": "42469472",
-        "pickup_wait_time": 9.164404232207284,
-        "dropoff_time": 17.016720714969257,
-        "wait_from_passenger_request": 0,
-        "total_wait": 26.181124947176542
-    },
-    {
-        "driver_location": "42504285",
-        "passenger_pickup": "42438894",
-        "passenger_destination": "42451754",
-        "pickup_wait_time": 14.254121741182804,
-        "dropoff_time": 5.781258703119324,
-        "wait_from_passenger_request": 0,
-        "total_wait": 20.035380444302128
-    },
-    {
-        "driver_location": "42446994",
-        "passenger_pickup": "42435642",
-        "passenger_destination": "42861606",
-        "pickup_wait_time": 5.235160050110718,
-        "dropoff_time": 24.874587419175736,
-        "wait_from_passenger_request": 0,
-        "total_wait": 30.109747469286454
-    },
-    {
-        "driver_location": "1701651380",
-        "passenger_pickup": "2141026515",
-        "passenger_destination": "42430344",
-        "pickup_wait_time": 36.67492511799324,
-        "dropoff_time": 14.695009582586204,
-        "wait_from_passenger_request": 0,
-        "total_wait": 51.36993470057944
-    },
-    {
-        "driver_location": "599041406",
-        "passenger_pickup": "42430255",
-        "passenger_destination": "42438785",
-        "pickup_wait_time": 40.76406162926566,
-        "dropoff_time": 1.2885098163672,
-        "wait_from_passenger_request": 0,
-        "total_wait": 42.052571445632864
-    },
-    {
-        "driver_location": "42445617",
-        "passenger_pickup": "42445689",
-        "passenger_destination": "42455751",
-        "pickup_wait_time": 30.362291709825772,
-        "dropoff_time": 22.67711226160581,
-        "wait_from_passenger_request": 0,
-        "total_wait": 53.03940397143158
-    },
-    {
-        "driver_location": "599044149",
-        "passenger_pickup": "42445953",
-        "passenger_destination": "42439096",
-        "pickup_wait_time": 35.437021853677905,
-        "dropoff_time": 10.561605174211863,
-        "wait_from_passenger_request": 0,
-        "total_wait": 45.99862702788977
-    },
-    {
-        "driver_location": "42499999",
-        "passenger_pickup": "42438547",
-        "passenger_destination": "42890530",
-        "pickup_wait_time": 13.56372651521032,
-        "dropoff_time": 29.702393364917146,
-        "wait_from_passenger_request": 0,
-        "total_wait": 43.26611988012746
-    },
-    {
-        "driver_location": "42445936",
-        "passenger_pickup": "42436947",
-        "passenger_destination": "42442857",
-        "pickup_wait_time": 9.007476016368454,
-        "dropoff_time": 2.221101165950082,
-        "wait_from_passenger_request": 0,
-        "total_wait": 11.228577182318535
-    },
-    {
-        "driver_location": "42442255",
-        "passenger_pickup": "42448714",
-        "passenger_destination": "61275605",
-        "pickup_wait_time": 6.371027447177664,
-        "dropoff_time": 10.403481019273384,
-        "wait_from_passenger_request": 0,
-        "total_wait": 16.774508466451046
-    },
-    {
-        "driver_location": "42517374",
-        "passenger_pickup": "42421960",
-        "passenger_destination": "42469320",
-        "pickup_wait_time": 18.085330255501226,
-        "dropoff_time": 7.085050132602782,
-        "wait_from_passenger_request": 0,
-        "total_wait": 25.170380388104007
-    },
-    {
-        "driver_location": "42484051",
-        "passenger_pickup": "42436514",
-        "passenger_destination": "42511011",
-        "pickup_wait_time": 20.644086824010945,
-        "dropoff_time": 15.027750714828631,
-        "wait_from_passenger_request": 0,
-        "total_wait": 35.671837538839576
-    },
-    {
-        "driver_location": "42472055",
-        "passenger_pickup": "42445382",
-        "passenger_destination": "599036657",
-        "pickup_wait_time": 31.52062602059527,
-        "dropoff_time": 34.19735884062514,
-        "wait_from_passenger_request": 0,
-        "total_wait": 65.71798486122042
-    },
-    {
-        "driver_location": "42450025",
-        "passenger_pickup": "3786901738",
-        "passenger_destination": "42445888",
-        "pickup_wait_time": 7.531354421375015,
-        "dropoff_time": 1.230102192332844,
-        "wait_from_passenger_request": 0,
-        "total_wait": 8.761456613707859
-    },
-    {
-        "driver_location": "42442857",
-        "passenger_pickup": "42430394",
-        "passenger_destination": "274188126",
-        "pickup_wait_time": 9.84411189959094,
-        "dropoff_time": 26.335005830315826,
-        "wait_from_passenger_request": 0,
-        "total_wait": 36.179117729906764
-    },
-    {
-        "driver_location": "42451754",
-        "passenger_pickup": "42456076",
-        "passenger_destination": "1692433910",
-        "pickup_wait_time": 2.244185100059256,
-        "dropoff_time": 14.3154149402768,
-        "wait_from_passenger_request": 0,
-        "total_wait": 16.559600040336054
-    },
-    {
-        "driver_location": "42469472",
-        "passenger_pickup": "42424408",
-        "passenger_destination": "42757980",
-        "pickup_wait_time": 12.126072490975515,
-        "dropoff_time": 35.60943860666636,
-        "wait_from_passenger_request": 0,
-        "total_wait": 47.735511097641876
-    },
-    {
-        "driver_location": "42445888",
-        "passenger_pickup": "42470393",
-        "passenger_destination": "370927297",
-        "pickup_wait_time": 16.355353642574634,
-        "dropoff_time": 19.378773837460372,
-        "wait_from_passenger_request": 0,
-        "total_wait": 35.734127480035006
-    },
-    {
-        "driver_location": "42429661",
-        "passenger_pickup": "42433549",
-        "passenger_destination": "42449308",
-        "pickup_wait_time": 8.314932183683927,
-        "dropoff_time": 8.367870593698708,
-        "wait_from_passenger_request": 0,
-        "total_wait": 16.682802777382634
-    },
-    {
-        "driver_location": "42861606",
-        "passenger_pickup": "42436024",
-        "passenger_destination": "42439981",
-        "pickup_wait_time": 29.000391527687423,
-        "dropoff_time": 8.929273190344398,
-        "wait_from_passenger_request": 0,
-        "total_wait": 37.92966471803182
-    },
-    {
-        "driver_location": "42469320",
-        "passenger_pickup": "42435654",
-        "passenger_destination": "42428468",
-        "pickup_wait_time": 15.356884835040766,
-        "dropoff_time": 7.3494007790337195,
-        "wait_from_passenger_request": 0,
-        "total_wait": 22.706285614074485
-    },
-    {
-        "driver_location": "1692433910",
-        "passenger_pickup": "42434156",
-        "passenger_destination": "42434201",
-        "pickup_wait_time": 15.598580841158391,
-        "dropoff_time": 15.179520508037234,
-        "wait_from_passenger_request": 0,
-        "total_wait": 30.778101349195623
-    },
-    {
-        "driver_location": "42445291",
-        "passenger_pickup": "42431544",
-        "passenger_destination": "42435702",
-        "pickup_wait_time": 10.321903762354273,
-        "dropoff_time": 2.7545864581438257,
-        "wait_from_passenger_request": 0,
-        "total_wait": 13.076490220498098
-    },
-    {
-        "driver_location": "42436754",
-        "passenger_pickup": "42456611",
-        "passenger_destination": "4872623863",
-        "pickup_wait_time": 4.029387681026783,
-        "dropoff_time": 8.759263060525276,
-        "wait_from_passenger_request": 0,
-        "total_wait": 12.78865074155206
-    },
-    {
-        "driver_location": "42511011",
-        "passenger_pickup": "42497591",
-        "passenger_destination": "42986445",
-        "pickup_wait_time": 8.530747838846475,
-        "dropoff_time": 32.114249187437615,
-        "wait_from_passenger_request": 0,
-        "total_wait": 40.64499702628409
-    },
-    {
-        "driver_location": "42890530",
-        "passenger_pickup": "42424098",
-        "passenger_destination": "42837839",
-        "pickup_wait_time": 25.110127801828327,
-        "dropoff_time": 31.487622474889047,
-        "wait_from_passenger_request": 0,
-        "total_wait": 56.59775027671738
-    },
-    {
-        "driver_location": "42472170",
-        "passenger_pickup": "42440335",
-        "passenger_destination": "42428253",
-        "pickup_wait_time": 15.048459229577498,
-        "dropoff_time": 10.194671922462893,
-        "wait_from_passenger_request": 0,
-        "total_wait": 25.24313115204039
-    },
-    {
-        "driver_location": "42439096",
-        "passenger_pickup": "42433604",
-        "passenger_destination": "246580346",
-        "pickup_wait_time": 7.064912287746137,
-        "dropoff_time": 6.001615244894946,
-        "wait_from_passenger_request": 0,
-        "total_wait": 13.066527532641082
-    },
-    {
-        "driver_location": "42435702",
-        "passenger_pickup": "42427421",
-        "passenger_destination": "42430805",
-        "pickup_wait_time": 5.739191133771234,
-        "dropoff_time": 3.7732272292894136,
-        "wait_from_passenger_request": 0,
-        "total_wait": 9.512418363060647
-    },
-    {
-        "driver_location": "42430344",
-        "passenger_pickup": "42428179",
-        "passenger_destination": "42456197",
-        "pickup_wait_time": 4.478904955050109,
-        "dropoff_time": 4.720009257425129,
-        "wait_from_passenger_request": 0,
-        "total_wait": 9.198914212475238
-    },
-    {
-        "driver_location": "274188126",
-        "passenger_pickup": "42430384",
-        "passenger_destination": "42443054",
-        "pickup_wait_time": 26.73165197318872,
-        "dropoff_time": 7.607265319970892,
-        "wait_from_passenger_request": 0,
-        "total_wait": 34.33891729315961
-    },
-    {
-        "driver_location": "42455751",
-        "passenger_pickup": "42445548",
-        "passenger_destination": "42849740",
-        "pickup_wait_time": 8.203352149134167,
-        "dropoff_time": 14.94995201203508,
-        "wait_from_passenger_request": 0,
-        "total_wait": 23.153304161169245
-    },
-    {
-        "driver_location": "42444909",
-        "passenger_pickup": "42430643",
-        "passenger_destination": "596775919",
-        "pickup_wait_time": 3.147827294837874,
-        "dropoff_time": 6.440940092851991,
-        "wait_from_passenger_request": 0,
-        "total_wait": 9.588767387689865
-    },
-    {
-        "driver_location": "4872623863",
-        "passenger_pickup": "42437608",
-        "passenger_destination": "42474974",
-        "pickup_wait_time": 7.154033001794436,
-        "dropoff_time": 13.861221560640317,
-        "wait_from_passenger_request": 0,
-        "total_wait": 21.01525456243475
-    },
-    {
-        "driver_location": "42440721",
-        "passenger_pickup": "42440729",
-        "passenger_destination": "1918039880",
-        "pickup_wait_time": 0.723928337539182,
-        "dropoff_time": 2.7130562821560655,
-        "wait_from_passenger_request": 0,
-        "total_wait": 3.4369846196952474
-    },
-    {
-        "driver_location": "370927297",
-        "passenger_pickup": "42480534",
-        "passenger_destination": "42432693",
-        "pickup_wait_time": 20.6874583459728,
-        "dropoff_time": 20.01873476297032,
-        "wait_from_passenger_request": 0,
-        "total_wait": 40.70619310894312
-    },
-    {
-        "driver_location": "42430805",
-        "passenger_pickup": "42438785",
-        "passenger_destination": "42501765",
-        "pickup_wait_time": 3.1022776834412698,
-        "dropoff_time": 24.314160286658392,
-        "wait_from_passenger_request": 0,
-        "total_wait": 27.41643797009966
-    },
-    {
-        "driver_location": "1918039880",
-        "passenger_pickup": "42436939",
-        "passenger_destination": "2408221645",
-        "pickup_wait_time": 2.3545928120451,
-        "dropoff_time": 29.22738253158966,
-        "wait_from_passenger_request": 0,
-        "total_wait": 31.58197534363476
-    },
-    {
-        "driver_location": "42456197",
-        "passenger_pickup": "42434800",
-        "passenger_destination": "42430643",
-        "pickup_wait_time": 6.047054951904522,
-        "dropoff_time": 4.34657639944515,
-        "wait_from_passenger_request": 0,
-        "total_wait": 10.393631351349672
-    },
-    {
-        "driver_location": "246580346",
-        "passenger_pickup": "42443613",
-        "passenger_destination": "42430861",
-        "pickup_wait_time": 9.185813066253516,
-        "dropoff_time": 7.6768274470076,
-        "wait_from_passenger_request": 0,
-        "total_wait": 16.862640513261116
-    },
-    {
-        "driver_location": "42434201",
-        "passenger_pickup": "42432818",
-        "passenger_destination": "42428308",
-        "pickup_wait_time": 9.279162093427061,
-        "dropoff_time": 2.244215159951994,
-        "wait_from_passenger_request": 0,
-        "total_wait": 11.523377253379055
-    },
-    {
-        "driver_location": "596775919",
-        "passenger_pickup": "42452314",
-        "passenger_destination": "42436514",
-        "pickup_wait_time": 14.161957154154113,
-        "dropoff_time": 15.104711487650128,
-        "wait_from_passenger_request": 0,
-        "total_wait": 29.26666864180424
-    },
-    {
-        "driver_location": "599044149",
-        "passenger_pickup": "42439392",
-        "passenger_destination": "246650510",
-        "pickup_wait_time": 36.46638687394435,
-        "dropoff_time": 10.625791784221136,
-        "wait_from_passenger_request": 0,
-        "total_wait": 47.09217865816549
-    },
-    {
-        "driver_location": "42439981",
-        "passenger_pickup": "42449333",
-        "passenger_destination": "42443280",
-        "pickup_wait_time": 5.278848446657861,
-        "dropoff_time": 11.640535583014657,
-        "wait_from_passenger_request": 0,
-        "total_wait": 16.919384029672518
-    },
-    {
-        "driver_location": "42757980",
-        "passenger_pickup": "42430651",
-        "passenger_destination": "42718876",
-        "pickup_wait_time": 29.485840804704473,
-        "dropoff_time": 27.930742507529537,
-        "wait_from_passenger_request": 0,
-        "total_wait": 57.41658331223401
+        "passenger_pickup": "42430824",
+        "passenger_destination": "42430338",
+        "pickup_wait_time": 0.737126545084116,
+        "dropoff_time": 4.987615730116592,
+        "wait_from_passenger_request": 23.0,
+        "total_wait": 28.724742275200708
     },
     {
         "driver_location": "42430643",
-        "passenger_pickup": "42473637",
-        "passenger_destination": "42479665",
-        "pickup_wait_time": 23.279357631537557,
-        "dropoff_time": 3.975044811937824,
-        "wait_from_passenger_request": 0,
-        "total_wait": 27.25440244347538
+        "passenger_pickup": "42445867",
+        "passenger_destination": "42442983",
+        "pickup_wait_time": 4.732184441522437,
+        "dropoff_time": 6.879602372925572,
+        "wait_from_passenger_request": 22.09694245258967,
+        "total_wait": 33.70872926703768
     },
     {
-        "driver_location": "42428253",
-        "passenger_pickup": "42435310",
-        "passenger_destination": "4597668026",
-        "pickup_wait_time": 9.136556295708923,
-        "dropoff_time": 12.2832331683678,
-        "wait_from_passenger_request": 0,
-        "total_wait": 21.41978946407672
+        "driver_location": "4602414021",
+        "passenger_pickup": "42436484",
+        "passenger_destination": "42427393",
+        "pickup_wait_time": 11.528164789585812,
+        "dropoff_time": 9.579312002616735,
+        "wait_from_passenger_request": 20.494052330652874,
+        "total_wait": 41.601529122855425
     },
     {
-        "driver_location": "599036657",
-        "passenger_pickup": "42434175",
-        "passenger_destination": "599033057",
-        "pickup_wait_time": 34.68475179940521,
-        "dropoff_time": 35.243535165392345,
-        "wait_from_passenger_request": 0,
-        "total_wait": 69.92828696479756
+        "driver_location": "42428411",
+        "passenger_pickup": "1919595916",
+        "passenger_destination": "595245925",
+        "pickup_wait_time": 2.63303632794882,
+        "dropoff_time": 11.091394055251046,
+        "wait_from_passenger_request": 19.542150894800823,
+        "total_wait": 33.266581278000686
     },
     {
-        "driver_location": "42849740",
-        "passenger_pickup": "42439583",
+        "driver_location": "42435645",
+        "passenger_pickup": "42437363",
+        "passenger_destination": "42497275",
+        "pickup_wait_time": 1.387844576122692,
+        "dropoff_time": 23.287299813372268,
+        "wait_from_passenger_request": 17.42791140874227,
+        "total_wait": 42.10305579823723
+    },
+    {
+        "driver_location": "42430338",
+        "passenger_pickup": "42844433",
+        "passenger_destination": "42427762",
+        "pickup_wait_time": 13.86041033595673,
+        "dropoff_time": 11.676694971680794,
+        "wait_from_passenger_request": 20.724742273489635,
+        "total_wait": 46.26184758112716
+    },
+    {
+        "driver_location": "4142105813",
+        "passenger_pickup": "42435470",
+        "passenger_destination": "42438513",
+        "pickup_wait_time": 1.8611684341355341,
+        "dropoff_time": 13.299298249593331,
+        "wait_from_passenger_request": 22.454013415177663,
+        "total_wait": 37.614480098906526
+    },
+    {
+        "driver_location": "42436707",
+        "passenger_pickup": "42481593",
+        "passenger_destination": "2987758882",
+        "pickup_wait_time": 19.366184440427592,
+        "dropoff_time": 9.553543404635112,
+        "wait_from_passenger_request": 22.94050464630127,
+        "total_wait": 51.86023249136397
+    },
+    {
+        "driver_location": "42442983",
+        "passenger_pickup": "589100557",
+        "passenger_destination": "42436935",
+        "pickup_wait_time": 6.293940483277566,
+        "dropoff_time": 3.7132875386632023,
+        "wait_from_passenger_request": 23.70872926712036,
+        "total_wait": 33.71595728906113
+    },
+    {
+        "driver_location": "595245925",
+        "passenger_pickup": "42509216",
+        "passenger_destination": "42752511",
+        "pickup_wait_time": 16.270704807448993,
+        "dropoff_time": 39.4433330591684,
+        "wait_from_passenger_request": 26.266581277052563,
+        "total_wait": 81.98061914366995
+    },
+    {
+        "driver_location": "42520484",
+        "passenger_pickup": "42444909",
+        "passenger_destination": "599029185",
+        "pickup_wait_time": 28.88241229316402,
+        "dropoff_time": 36.7911542098311,
+        "wait_from_passenger_request": 30.441575288772583,
+        "total_wait": 96.1151417917677
+    },
+    {
+        "driver_location": "42427393",
+        "passenger_pickup": "42435642",
+        "passenger_destination": "100522741",
+        "pickup_wait_time": 3.0292831799566375,
+        "dropoff_time": 3.62696369622996,
+        "wait_from_passenger_request": 31.601529121398926,
+        "total_wait": 38.257775997585526
+    },
+    {
+        "driver_location": "42436935",
+        "passenger_pickup": "42442475",
+        "passenger_destination": "42436753",
+        "pickup_wait_time": 11.312363246479848,
+        "dropoff_time": 9.660226772193928,
+        "wait_from_passenger_request": 26.71595729192098,
+        "total_wait": 47.68854731059476
+    },
+    {
+        "driver_location": "42438513",
+        "passenger_pickup": "42427371",
+        "passenger_destination": "42433286",
+        "pickup_wait_time": 10.679190208339607,
+        "dropoff_time": 1.794396162528642,
+        "wait_from_passenger_request": 27.61448009808858,
+        "total_wait": 40.08806646895683
+    },
+    {
+        "driver_location": "42497275",
+        "passenger_pickup": "42458313",
         "passenger_destination": "1698103521",
-        "pickup_wait_time": 18.40190657542605,
-        "dropoff_time": 28.256965390730432,
-        "wait_from_passenger_request": 0,
-        "total_wait": 46.65887196615648
+        "pickup_wait_time": 16.40195387931256,
+        "dropoff_time": 22.963983107988955,
+        "wait_from_passenger_request": 27.10305579503377,
+        "total_wait": 66.46899278233529
     },
     {
-        "driver_location": "42474974",
-        "passenger_pickup": "42427369",
-        "passenger_destination": "42427369",
-        "pickup_wait_time": 18.440713735741046,
-        "dropoff_time": 0,
+        "driver_location": "100522741",
+        "passenger_pickup": "4557517550",
+        "passenger_destination": "42436322",
+        "pickup_wait_time": 6.4165554066325745,
+        "dropoff_time": 4.991720575724166,
+        "wait_from_passenger_request": 26.25777599811554,
+        "total_wait": 37.66605198047228
+    },
+    {
+        "driver_location": "42427762",
+        "passenger_pickup": "42431898",
+        "passenger_destination": "4059058500",
+        "pickup_wait_time": 13.75515419844957,
+        "dropoff_time": 35.04013217057365,
+        "wait_from_passenger_request": 27.26184758345286,
+        "total_wait": 76.05713395247608
+    },
+    {
+        "driver_location": "42433286",
+        "passenger_pickup": "1773076778",
+        "passenger_destination": "1241742627",
+        "pickup_wait_time": 3.3930025785906053,
+        "dropoff_time": 10.464702381605328,
+        "wait_from_passenger_request": 31.088066466649373,
+        "total_wait": 44.945771426845305
+    },
+    {
+        "driver_location": "2987758882",
+        "passenger_pickup": "42453607",
+        "passenger_destination": "42458313",
+        "pickup_wait_time": 9.88497430822969,
+        "dropoff_time": 2.11336682079435,
+        "wait_from_passenger_request": 32.860232492287956,
+        "total_wait": 44.858573621312
+    },
+    {
+        "driver_location": "42436322",
+        "passenger_pickup": "42440943",
+        "passenger_destination": "42443528",
+        "pickup_wait_time": 3.956442224099688,
+        "dropoff_time": 6.5187172979822465,
+        "wait_from_passenger_request": 29.66605197985967,
+        "total_wait": 40.141211501941605
+    },
+    {
+        "driver_location": "42428428",
+        "passenger_pickup": "42429663",
+        "passenger_destination": "42468450",
+        "pickup_wait_time": 5.32262282122602,
+        "dropoff_time": 13.092952684911378,
+        "wait_from_passenger_request": 30.0,
+        "total_wait": 48.4155755061374
+    },
+    {
+        "driver_location": "42436753",
+        "passenger_pickup": "42442857",
+        "passenger_destination": "42434358",
+        "pickup_wait_time": 3.057935981080363,
+        "dropoff_time": 2.0801050971385204,
+        "wait_from_passenger_request": 29.688547309239706,
+        "total_wait": 34.826588387458585
+    },
+    {
+        "driver_location": "42434358",
+        "passenger_pickup": "42444909",
+        "passenger_destination": "1773084405",
+        "pickup_wait_time": 3.88327104025644,
+        "dropoff_time": 4.389556898072123,
+        "wait_from_passenger_request": 30.826588388284048,
+        "total_wait": 39.09941632661261
+    },
+    {
+        "driver_location": "42436439",
+        "passenger_pickup": "42444909",
+        "passenger_destination": "42482458",
+        "pickup_wait_time": 0.428623945811436,
+        "dropoff_time": 13.134781022025534,
+        "wait_from_passenger_request": 31.0,
+        "total_wait": 44.56340496783697
+    },
+    {
+        "driver_location": "42443528",
+        "passenger_pickup": "42427327",
+        "passenger_destination": "4461990857",
+        "pickup_wait_time": 7.6815495754428165,
+        "dropoff_time": 6.6416466870624955,
+        "wait_from_passenger_request": 28.141211501757304,
+        "total_wait": 42.46440776426262
+    },
+    {
+        "driver_location": "42458313",
+        "passenger_pickup": "596775900",
+        "passenger_destination": "42443556",
+        "pickup_wait_time": 7.882080448286424,
+        "dropoff_time": 1.6138212845768218,
+        "wait_from_passenger_request": 27.85857362349828,
+        "total_wait": 37.354475356361526
+    },
+    {
+        "driver_location": "1241742627",
+        "passenger_pickup": "427841053",
+        "passenger_destination": "42424225",
+        "pickup_wait_time": 3.886734761440795,
+        "dropoff_time": 6.3039353799756235,
+        "wait_from_passenger_request": 24.945771423975625,
+        "total_wait": 35.13644156539205
+    },
+    {
+        "driver_location": "1773084405",
+        "passenger_pickup": "42440053",
+        "passenger_destination": "42428063",
+        "pickup_wait_time": 19.49857457542283,
+        "dropoff_time": 9.56749825489541,
+        "wait_from_passenger_request": 28.099416323502858,
+        "total_wait": 57.1654891538211
+    },
+    {
+        "driver_location": "42468450",
+        "passenger_pickup": "42437914",
+        "passenger_destination": "42430356",
+        "pickup_wait_time": 13.850356121962777,
+        "dropoff_time": 5.120902732960174,
+        "wait_from_passenger_request": 29.41557550430298,
+        "total_wait": 48.38683435922593
+    },
+    {
+        "driver_location": "42443556",
+        "passenger_pickup": "42437914",
+        "passenger_destination": "42438547",
+        "pickup_wait_time": 4.960663581573121,
+        "dropoff_time": 1.9942068902546883,
+        "wait_from_passenger_request": 31.354475355148317,
+        "total_wait": 38.30934582697613
+    },
+    {
+        "driver_location": "42424225",
+        "passenger_pickup": "42432063",
+        "passenger_destination": "42436364",
+        "pickup_wait_time": 12.599948329459357,
+        "dropoff_time": 3.539921267365457,
+        "wait_from_passenger_request": 27.136441564559938,
+        "total_wait": 43.276311161384754
+    },
+    {
+        "driver_location": "42482458",
+        "passenger_pickup": "42816011",
+        "passenger_destination": "599044149",
+        "pickup_wait_time": 12.26878273766946,
+        "dropoff_time": 21.90550137630064,
+        "wait_from_passenger_request": 26.56340496937434,
+        "total_wait": 60.73768908334444
+    },
+    {
+        "driver_location": "4461990857",
+        "passenger_pickup": "42430378",
+        "passenger_destination": "42447235",
+        "pickup_wait_time": 3.42140781113037,
+        "dropoff_time": 2.9431479724407845,
+        "wait_from_passenger_request": 22.464407765865325,
+        "total_wait": 28.82896354943648
+    },
+    {
+        "driver_location": "1698103521",
+        "passenger_pickup": "42445947",
+        "passenger_destination": "595105499",
+        "pickup_wait_time": 15.977573025321348,
+        "dropoff_time": 2.5882737117295562,
+        "wait_from_passenger_request": 15.468992781639098,
+        "total_wait": 34.034839518690006
+    },
+    {
+        "driver_location": "42438547",
+        "passenger_pickup": "42430673",
+        "passenger_destination": "42428312",
+        "pickup_wait_time": 3.6303616490561943,
+        "dropoff_time": 2.710209088020906,
+        "wait_from_passenger_request": 9.309345825513203,
+        "total_wait": 15.649916562590303
+    },
+    {
+        "driver_location": "42752511",
+        "passenger_pickup": "42435596",
+        "passenger_destination": "42428444",
+        "pickup_wait_time": 40.73602238731354,
+        "dropoff_time": 3.4066008879505674,
+        "wait_from_passenger_request": 8.980619140466054,
+        "total_wait": 53.12324241573016
+    },
+    {
+        "driver_location": "42447235",
+        "passenger_pickup": "42430680",
+        "passenger_destination": "42446275",
+        "pickup_wait_time": 6.4477165411169235,
+        "dropoff_time": 5.715810354737938,
+        "wait_from_passenger_request": 3.828963549931844,
+        "total_wait": 15.992490445786705
+    },
+    {
+        "driver_location": "42428312",
+        "passenger_pickup": "42448593",
+        "passenger_destination": "42432580",
+        "pickup_wait_time": 10.819501889945025,
+        "dropoff_time": 9.996247301633892,
+        "wait_from_passenger_request": 4.6499165614446,
+        "total_wait": 25.465665753023515
+    },
+    {
+        "driver_location": "42436364",
+        "passenger_pickup": "42473606",
+        "passenger_destination": "4557517555",
+        "pickup_wait_time": 12.07878388121207,
+        "dropoff_time": 14.447146200617278,
+        "wait_from_passenger_request": 6.276311163107554,
+        "total_wait": 32.8022412449369
+    },
+    {
+        "driver_location": "42430356",
+        "passenger_pickup": "42469520",
+        "passenger_destination": "42456197",
+        "pickup_wait_time": 12.901349236354266,
+        "dropoff_time": 9.170845664878808,
         "wait_from_passenger_request": 0,
-        "total_wait": 18.440713735741046
+        "total_wait": 22.072194901233075
+    },
+    {
+        "driver_location": "4059058500",
+        "passenger_pickup": "42445947",
+        "passenger_destination": "4215943290",
+        "pickup_wait_time": 32.66691055915282,
+        "dropoff_time": 8.412049264756686,
+        "wait_from_passenger_request": 0,
+        "total_wait": 41.0789598239095
+    },
+    {
+        "driver_location": "42446275",
+        "passenger_pickup": "42439834",
+        "passenger_destination": "42446016",
+        "pickup_wait_time": 3.098825041934754,
+        "dropoff_time": 7.9883979020424665,
+        "wait_from_passenger_request": 0,
+        "total_wait": 11.08722294397722
+    },
+    {
+        "driver_location": "42430673",
+        "passenger_pickup": "42536642",
+        "passenger_destination": "42445037",
+        "pickup_wait_time": 14.849343238828792,
+        "dropoff_time": 15.374797189828938,
+        "wait_from_passenger_request": 0,
+        "total_wait": 30.22414042865773
+    },
+    {
+        "driver_location": "42486705",
+        "passenger_pickup": "42491527",
+        "passenger_destination": "42438802",
+        "pickup_wait_time": 3.6096727866427254,
+        "dropoff_time": 12.967232413594074,
+        "wait_from_passenger_request": 0,
+        "total_wait": 16.576905200236798
+    },
+    {
+        "driver_location": "595105499",
+        "passenger_pickup": "42423774",
+        "passenger_destination": "42449576",
+        "pickup_wait_time": 2.778955462198638,
+        "dropoff_time": 5.144071516447817,
+        "wait_from_passenger_request": 0,
+        "total_wait": 7.923026978646455
+    },
+    {
+        "driver_location": "42428063",
+        "passenger_pickup": "596775907",
+        "passenger_destination": "42844271",
+        "pickup_wait_time": 5.372127615151639,
+        "dropoff_time": 6.452741735961709,
+        "wait_from_passenger_request": 0,
+        "total_wait": 11.824869351113348
+    },
+    {
+        "driver_location": "599029185",
+        "passenger_pickup": "4207899734",
+        "passenger_destination": "42439203",
+        "pickup_wait_time": 33.09186436005484,
+        "dropoff_time": 16.395662936150536,
+        "wait_from_passenger_request": 0,
+        "total_wait": 49.48752729620538
+    },
+    {
+        "driver_location": "42449576",
+        "passenger_pickup": "42473297",
+        "passenger_destination": "246923513",
+        "pickup_wait_time": 14.067095520292726,
+        "dropoff_time": 15.583262150516289,
+        "wait_from_passenger_request": 0,
+        "total_wait": 29.650357670809015
+    },
+    {
+        "driver_location": "42446016",
+        "passenger_pickup": "42430803",
+        "passenger_destination": "2087152389",
+        "pickup_wait_time": 9.332154006252889,
+        "dropoff_time": 22.97077035141775,
+        "wait_from_passenger_request": 0,
+        "total_wait": 32.30292435767064
+    },
+    {
+        "driver_location": "42432580",
+        "passenger_pickup": "42430694",
+        "passenger_destination": "42432102",
+        "pickup_wait_time": 3.4059433145602265,
+        "dropoff_time": 10.673363061750912,
+        "wait_from_passenger_request": 0,
+        "total_wait": 14.079306376311138
+    },
+    {
+        "driver_location": "42844271",
+        "passenger_pickup": "42443528",
+        "passenger_destination": "2087152389",
+        "pickup_wait_time": 7.751998492211244,
+        "dropoff_time": 17.490498435586478,
+        "wait_from_passenger_request": 0,
+        "total_wait": 25.24249692779772
+    },
+    {
+        "driver_location": "599044149",
+        "passenger_pickup": "42430694",
+        "passenger_destination": "42506555",
+        "pickup_wait_time": 36.59410563563463,
+        "dropoff_time": 18.342105700765874,
+        "wait_from_passenger_request": 0,
+        "total_wait": 54.936211336400504
+    },
+    {
+        "driver_location": "42456197",
+        "passenger_pickup": "42428315",
+        "passenger_destination": "1701651380",
+        "pickup_wait_time": 8.184827283171156,
+        "dropoff_time": 32.92460289675973,
+        "wait_from_passenger_request": 0,
+        "total_wait": 41.10943017993088
+    },
+    {
+        "driver_location": "42438802",
+        "passenger_pickup": "42828732",
+        "passenger_destination": "42451370",
+        "pickup_wait_time": 28.67737938820512,
+        "dropoff_time": 34.755018655610954,
+        "wait_from_passenger_request": 0,
+        "total_wait": 63.43239804381608
+    },
+    {
+        "driver_location": "4557517555",
+        "passenger_pickup": "42447237",
+        "passenger_destination": "42428420",
+        "pickup_wait_time": 9.760064298428466,
+        "dropoff_time": 11.144136256007526,
+        "wait_from_passenger_request": 0,
+        "total_wait": 20.90420055443599
+    },
+    {
+        "driver_location": "42432102",
+        "passenger_pickup": "42456303",
+        "passenger_destination": "561042198",
+        "pickup_wait_time": 3.377265277839744,
+        "dropoff_time": 4.117530149507255,
+        "wait_from_passenger_request": 0,
+        "total_wait": 7.4947954273469986
+    },
+    {
+        "driver_location": "42452975",
+        "passenger_pickup": "42439272",
+        "passenger_destination": "42430356",
+        "pickup_wait_time": 4.137904270471319,
+        "dropoff_time": 4.013454851115876,
+        "wait_from_passenger_request": 0,
+        "total_wait": 8.151359121587195
+    },
+    {
+        "driver_location": "42428444",
+        "passenger_pickup": "42444909",
+        "passenger_destination": "42889767",
+        "pickup_wait_time": 4.086644808206153,
+        "dropoff_time": 10.463197561417509,
+        "wait_from_passenger_request": 0,
+        "total_wait": 14.549842369623661
+    },
+    {
+        "driver_location": "42445037",
+        "passenger_pickup": "42445247",
+        "passenger_destination": "4633522237",
+        "pickup_wait_time": 4.906575500548524,
+        "dropoff_time": 49.04201671092963,
+        "wait_from_passenger_request": 0,
+        "total_wait": 53.94859221147816
+    },
+    {
+        "driver_location": "42430356",
+        "passenger_pickup": "4347534783",
+        "passenger_destination": "42529171",
+        "pickup_wait_time": 1.7292737787023398,
+        "dropoff_time": 14.24420609415815,
+        "wait_from_passenger_request": 0,
+        "total_wait": 15.973479872860489
+    },
+    {
+        "driver_location": "4215943290",
+        "passenger_pickup": "42443072",
+        "passenger_destination": "42430265",
+        "pickup_wait_time": 13.471347062530477,
+        "dropoff_time": 11.942686530504227,
+        "wait_from_passenger_request": 0,
+        "total_wait": 25.414033593034702
+    },
+    {
+        "driver_location": "246923513",
+        "passenger_pickup": "42750232",
+        "passenger_destination": "42446552",
+        "pickup_wait_time": 37.35239075240059,
+        "dropoff_time": 31.203418402803866,
+        "wait_from_passenger_request": 0,
+        "total_wait": 68.55580915520446
+    },
+    {
+        "driver_location": "2087152389",
+        "passenger_pickup": "42919726",
+        "passenger_destination": "42499527",
+        "pickup_wait_time": 13.952261224597539,
+        "dropoff_time": 9.240902690599022,
+        "wait_from_passenger_request": 0,
+        "total_wait": 23.19316391519656
+    },
+    {
+        "driver_location": "42889767",
+        "passenger_pickup": "42459098",
+        "passenger_destination": "561035371",
+        "pickup_wait_time": 6.3394896125835425,
+        "dropoff_time": 15.223590836059202,
+        "wait_from_passenger_request": 0,
+        "total_wait": 21.563080448642744
+    },
+    {
+        "driver_location": "42441670",
+        "passenger_pickup": "42446991",
+        "passenger_destination": "42484039",
+        "pickup_wait_time": 5.965976742150083,
+        "dropoff_time": 14.16800413872598,
+        "wait_from_passenger_request": 0,
+        "total_wait": 20.133980880876063
+    },
+    {
+        "driver_location": "42439203",
+        "passenger_pickup": "42421877",
+        "passenger_destination": "42449341",
+        "pickup_wait_time": 1.9267468152121083,
+        "dropoff_time": 2.8640593456187107,
+        "wait_from_passenger_request": 0,
+        "total_wait": 4.790806160830819
+    },
+    {
+        "driver_location": "42529171",
+        "passenger_pickup": "42435504",
+        "passenger_destination": "42437371",
+        "pickup_wait_time": 16.34808691403805,
+        "dropoff_time": 7.184376076062924,
+        "wait_from_passenger_request": 0,
+        "total_wait": 23.532462990100974
+    },
+    {
+        "driver_location": "42449341",
+        "passenger_pickup": "42427812",
+        "passenger_destination": "3430331122",
+        "pickup_wait_time": 2.370304805497458,
+        "dropoff_time": 3.7671922687930133,
+        "wait_from_passenger_request": 0,
+        "total_wait": 6.137497074290471
+    },
+    {
+        "driver_location": "1701651380",
+        "passenger_pickup": "42452882",
+        "passenger_destination": "1698103194",
+        "pickup_wait_time": 30.97119501272092,
+        "dropoff_time": 16.61227072811517,
+        "wait_from_passenger_request": 0,
+        "total_wait": 47.58346574083609
+    },
+    {
+        "driver_location": "42499527",
+        "passenger_pickup": "42437914",
+        "passenger_destination": "42436126",
+        "pickup_wait_time": 19.024842145111123,
+        "dropoff_time": 3.266864837767164,
+        "wait_from_passenger_request": 0,
+        "total_wait": 22.29170698287829
+    },
+    {
+        "driver_location": "3430331122",
+        "passenger_pickup": "42429838",
+        "passenger_destination": "42435671",
+        "pickup_wait_time": 7.940743308092981,
+        "dropoff_time": 10.132278408516623,
+        "wait_from_passenger_request": 0,
+        "total_wait": 18.073021716609603
+    },
+    {
+        "driver_location": "42430265",
+        "passenger_pickup": "42434974",
+        "passenger_destination": "4685453634",
+        "pickup_wait_time": 3.731712292633878,
+        "dropoff_time": 5.871148825520214,
+        "wait_from_passenger_request": 0,
+        "total_wait": 9.602861118154092
+    },
+    {
+        "driver_location": "42457728",
+        "passenger_pickup": "42431490",
+        "passenger_destination": "596775870",
+        "pickup_wait_time": 1.736616280330848,
+        "dropoff_time": 4.625058630738678,
+        "wait_from_passenger_request": 0,
+        "total_wait": 6.361674911069526
+    },
+    {
+        "driver_location": "561035371",
+        "passenger_pickup": "42436060",
+        "passenger_destination": "42449985",
+        "pickup_wait_time": 21.866127916689944,
+        "dropoff_time": 10.878353675017177,
+        "wait_from_passenger_request": 0,
+        "total_wait": 32.74448159170712
+    },
+    {
+        "driver_location": "42484039",
+        "passenger_pickup": "42453952",
+        "passenger_destination": "1692433920",
+        "pickup_wait_time": 6.069555664878569,
+        "dropoff_time": 3.2576410860133076,
+        "wait_from_passenger_request": 0,
+        "total_wait": 9.327196750891877
+    },
+    {
+        "driver_location": "42506555",
+        "passenger_pickup": "42449689",
+        "passenger_destination": "42430277",
+        "pickup_wait_time": 13.720159126479173,
+        "dropoff_time": 3.1994777584552803,
+        "wait_from_passenger_request": 0,
+        "total_wait": 16.91963688493445
+    },
+    {
+        "driver_location": "596775870",
+        "passenger_pickup": "42474966",
+        "passenger_destination": "42444909",
+        "pickup_wait_time": 16.49779344622328,
+        "dropoff_time": 14.189493607333755,
+        "wait_from_passenger_request": 0,
+        "total_wait": 30.687287053557036
+    },
+    {
+        "driver_location": "4685453634",
+        "passenger_pickup": "42441526",
+        "passenger_destination": "42438038",
+        "pickup_wait_time": 10.851617867228555,
+        "dropoff_time": 15.251886504496579,
+        "wait_from_passenger_request": 0,
+        "total_wait": 26.103504371725133
+    },
+    {
+        "driver_location": "42437371",
+        "passenger_pickup": "42752974",
+        "passenger_destination": "42421985",
+        "pickup_wait_time": 18.33216264599125,
+        "dropoff_time": 16.50197053422002,
+        "wait_from_passenger_request": 0,
+        "total_wait": 34.83413318021127
+    },
+    {
+        "driver_location": "1692433920",
+        "passenger_pickup": "42496668",
+        "passenger_destination": "42431151",
+        "pickup_wait_time": 12.578636848913435,
+        "dropoff_time": 15.539075134828957,
+        "wait_from_passenger_request": 0,
+        "total_wait": 28.117711983742392
+    },
+    {
+        "driver_location": "42451370",
+        "passenger_pickup": "42504281",
+        "passenger_destination": "42438889",
+        "pickup_wait_time": 10.325850934995568,
+        "dropoff_time": 12.22114857790814,
+        "wait_from_passenger_request": 0,
+        "total_wait": 22.54699951290371
+    },
+    {
+        "driver_location": "42435671",
+        "passenger_pickup": "1919595927",
+        "passenger_destination": "42429890",
+        "pickup_wait_time": 6.277195845682216,
+        "dropoff_time": 4.071546030975661,
+        "wait_from_passenger_request": 0,
+        "total_wait": 10.348741876657876
+    },
+    {
+        "driver_location": "4633522237",
+        "passenger_pickup": "2974462027",
+        "passenger_destination": "42763784",
+        "pickup_wait_time": 47.339345038741584,
+        "dropoff_time": 20.817393071963266,
+        "wait_from_passenger_request": 0,
+        "total_wait": 68.15673811070485
+    },
+    {
+        "driver_location": "42430277",
+        "passenger_pickup": "42437425",
+        "passenger_destination": "1919595917",
+        "pickup_wait_time": 5.464670748219876,
+        "dropoff_time": 8.661651112668068,
+        "wait_from_passenger_request": 0,
+        "total_wait": 14.126321860887945
+    },
+    {
+        "driver_location": "42429890",
+        "passenger_pickup": "339044224",
+        "passenger_destination": "42428315",
+        "pickup_wait_time": 4.193461344577968,
+        "dropoff_time": 6.614179636438919,
+        "wait_from_passenger_request": 0,
+        "total_wait": 10.807640981016888
+    },
+    {
+        "driver_location": "42445039",
+        "passenger_pickup": "42484587",
+        "passenger_destination": "42440012",
+        "pickup_wait_time": 12.809326592846839,
+        "dropoff_time": 11.413114838787079,
+        "wait_from_passenger_request": 0,
+        "total_wait": 24.222441431633918
+    },
+    {
+        "driver_location": "42438038",
+        "passenger_pickup": "42435618",
+        "passenger_destination": "42436313",
+        "pickup_wait_time": 5.631422090906113,
+        "dropoff_time": 4.586828479885428,
+        "wait_from_passenger_request": 0,
+        "total_wait": 10.21825057079154
+    },
+    {
+        "driver_location": "1919595917",
+        "passenger_pickup": "42433573",
+        "passenger_destination": "42431508",
+        "pickup_wait_time": 1.311114942281508,
+        "dropoff_time": 3.785179172462964,
+        "wait_from_passenger_request": 0,
+        "total_wait": 5.096294114744472
+    },
+    {
+        "driver_location": "42428315",
+        "passenger_pickup": "42467448",
+        "passenger_destination": "42825551",
+        "pickup_wait_time": 20.54921905831937,
+        "dropoff_time": 15.19068903015916,
+        "wait_from_passenger_request": 0,
+        "total_wait": 35.73990808847853
+    },
+    {
+        "driver_location": "42444909",
+        "passenger_pickup": "42436939",
+        "passenger_destination": "42440838",
+        "pickup_wait_time": 2.719223683236738,
+        "dropoff_time": 3.665898345596868,
+        "wait_from_passenger_request": 0,
+        "total_wait": 6.385122028833606
+    },
+    {
+        "driver_location": "42438889",
+        "passenger_pickup": "42428428",
+        "passenger_destination": "598227892",
+        "pickup_wait_time": 7.9173877471241045,
+        "dropoff_time": 8.89121989432878,
+        "wait_from_passenger_request": 0,
+        "total_wait": 16.808607641452884
+    },
+    {
+        "driver_location": "1698103194",
+        "passenger_pickup": "4633522237",
+        "passenger_destination": "42430363",
+        "pickup_wait_time": 57.23227413833367,
+        "dropoff_time": 48.800191445134345,
+        "wait_from_passenger_request": 0,
+        "total_wait": 106.03246558346802
+    },
+    {
+        "driver_location": "42431508",
+        "passenger_pickup": "42469361",
+        "passenger_destination": "42475790",
+        "pickup_wait_time": 9.90566988842488,
+        "dropoff_time": 8.324457758446272,
+        "wait_from_passenger_request": 0,
+        "total_wait": 18.230127646871154
+    },
+    {
+        "driver_location": "42431151",
+        "passenger_pickup": "42435668",
+        "passenger_destination": "42435632",
+        "pickup_wait_time": 4.55184094953442,
+        "dropoff_time": 2.4451396893026756,
+        "wait_from_passenger_request": 0,
+        "total_wait": 6.996980638837096
+    },
+    {
+        "driver_location": "42446552",
+        "passenger_pickup": "42430589",
+        "passenger_destination": "42438060",
+        "pickup_wait_time": 5.723228081281926,
+        "dropoff_time": 4.680628564813663,
+        "wait_from_passenger_request": 0,
+        "total_wait": 10.403856646095589
+    },
+    {
+        "driver_location": "42440838",
+        "passenger_pickup": "42442838",
+        "passenger_destination": "42455693",
+        "pickup_wait_time": 2.8016461362752043,
+        "dropoff_time": 8.83677114412832,
+        "wait_from_passenger_request": 0,
+        "total_wait": 11.638417280403525
+    },
+    {
+        "driver_location": "42436313",
+        "passenger_pickup": "42482234",
+        "passenger_destination": "42489019",
+        "pickup_wait_time": 10.778147598029257,
+        "dropoff_time": 3.4853334503359026,
+        "wait_from_passenger_request": 0,
+        "total_wait": 14.26348104836516
+    },
+    {
+        "driver_location": "42421985",
+        "passenger_pickup": "42421877",
+        "passenger_destination": "42430375",
+        "pickup_wait_time": 8.357117428820727,
+        "dropoff_time": 5.826909689366939,
+        "wait_from_passenger_request": 0,
+        "total_wait": 14.184027118187666
+    },
+    {
+        "driver_location": "42430378",
+        "passenger_pickup": "599041406",
+        "passenger_destination": "42430811",
+        "pickup_wait_time": 32.48174286829558,
+        "dropoff_time": 35.03417305725773,
+        "wait_from_passenger_request": 0,
+        "total_wait": 67.51591592555332
+    },
+    {
+        "driver_location": "42435632",
+        "passenger_pickup": "42501785",
+        "passenger_destination": "42433611",
+        "pickup_wait_time": 11.263628454299752,
+        "dropoff_time": 10.317928747001904,
+        "wait_from_passenger_request": 0,
+        "total_wait": 21.581557201301656
+    },
+    {
+        "driver_location": "42440012",
+        "passenger_pickup": "42436941",
+        "passenger_destination": "42454381",
+        "pickup_wait_time": 6.2139818540132925,
+        "dropoff_time": 4.233348903720643,
+        "wait_from_passenger_request": 0,
+        "total_wait": 10.447330757733935
+    },
+    {
+        "driver_location": "42438060",
+        "passenger_pickup": "42856588",
+        "passenger_destination": "42445757",
+        "pickup_wait_time": 18.90816921012225,
+        "dropoff_time": 12.523425105125785,
+        "wait_from_passenger_request": 0,
+        "total_wait": 31.431594315248034
+    },
+    {
+        "driver_location": "598227892",
+        "passenger_pickup": "42437111",
+        "passenger_destination": "42486353",
+        "pickup_wait_time": 9.977191379675324,
+        "dropoff_time": 8.857924520070618,
+        "wait_from_passenger_request": 0,
+        "total_wait": 18.835115899745944
+    },
+    {
+        "driver_location": "42455693",
+        "passenger_pickup": "42436701",
+        "passenger_destination": "42506266",
+        "pickup_wait_time": 2.1394545460677237,
+        "dropoff_time": 22.64883027621752,
+        "wait_from_passenger_request": 0,
+        "total_wait": 24.788284822285245
+    },
+    {
+        "driver_location": "42489019",
+        "passenger_pickup": "42431681",
+        "passenger_destination": "42496980",
+        "pickup_wait_time": 18.771239424969238,
+        "dropoff_time": 20.74679012224397,
+        "wait_from_passenger_request": 0,
+        "total_wait": 39.5180295472132
+    },
+    {
+        "driver_location": "42475790",
+        "passenger_pickup": "4566247400",
+        "passenger_destination": "42509952",
+        "pickup_wait_time": 45.20041722823369,
+        "dropoff_time": 33.50460509047858,
+        "wait_from_passenger_request": 0,
+        "total_wait": 78.70502231871227
+    },
+    {
+        "driver_location": "42430375",
+        "passenger_pickup": "42469912",
+        "passenger_destination": "42436336",
+        "pickup_wait_time": 19.058637960258423,
+        "dropoff_time": 11.948701653333254,
+        "wait_from_passenger_request": 0,
+        "total_wait": 31.007339613591675
+    },
+    {
+        "driver_location": "42454381",
+        "passenger_pickup": "42432075",
+        "passenger_destination": "42464923",
+        "pickup_wait_time": 6.892119175664435,
+        "dropoff_time": 9.321334744294866,
+        "wait_from_passenger_request": 0,
+        "total_wait": 16.2134539199593
+    },
+    {
+        "driver_location": "42433611",
+        "passenger_pickup": "42432950",
+        "passenger_destination": "561042194",
+        "pickup_wait_time": 13.458815019335887,
+        "dropoff_time": 13.203963445650569,
+        "wait_from_passenger_request": 0,
+        "total_wait": 26.662778464986456
+    },
+    {
+        "driver_location": "42825551",
+        "passenger_pickup": "42439530",
+        "passenger_destination": "1701651380",
+        "pickup_wait_time": 12.193279428805651,
+        "dropoff_time": 33.33030291497309,
+        "wait_from_passenger_request": 0,
+        "total_wait": 45.52358234377874
+    },
+    {
+        "driver_location": "42486353",
+        "passenger_pickup": "4597668040",
+        "passenger_destination": "42428039",
+        "pickup_wait_time": 12.072726387266485,
+        "dropoff_time": 9.841716891601715,
+        "wait_from_passenger_request": 0,
+        "total_wait": 21.914443278868198
+    },
+    {
+        "driver_location": "42464923",
+        "passenger_pickup": "42443332",
+        "passenger_destination": "42430338",
+        "pickup_wait_time": 19.082937531656626,
+        "dropoff_time": 4.46428484260779,
+        "wait_from_passenger_request": 0,
+        "total_wait": 23.547222374264415
+    },
+    {
+        "driver_location": "42506266",
+        "passenger_pickup": "1692433910",
+        "passenger_destination": "42443556",
+        "pickup_wait_time": 15.989342626500923,
+        "dropoff_time": 5.755612741989355,
+        "wait_from_passenger_request": 0,
+        "total_wait": 21.744955368490277
+    },
+    {
+        "driver_location": "42445757",
+        "passenger_pickup": "42443009",
+        "passenger_destination": "42924739",
+        "pickup_wait_time": 3.264762274369014,
+        "dropoff_time": 29.710407669317156,
+        "wait_from_passenger_request": 0,
+        "total_wait": 32.97516994368617
+    },
+    {
+        "driver_location": "42763784",
+        "passenger_pickup": "599041290",
+        "passenger_destination": "42439580",
+        "pickup_wait_time": 36.3048890170168,
+        "dropoff_time": 32.35800616839723,
+        "wait_from_passenger_request": 0,
+        "total_wait": 68.66289518541403
+    },
+    {
+        "driver_location": "42436336",
+        "passenger_pickup": "599041406",
+        "passenger_destination": "4708375542",
+        "pickup_wait_time": 34.16649640033278,
+        "dropoff_time": 27.10108157907327,
+        "wait_from_passenger_request": 0,
+        "total_wait": 61.267577979406056
+    },
+    {
+        "driver_location": "42428039",
+        "passenger_pickup": "1701651380",
+        "passenger_destination": "42445417",
+        "pickup_wait_time": 32.67200767121471,
+        "dropoff_time": 32.140329946677596,
+        "wait_from_passenger_request": 0,
+        "total_wait": 64.8123376178923
+    },
+    {
+        "driver_location": "561042194",
+        "passenger_pickup": "42442937",
+        "passenger_destination": "42445766",
+        "pickup_wait_time": 1.3826696225867638,
+        "dropoff_time": 6.576119595627144,
+        "wait_from_passenger_request": 0,
+        "total_wait": 7.958789218213909
+    },
+    {
+        "driver_location": "42496980",
+        "passenger_pickup": "42437618",
+        "passenger_destination": "42446945",
+        "pickup_wait_time": 11.680772929131,
+        "dropoff_time": 4.930924536759097,
+        "wait_from_passenger_request": 0,
+        "total_wait": 16.611697465890096
+    },
+    {
+        "driver_location": "42430338",
+        "passenger_pickup": "42442273",
+        "passenger_destination": "1698103521",
+        "pickup_wait_time": 6.3148972943258075,
+        "dropoff_time": 22.970972453817105,
+        "wait_from_passenger_request": 0,
+        "total_wait": 29.28586974814291
+    },
+    {
+        "driver_location": "42443556",
+        "passenger_pickup": "1701651380",
+        "passenger_destination": "42486600",
+        "pickup_wait_time": 33.10661878470977,
+        "dropoff_time": 28.23459489410522,
+        "wait_from_passenger_request": 0,
+        "total_wait": 61.34121367881499
+    },
+    {
+        "driver_location": "42445766",
+        "passenger_pickup": "42431089",
+        "passenger_destination": "42445702",
+        "pickup_wait_time": 10.043644953457589,
+        "dropoff_time": 14.652402896861428,
+        "wait_from_passenger_request": 0,
+        "total_wait": 24.69604785031902
+    },
+    {
+        "driver_location": "42445291",
+        "passenger_pickup": "42446945",
+        "passenger_destination": "42449928",
+        "pickup_wait_time": 9.154839065394853,
+        "dropoff_time": 1.0105813984401482,
+        "wait_from_passenger_request": 0,
+        "total_wait": 10.165420463835002
+    },
+    {
+        "driver_location": "42430811",
+        "passenger_pickup": "42430271",
+        "passenger_destination": "42439345",
+        "pickup_wait_time": 2.108876339101812,
+        "dropoff_time": 3.4806622513284653,
+        "wait_from_passenger_request": 0,
+        "total_wait": 5.589538590430277
+    },
+    {
+        "driver_location": "1701651380",
+        "passenger_pickup": "42471867",
+        "passenger_destination": "42449021",
+        "pickup_wait_time": 23.500331635580885,
+        "dropoff_time": 10.767520348017264,
+        "wait_from_passenger_request": 0,
+        "total_wait": 34.26785198359815
+    },
+    {
+        "driver_location": "42439345",
+        "passenger_pickup": "42435668",
+        "passenger_destination": "42421737",
+        "pickup_wait_time": 6.850835110532886,
+        "dropoff_time": 9.25887480477346,
+        "wait_from_passenger_request": 0,
+        "total_wait": 16.109709915306347
+    },
+    {
+        "driver_location": "42436754",
+        "passenger_pickup": "42445037",
+        "passenger_destination": "42436119",
+        "pickup_wait_time": 6.4090274344363865,
+        "dropoff_time": 8.559635677277107,
+        "wait_from_passenger_request": 0,
+        "total_wait": 14.968663111713493
+    },
+    {
+        "driver_location": "42449928",
+        "passenger_pickup": "42466962",
+        "passenger_destination": "42431154",
+        "pickup_wait_time": 16.967268331161097,
+        "dropoff_time": 16.945618787999507,
+        "wait_from_passenger_request": 0,
+        "total_wait": 33.9128871191606
+    },
+    {
+        "driver_location": "42472170",
+        "passenger_pickup": "42468738",
+        "passenger_destination": "42436489",
+        "pickup_wait_time": 10.147597659405672,
+        "dropoff_time": 16.59731812912732,
+        "wait_from_passenger_request": 0,
+        "total_wait": 26.744915788532992
+    },
+    {
+        "driver_location": "42445702",
+        "passenger_pickup": "42431505",
+        "passenger_destination": "42428570",
+        "pickup_wait_time": 3.6997229447167745,
+        "dropoff_time": 7.599152976876823,
+        "wait_from_passenger_request": 0,
+        "total_wait": 11.298875921593599
+    },
+    {
+        "driver_location": "1698103521",
+        "passenger_pickup": "42444985",
+        "passenger_destination": "4149936245",
+        "pickup_wait_time": 20.206170439807458,
+        "dropoff_time": 9.720449176354505,
+        "wait_from_passenger_request": 0,
+        "total_wait": 29.926619616161965
+    },
+    {
+        "driver_location": "42444909",
+        "passenger_pickup": "42506305",
+        "passenger_destination": "4143851142",
+        "pickup_wait_time": 12.891622275846066,
+        "dropoff_time": 11.265651363321558,
+        "wait_from_passenger_request": 0,
+        "total_wait": 24.157273639167624
+    },
+    {
+        "driver_location": "42440721",
+        "passenger_pickup": "42430685",
+        "passenger_destination": "42454381",
+        "pickup_wait_time": 6.701450900184126,
+        "dropoff_time": 3.944393602633704,
+        "wait_from_passenger_request": 0,
+        "total_wait": 10.64584450281783
+    },
+    {
+        "driver_location": "42436119",
+        "passenger_pickup": "42456492",
+        "passenger_destination": "42443366",
+        "pickup_wait_time": 4.567459949466552,
+        "dropoff_time": 17.128635817617177,
+        "wait_from_passenger_request": 0,
+        "total_wait": 21.69609576708373
+    },
+    {
+        "driver_location": "42421737",
+        "passenger_pickup": "42430886",
+        "passenger_destination": "42440710",
+        "pickup_wait_time": 15.15518198410603,
+        "dropoff_time": 1.682180247954648,
+        "wait_from_passenger_request": 0,
+        "total_wait": 16.837362232060677
+    },
+    {
+        "driver_location": "42509952",
+        "passenger_pickup": "42469461",
+        "passenger_destination": "561042198",
+        "pickup_wait_time": 3.2645151562574752,
+        "dropoff_time": 13.348377676745626,
+        "wait_from_passenger_request": 0,
+        "total_wait": 16.6128928330031
+    },
+    {
+        "driver_location": "42428570",
+        "passenger_pickup": "42430271",
+        "passenger_destination": "43013724",
+        "pickup_wait_time": 5.903035287060704,
+        "dropoff_time": 62.39395966772206,
+        "wait_from_passenger_request": 0,
+        "total_wait": 68.29699495478276
+    },
+    {
+        "driver_location": "599044149",
+        "passenger_pickup": "42484348",
+        "passenger_destination": "42427953",
+        "pickup_wait_time": 25.094563005712757,
+        "dropoff_time": 14.42753419068083,
+        "wait_from_passenger_request": 0,
+        "total_wait": 39.52209719639359
+    },
+    {
+        "driver_location": "42454381",
+        "passenger_pickup": "42456492",
+        "passenger_destination": "42428790",
+        "pickup_wait_time": 6.818173932717453,
+        "dropoff_time": 19.240754094062588,
+        "wait_from_passenger_request": 0,
+        "total_wait": 26.05892802678004
+    },
+    {
+        "driver_location": "42430363",
+        "passenger_pickup": "42436947",
+        "passenger_destination": "4597668031",
+        "pickup_wait_time": 7.637977453213061,
+        "dropoff_time": 4.216214649667434,
+        "wait_from_passenger_request": 0,
+        "total_wait": 11.854192102880496
+    },
+    {
+        "driver_location": "42436489",
+        "passenger_pickup": "42427393",
+        "passenger_destination": "596776163",
+        "pickup_wait_time": 10.973889685780417,
+        "dropoff_time": 12.171624617461568,
+        "wait_from_passenger_request": 0,
+        "total_wait": 23.145514303241985
+    },
+    {
+        "driver_location": "4708375542",
+        "passenger_pickup": "42471728",
+        "passenger_destination": "42444991",
+        "pickup_wait_time": 5.082607783182948,
+        "dropoff_time": 16.079201765430454,
+        "wait_from_passenger_request": 0,
+        "total_wait": 21.1618095486134
+    },
+    {
+        "driver_location": "42440710",
+        "passenger_pickup": "42439563",
+        "passenger_destination": "42446800",
+        "pickup_wait_time": 9.055592189768273,
+        "dropoff_time": 14.936415236125255,
+        "wait_from_passenger_request": 0,
+        "total_wait": 23.992007425893526
+    },
+    {
+        "driver_location": "561042198",
+        "passenger_pickup": "42429346",
+        "passenger_destination": "42437067",
+        "pickup_wait_time": 8.338866050146882,
+        "dropoff_time": 13.765345422342346,
+        "wait_from_passenger_request": 0,
+        "total_wait": 22.104211472489226
+    },
+    {
+        "driver_location": "4143851142",
+        "passenger_pickup": "42431030",
+        "passenger_destination": "42454328",
+        "pickup_wait_time": 14.076996886827981,
+        "dropoff_time": 9.467641075676575,
+        "wait_from_passenger_request": 0,
+        "total_wait": 23.544637962504556
+    },
+    {
+        "driver_location": "42439580",
+        "passenger_pickup": "589100232",
+        "passenger_destination": "42436335",
+        "pickup_wait_time": 5.982532404110347,
+        "dropoff_time": 7.8729428493152644,
+        "wait_from_passenger_request": 0,
+        "total_wait": 13.855475253425611
     },
     {
         "driver_location": "42435269",
-        "passenger_pickup": "42436400",
-        "passenger_destination": "42431039",
-        "pickup_wait_time": 9.446310144183641,
-        "dropoff_time": 13.226263031443592,
+        "passenger_pickup": "42435518",
+        "passenger_destination": "596775973",
+        "pickup_wait_time": 5.665874364428791,
+        "dropoff_time": 3.5261768920094823,
         "wait_from_passenger_request": 0,
-        "total_wait": 22.672573175627235
+        "total_wait": 9.192051256438273
     },
     {
-        "driver_location": "42443280",
-        "passenger_pickup": "42499172",
-        "passenger_destination": "599036657",
-        "pickup_wait_time": 27.488953115441504,
-        "dropoff_time": 25.15666244220641,
+        "driver_location": "42443366",
+        "passenger_pickup": "42433574",
+        "passenger_destination": "42433292",
+        "pickup_wait_time": 15.076208970021202,
+        "dropoff_time": 2.3106159623235962,
         "wait_from_passenger_request": 0,
-        "total_wait": 52.645615557647915
+        "total_wait": 17.386824932344798
     },
     {
-        "driver_location": "42986445",
-        "passenger_pickup": "42430118",
-        "passenger_destination": "42449932",
-        "pickup_wait_time": 38.553888676375216,
-        "dropoff_time": 9.135028807409002,
+        "driver_location": "4597668031",
+        "passenger_pickup": "42427426",
+        "passenger_destination": "42439823",
+        "pickup_wait_time": 2.266467580428876,
+        "dropoff_time": 1.4531191722266041,
         "wait_from_passenger_request": 0,
-        "total_wait": 47.688917483784216
+        "total_wait": 3.71958675265548
+    },
+    {
+        "driver_location": "42431154",
+        "passenger_pickup": "42427216",
+        "passenger_destination": "42430805",
+        "pickup_wait_time": 25.245805094868512,
+        "dropoff_time": 26.80730517190967,
+        "wait_from_passenger_request": 0,
+        "total_wait": 52.053110266778184
+    },
+    {
+        "driver_location": "4149936245",
+        "passenger_pickup": "42430068",
+        "passenger_destination": "4557517555",
+        "pickup_wait_time": 16.361676107327295,
+        "dropoff_time": 11.24569853508497,
+        "wait_from_passenger_request": 0,
+        "total_wait": 27.607374642412264
+    },
+    {
+        "driver_location": "42445417",
+        "passenger_pickup": "42454758",
+        "passenger_destination": "42436703",
+        "pickup_wait_time": 5.800192977147353,
+        "dropoff_time": 8.055098211878857,
+        "wait_from_passenger_request": 0,
+        "total_wait": 13.855291189026211
+    },
+    {
+        "driver_location": "42439823",
+        "passenger_pickup": "42437058",
+        "passenger_destination": "1701651380",
+        "pickup_wait_time": 12.008129176934233,
+        "dropoff_time": 40.45312595141179,
+        "wait_from_passenger_request": 0,
+        "total_wait": 52.461255128346025
+    },
+    {
+        "driver_location": "42486600",
+        "passenger_pickup": "42437058",
+        "passenger_destination": "42432825",
+        "pickup_wait_time": 15.929513917789818,
+        "dropoff_time": 7.394789176519276,
+        "wait_from_passenger_request": 0,
+        "total_wait": 23.324303094309094
     },
     {
         "driver_location": "42427426",
-        "passenger_pickup": "42439842",
-        "passenger_destination": "42436037",
-        "pickup_wait_time": 0.263942600916528,
-        "dropoff_time": 7.53789508953765,
+        "passenger_pickup": "42440472",
+        "passenger_destination": "1780007596",
+        "pickup_wait_time": 6.82178458825852,
+        "dropoff_time": 28.19389269933899,
         "wait_from_passenger_request": 0,
-        "total_wait": 7.801837690454178
-    },
-    {
-        "driver_location": "42501765",
-        "passenger_pickup": "42443366",
-        "passenger_destination": "42453104",
-        "pickup_wait_time": 34.22778443246801,
-        "dropoff_time": 15.214104229047125,
-        "wait_from_passenger_request": 0,
-        "total_wait": 49.44188866151514
-    },
-    {
-        "driver_location": "42443054",
-        "passenger_pickup": "42449982",
-        "passenger_destination": "42448171",
-        "pickup_wait_time": 5.089456405771158,
-        "dropoff_time": 13.106343751309295,
-        "wait_from_passenger_request": 0,
-        "total_wait": 18.195800157080452
+        "total_wait": 35.01567728759751
     },
     {
         "driver_location": "42465238",
-        "passenger_pickup": "42430060",
-        "passenger_destination": "42454381",
-        "pickup_wait_time": 20.160000857230052,
-        "dropoff_time": 11.104639946703818,
+        "passenger_pickup": "42427812",
+        "passenger_destination": "42469449",
+        "pickup_wait_time": 15.42179690097304,
+        "dropoff_time": 13.652027682754438,
         "wait_from_passenger_request": 0,
-        "total_wait": 31.264640803933872
+        "total_wait": 29.07382458372748
     },
     {
-        "driver_location": "2408221645",
-        "passenger_pickup": "42427762",
-        "passenger_destination": "1698103521",
-        "pickup_wait_time": 22.275448796218082,
-        "dropoff_time": 19.46726909797275,
+        "driver_location": "596775973",
+        "passenger_pickup": "4597668039",
+        "passenger_destination": "42430277",
+        "pickup_wait_time": 6.517169235811176,
+        "dropoff_time": 1.889246554097904,
         "wait_from_passenger_request": 0,
-        "total_wait": 41.74271789419083
+        "total_wait": 8.40641578990908
     },
     {
-        "driver_location": "42436514",
-        "passenger_pickup": "42429830",
-        "passenger_destination": "42445769",
-        "pickup_wait_time": 12.742632926118358,
-        "dropoff_time": 5.542385523952225,
-        "wait_from_passenger_request": 0,
-        "total_wait": 18.28501845007058
-    },
-    {
-        "driver_location": "42436037",
-        "passenger_pickup": "42428007",
+        "driver_location": "42428790",
+        "passenger_pickup": "42535541",
         "passenger_destination": "4557517555",
-        "pickup_wait_time": 16.533922961456117,
-        "dropoff_time": 13.536791089111327,
+        "pickup_wait_time": 24.500295596553055,
+        "dropoff_time": 12.932872301123915,
         "wait_from_passenger_request": 0,
-        "total_wait": 30.070714050567446
+        "total_wait": 37.43316789767697
     },
     {
-        "driver_location": "4597668026",
-        "passenger_pickup": "4862610026",
-        "passenger_destination": "42757980",
-        "pickup_wait_time": 5.979499437217754,
-        "dropoff_time": 25.13155294793141,
+        "driver_location": "42436335",
+        "passenger_pickup": "42435250",
+        "passenger_destination": "42520577",
+        "pickup_wait_time": 11.208775661057462,
+        "dropoff_time": 17.811906404602958,
         "wait_from_passenger_request": 0,
-        "total_wait": 31.111052385149165
+        "total_wait": 29.02068206566042
     },
     {
-        "driver_location": "42427369",
-        "passenger_pickup": "42427374",
-        "passenger_destination": "42448811",
-        "pickup_wait_time": 1.871165422387242,
-        "dropoff_time": 6.180040041637464,
+        "driver_location": "42444991",
+        "passenger_pickup": "42492298",
+        "passenger_destination": "1773084410",
+        "pickup_wait_time": 16.162674336845484,
+        "dropoff_time": 8.491419757213697,
         "wait_from_passenger_request": 0,
-        "total_wait": 8.051205464024706
+        "total_wait": 24.654094094059182
     },
     {
-        "driver_location": "42479665",
-        "passenger_pickup": "42427423",
-        "passenger_destination": "42444817",
-        "pickup_wait_time": 17.09407458767285,
-        "dropoff_time": 10.955744633613214,
+        "driver_location": "42430277",
+        "passenger_pickup": "42439409",
+        "passenger_destination": "1698103521",
+        "pickup_wait_time": 9.515675052424537,
+        "dropoff_time": 17.17100481960416,
         "wait_from_passenger_request": 0,
-        "total_wait": 28.049819221286064
+        "total_wait": 26.686679872028698
     },
     {
-        "driver_location": "42432693",
-        "passenger_pickup": "4899886584",
-        "passenger_destination": "1918039901",
-        "pickup_wait_time": 6.078945686488063,
-        "dropoff_time": 8.05310396933424,
+        "driver_location": "42436703",
+        "passenger_pickup": "42450015",
+        "passenger_destination": "589100164",
+        "pickup_wait_time": 3.9334043629985764,
+        "dropoff_time": 8.553421266332562,
         "wait_from_passenger_request": 0,
-        "total_wait": 14.132049655822303
+        "total_wait": 12.486825629331138
+    },
+    {
+        "driver_location": "42433292",
+        "passenger_pickup": "42478390",
+        "passenger_destination": "42433625",
+        "pickup_wait_time": 11.066641252004557,
+        "dropoff_time": 17.142675559997816,
+        "wait_from_passenger_request": 0,
+        "total_wait": 28.20931681200237
+    },
+    {
+        "driver_location": "596776163",
+        "passenger_pickup": "42428034",
+        "passenger_destination": "4443775465",
+        "pickup_wait_time": 2.561036573399994,
+        "dropoff_time": 10.649650099981407,
+        "wait_from_passenger_request": 0,
+        "total_wait": 13.210686673381401
+    },
+    {
+        "driver_location": "42437067",
+        "passenger_pickup": "42438862",
+        "passenger_destination": "591454081",
+        "pickup_wait_time": 14.68479810087732,
+        "dropoff_time": 10.21279076807752,
+        "wait_from_passenger_request": 0,
+        "total_wait": 24.89758886895484
+    },
+    {
+        "driver_location": "42446800",
+        "passenger_pickup": "42443614",
+        "passenger_destination": "42844251",
+        "pickup_wait_time": 12.086874257266697,
+        "dropoff_time": 7.374192726719693,
+        "wait_from_passenger_request": 0,
+        "total_wait": 19.46106698398639
     },
     {
         "driver_location": "1545167946",
-        "passenger_pickup": "42430367",
-        "passenger_destination": "42467262",
-        "pickup_wait_time": 24.309971633614733,
-        "dropoff_time": 31.6417168297639,
+        "passenger_pickup": "42812026",
+        "passenger_destination": "42432068",
+        "pickup_wait_time": 21.67420820355053,
+        "dropoff_time": 20.664753775241184,
         "wait_from_passenger_request": 0,
-        "total_wait": 55.95168846337863
+        "total_wait": 42.338961978791716
     },
     {
-        "driver_location": "42431039",
-        "passenger_pickup": "42437368",
-        "passenger_destination": "42454325",
-        "pickup_wait_time": 7.704654398971622,
-        "dropoff_time": 4.77818839744584,
+        "driver_location": "42454328",
+        "passenger_pickup": "42436751",
+        "passenger_destination": "42437096",
+        "pickup_wait_time": 5.410981399434218,
+        "dropoff_time": 5.6115668381195505,
         "wait_from_passenger_request": 0,
-        "total_wait": 12.482842796417462
+        "total_wait": 11.022548237553767
     },
     {
-        "driver_location": "42448811",
-        "passenger_pickup": "42435677",
-        "passenger_destination": "42443347",
-        "pickup_wait_time": 3.461552323287966,
-        "dropoff_time": 5.4368845344719565,
+        "driver_location": "42427953",
+        "passenger_pickup": "42523854",
+        "passenger_destination": "624260787",
+        "pickup_wait_time": 10.960962658917493,
+        "dropoff_time": 37.91220312396762,
         "wait_from_passenger_request": 0,
-        "total_wait": 8.898436857759922
-    },
-    {
-        "driver_location": "42837839",
-        "passenger_pickup": "597241903",
-        "passenger_destination": "596775919",
-        "pickup_wait_time": 29.290702029699755,
-        "dropoff_time": 9.348952118982384,
-        "wait_from_passenger_request": 0,
-        "total_wait": 38.63965414868214
-    },
-    {
-        "driver_location": "42448171",
-        "passenger_pickup": "42435283",
-        "passenger_destination": "42430143",
-        "pickup_wait_time": 14.549627867206532,
-        "dropoff_time": 13.274050313618174,
-        "wait_from_passenger_request": 0,
-        "total_wait": 27.823678180824707
+        "total_wait": 48.87316578288512
     },
     {
         "driver_location": "42421889",
-        "passenger_pickup": "42446800",
-        "passenger_destination": "42438891",
-        "pickup_wait_time": 4.692040695754056,
-        "dropoff_time": 13.184801939362538,
-        "wait_from_passenger_request": 0,
-        "total_wait": 17.876842635116596
+        "passenger_pickup": "42438788",
+        "passenger_destination": "42430589",
+        "pickup_wait_time": 8.587907942467156,
+        "dropoff_time": 9.181720374972263,
+        "wait_from_passenger_request": 1.0,
+        "total_wait": 18.76962831743942
     },
     {
-        "driver_location": "246650510",
-        "passenger_pickup": "42428428",
-        "passenger_destination": "42427371",
-        "pickup_wait_time": 7.575630659828894,
-        "dropoff_time": 5.578181421979488,
+        "driver_location": "589100164",
+        "passenger_pickup": "685164636",
+        "passenger_destination": "42429659",
+        "pickup_wait_time": 1.4337331294649698,
+        "dropoff_time": 4.349090329559921,
         "wait_from_passenger_request": 0,
-        "total_wait": 13.153812081808383
+        "total_wait": 5.782823459024891
     },
     {
-        "driver_location": "42445769",
-        "passenger_pickup": "42429646",
-        "passenger_destination": "1061531768",
-        "pickup_wait_time": 7.765436304421704,
-        "dropoff_time": 18.168832189725098,
+        "driver_location": "42432825",
+        "passenger_pickup": "42431814",
+        "passenger_destination": "42428232",
+        "pickup_wait_time": 7.904359330378799,
+        "dropoff_time": 3.8719273262820897,
         "wait_from_passenger_request": 0,
-        "total_wait": 25.934268494146803
+        "total_wait": 11.77628665666089
     },
     {
-        "driver_location": "42443347",
-        "passenger_pickup": "42442957",
-        "passenger_destination": "42437644",
-        "pickup_wait_time": 7.370625289379873,
-        "dropoff_time": 4.666577153361763,
+        "driver_location": "4557517555",
+        "passenger_pickup": "42521139",
+        "passenger_destination": "42453607",
+        "pickup_wait_time": 15.133095585331164,
+        "dropoff_time": 13.178561634652855,
         "wait_from_passenger_request": 0,
-        "total_wait": 12.037202442741636
+        "total_wait": 28.31165721998402
     },
     {
-        "driver_location": "1918039901",
-        "passenger_pickup": "42431797",
-        "passenger_destination": "42430241",
-        "pickup_wait_time": 3.19284893341521,
-        "dropoff_time": 1.211686775211342,
+        "driver_location": "4443775465",
+        "passenger_pickup": "42456986",
+        "passenger_destination": "42432679",
+        "pickup_wait_time": 4.538404430755241,
+        "dropoff_time": 5.262995063271594,
         "wait_from_passenger_request": 0,
-        "total_wait": 4.404535708626552
+        "total_wait": 9.801399494026835
     },
     {
-        "driver_location": "42454325",
-        "passenger_pickup": "42430669",
-        "passenger_destination": "42443975",
-        "pickup_wait_time": 4.157990762358893,
-        "dropoff_time": 0.9710710696232159,
+        "driver_location": "42437096",
+        "passenger_pickup": "42437005",
+        "passenger_destination": "42499494",
+        "pickup_wait_time": 16.88692619871346,
+        "dropoff_time": 28.022694727658415,
         "wait_from_passenger_request": 0,
-        "total_wait": 5.129061831982109
+        "total_wait": 44.90962092637187
+    },
+    {
+        "driver_location": "42429659",
+        "passenger_pickup": "42428640",
+        "passenger_destination": "1919595911",
+        "pickup_wait_time": 8.791586783825322,
+        "dropoff_time": 13.141480549794766,
+        "wait_from_passenger_request": 2.051747477054596,
+        "total_wait": 23.984814810674685
     },
     {
         "driver_location": "42438894",
-        "passenger_pickup": "42506300",
-        "passenger_destination": "42443528",
-        "pickup_wait_time": 11.906619183709575,
-        "dropoff_time": 14.549919927138024,
+        "passenger_pickup": "1692433911",
+        "passenger_destination": "42826070",
+        "pickup_wait_time": 7.205012496884831,
+        "dropoff_time": 10.848778826492294,
+        "wait_from_passenger_request": 2.0,
+        "total_wait": 20.053791323377126
+    },
+    {
+        "driver_location": "42469449",
+        "passenger_pickup": "42433281",
+        "passenger_destination": "42439286",
+        "pickup_wait_time": 10.024475297534291,
+        "dropoff_time": 3.5087836835461563,
+        "wait_from_passenger_request": 2.0738245844841003,
+        "total_wait": 15.607083565564547
+    },
+    {
+        "driver_location": "42844251",
+        "passenger_pickup": "42744594",
+        "passenger_destination": "42430571",
+        "pickup_wait_time": 27.916276348776737,
+        "dropoff_time": 37.76450175937112,
+        "wait_from_passenger_request": 3.5056010723114013,
+        "total_wait": 69.18637918045927
+    },
+    {
+        "driver_location": "1773084410",
+        "passenger_pickup": "42436400",
+        "passenger_destination": "2582702612",
+        "pickup_wait_time": 3.31129368895665,
+        "dropoff_time": 28.82628030554652,
+        "wait_from_passenger_request": 5.766283516089121,
+        "total_wait": 37.90385751059229
+    },
+    {
+        "driver_location": "42432679",
+        "passenger_pickup": "42508671",
+        "passenger_destination": "42446552",
+        "pickup_wait_time": 15.090660937096873,
+        "dropoff_time": 19.272959066954545,
+        "wait_from_passenger_request": 3.902516257762909,
+        "total_wait": 38.26613626181433
+    },
+    {
+        "driver_location": "1780007596",
+        "passenger_pickup": "42429646",
+        "passenger_destination": "42443810",
+        "pickup_wait_time": 35.73441173796065,
+        "dropoff_time": 7.950866675811378,
+        "wait_from_passenger_request": 3.015677285194397,
+        "total_wait": 46.700955698966425
+    },
+    {
+        "driver_location": "42428232",
+        "passenger_pickup": "596776083",
+        "passenger_destination": "42434965",
+        "pickup_wait_time": 7.079808362327118,
+        "dropoff_time": 6.898541888350417,
+        "wait_from_passenger_request": 3.0475448966026306,
+        "total_wait": 17.025895147280167
+    },
+    {
+        "driver_location": "42520577",
+        "passenger_pickup": "42466184",
+        "passenger_destination": "42845788",
+        "pickup_wait_time": 11.515865829868233,
+        "dropoff_time": 28.3483018700694,
+        "wait_from_passenger_request": 3.8685232559839884,
+        "total_wait": 43.73269095592162
+    },
+    {
+        "driver_location": "42429700",
+        "passenger_pickup": "42440628",
+        "passenger_destination": "42440163",
+        "pickup_wait_time": 5.564754494491516,
+        "dropoff_time": 11.073458810756174,
+        "wait_from_passenger_request": 4.0,
+        "total_wait": 20.63821330524769
+    },
+    {
+        "driver_location": "1698103521",
+        "passenger_pickup": "42431805",
+        "passenger_destination": "276060683",
+        "pickup_wait_time": 25.100108316933717,
+        "dropoff_time": 26.674785574860334,
+        "wait_from_passenger_request": 2.0,
+        "total_wait": 53.77489389179405
+    },
+    {
+        "driver_location": "1698103521",
+        "passenger_pickup": "3099326119",
+        "passenger_destination": "246580346",
+        "pickup_wait_time": 14.69096450313638,
+        "dropoff_time": 16.17321021962892,
+        "wait_from_passenger_request": 3.285146923859914,
+        "total_wait": 34.14932164662521
+    },
+    {
+        "driver_location": "591454081",
+        "passenger_pickup": "596776177",
+        "passenger_destination": "42436384",
+        "pickup_wait_time": 13.476702721643612,
+        "dropoff_time": 12.813598398869585,
+        "wait_from_passenger_request": 3.3659964323043825,
+        "total_wait": 29.65629755281758
+    },
+    {
+        "driver_location": "42434148",
+        "passenger_pickup": "42428022",
+        "passenger_destination": "42466196",
+        "pickup_wait_time": 12.52858588334981,
+        "dropoff_time": 23.37558017105384,
+        "wait_from_passenger_request": 2.0,
+        "total_wait": 37.90416605440365
+    },
+    {
+        "driver_location": "42430589",
+        "passenger_pickup": "42446814",
+        "passenger_destination": "42432679",
+        "pickup_wait_time": 5.626253297666317,
+        "dropoff_time": 3.8928289317918545,
         "wait_from_passenger_request": 0,
-        "total_wait": 26.4565391108476
+        "total_wait": 9.51908222945817
+    },
+    {
+        "driver_location": "42433625",
+        "passenger_pickup": "42437005",
+        "passenger_destination": "42446021",
+        "pickup_wait_time": 8.774575343827884,
+        "dropoff_time": 6.015578016403476,
+        "wait_from_passenger_request": 0,
+        "total_wait": 14.79015336023136
+    },
+    {
+        "driver_location": "42449576",
+        "passenger_pickup": "42434145",
+        "passenger_destination": "42431556",
+        "pickup_wait_time": 3.1542412302415976,
+        "dropoff_time": 10.350035484337823,
+        "wait_from_passenger_request": 0,
+        "total_wait": 13.50427671457942
+    },
+    {
+        "driver_location": "42439286",
+        "passenger_pickup": "42479372",
+        "passenger_destination": "42431154",
+        "pickup_wait_time": 15.56942367220627,
+        "dropoff_time": 17.08669233029608,
+        "wait_from_passenger_request": 0.6070835630098979,
+        "total_wait": 33.26319956551225
+    },
+    {
+        "driver_location": "4557517555",
+        "passenger_pickup": "42429373",
+        "passenger_destination": "42432305",
+        "pickup_wait_time": 2.205289419881322,
+        "dropoff_time": 3.45784644498543,
+        "wait_from_passenger_request": 0.13794042666753134,
+        "total_wait": 5.801076291534283
+    },
+    {
+        "driver_location": "43013724",
+        "passenger_pickup": "42456492",
+        "passenger_destination": "42431019",
+        "pickup_wait_time": 56.9318991836034,
+        "dropoff_time": 16.21070881821307,
+        "wait_from_passenger_request": 1.0709138711293538,
+        "total_wait": 74.21352187294582
+    },
+    {
+        "driver_location": "42532632",
+        "passenger_pickup": "42436155",
+        "passenger_destination": "42446991",
+        "pickup_wait_time": 25.36845740478123,
+        "dropoff_time": 8.869774946281511,
+        "wait_from_passenger_request": 1.0,
+        "total_wait": 35.23823235106274
+    },
+    {
+        "driver_location": "42430805",
+        "passenger_pickup": "42430249",
+        "passenger_destination": "42445888",
+        "pickup_wait_time": 1.014818660016708,
+        "dropoff_time": 3.392548550401056,
+        "wait_from_passenger_request": 0.13141785462697347,
+        "total_wait": 4.538785065044737
+    },
+    {
+        "driver_location": "42826070",
+        "passenger_pickup": "42469361",
+        "passenger_destination": "42428013",
+        "pickup_wait_time": 14.100388497414611,
+        "dropoff_time": 20.74628748392374,
+        "wait_from_passenger_request": 2.053791324297587,
+        "total_wait": 36.900467305635935
+    },
+    {
+        "driver_location": "42432679",
+        "passenger_pickup": "42441077",
+        "passenger_destination": "42445409",
+        "pickup_wait_time": 25.10854070709725,
+        "dropoff_time": 17.88764923783944,
+        "wait_from_passenger_request": 2.288710550467173,
+        "total_wait": 45.28490049540386
+    },
+    {
+        "driver_location": "42434965",
+        "passenger_pickup": "42438894",
+        "passenger_destination": "42445479",
+        "pickup_wait_time": 1.950347907497034,
+        "dropoff_time": 11.010074781702365,
+        "wait_from_passenger_request": 2.02589514652888,
+        "total_wait": 14.98631783572828
+    },
+    {
+        "driver_location": "42432305",
+        "passenger_pickup": "42439286",
+        "passenger_destination": "599041406",
+        "pickup_wait_time": 6.638123960239315,
+        "dropoff_time": 43.71801255444611,
+        "wait_from_passenger_request": 1.8010762929916382,
+        "total_wait": 52.15721280767706
+    },
+    {
+        "driver_location": "42476648",
+        "passenger_pickup": "42430519",
+        "passenger_destination": "1398594308",
+        "pickup_wait_time": 13.867165395850533,
+        "dropoff_time": 33.224671224736284,
+        "wait_from_passenger_request": 2.0,
+        "total_wait": 49.09183662058682
+    },
+    {
+        "driver_location": "1701651380",
+        "passenger_pickup": "42443403",
+        "passenger_destination": "42442269",
+        "pickup_wait_time": 38.413155870008815,
+        "dropoff_time": 17.80445282050799,
+        "wait_from_passenger_request": 2.2194247444470725,
+        "total_wait": 58.43703343496388
+    },
+    {
+        "driver_location": "42445888",
+        "passenger_pickup": "2087152389",
+        "passenger_destination": "42437670",
+        "pickup_wait_time": 24.672042654670562,
+        "dropoff_time": 27.31350447536059,
+        "wait_from_passenger_request": 0.5387850642204285,
+        "total_wait": 52.52433219425158
+    },
+    {
+        "driver_location": "42440940",
+        "passenger_pickup": "42500051",
+        "passenger_destination": "42437346",
+        "pickup_wait_time": 15.517840452424634,
+        "dropoff_time": 13.115318524037441,
+        "wait_from_passenger_request": 2.0,
+        "total_wait": 30.633158976462077
+    },
+    {
+        "driver_location": "42453607",
+        "passenger_pickup": "42449945",
+        "passenger_destination": "42446925",
+        "pickup_wait_time": 7.1567552232236995,
+        "dropoff_time": 3.1924077090611584,
+        "wait_from_passenger_request": 2.5619697133700052,
+        "total_wait": 12.911132645654863
+    },
+    {
+        "driver_location": "42440163",
+        "passenger_pickup": "42431805",
+        "passenger_destination": "42443329",
+        "pickup_wait_time": 6.683771439319014,
+        "dropoff_time": 10.301023039714146,
+        "wait_from_passenger_request": 0.638213304678599,
+        "total_wait": 17.623007783711756
+    },
+    {
+        "driver_location": "42446021",
+        "passenger_pickup": "42427426",
+        "passenger_destination": "4443775465",
+        "pickup_wait_time": 9.135348108915618,
+        "dropoff_time": 1.542842684491716,
+        "wait_from_passenger_request": 2.0510539770126344,
+        "total_wait": 12.72924477041997
+    },
+    {
+        "driver_location": "42431556",
+        "passenger_pickup": "4562863353",
+        "passenger_destination": "42427386",
+        "pickup_wait_time": 7.692599867507323,
+        "dropoff_time": 13.295307289591703,
+        "wait_from_passenger_request": 2.504276716709137,
+        "total_wait": 23.492183873808163
+    },
+    {
+        "driver_location": "42432068",
+        "passenger_pickup": "42429374",
+        "passenger_destination": "42435485",
+        "pickup_wait_time": 4.529170471151599,
+        "dropoff_time": 3.4767775427633936,
+        "wait_from_passenger_request": 4.3389619787534075,
+        "total_wait": 12.344909992668399
+    },
+    {
+        "driver_location": "42446925",
+        "passenger_pickup": "596776057",
+        "passenger_destination": "596776057",
+        "pickup_wait_time": 7.851624124569503,
+        "dropoff_time": 0,
+        "wait_from_passenger_request": 9.911132645606994,
+        "total_wait": 17.762756770176498
+    },
+    {
+        "driver_location": "4443775465",
+        "passenger_pickup": "42427236",
+        "passenger_destination": "42469972",
+        "pickup_wait_time": 9.58686410127904,
+        "dropoff_time": 27.184488545863612,
+        "wait_from_passenger_request": 11.72924477259318,
+        "total_wait": 48.500597419735826
+    },
+    {
+        "driver_location": "42435485",
+        "passenger_pickup": "4375208206",
+        "passenger_destination": "42437358",
+        "pickup_wait_time": 3.876350561635074,
+        "dropoff_time": 10.242660856685884,
+        "wait_from_passenger_request": 12.344909989833832,
+        "total_wait": 26.46392140815479
+    },
+    {
+        "driver_location": "624260787",
+        "passenger_pickup": "3786728678",
+        "passenger_destination": "42436971",
+        "pickup_wait_time": 18.272139879755965,
+        "dropoff_time": 20.70391112821314,
+        "wait_from_passenger_request": 13.395262980461121,
+        "total_wait": 52.371313988430224
+    },
+    {
+        "driver_location": "2582702612",
+        "passenger_pickup": "42439823",
+        "passenger_destination": "42446991",
+        "pickup_wait_time": 27.445053192985842,
+        "dropoff_time": 7.404282046336501,
+        "wait_from_passenger_request": 12.903857509295145,
+        "total_wait": 47.75319274861749
+    },
+    {
+        "driver_location": "42422258",
+        "passenger_pickup": "42425570",
+        "passenger_destination": "42449600",
+        "pickup_wait_time": 13.182313046177885,
+        "dropoff_time": 18.83776309319961,
+        "wait_from_passenger_request": 13.0,
+        "total_wait": 45.020076139377494
+    },
+    {
+        "driver_location": "246580346",
+        "passenger_pickup": "42424851",
+        "passenger_destination": "1692433935",
+        "pickup_wait_time": 10.150573337372435,
+        "dropoff_time": 13.74343149000717,
+        "wait_from_passenger_request": 13.149321647485097,
+        "total_wait": 37.0433264748647
+    },
+    {
+        "driver_location": "42446552",
+        "passenger_pickup": "42445748",
+        "passenger_destination": "42471707",
+        "pickup_wait_time": 11.695310962405156,
+        "dropoff_time": 22.27519054192235,
+        "wait_from_passenger_request": 13.266136260827382,
+        "total_wait": 47.23663776515488
+    },
+    {
+        "driver_location": "42443329",
+        "passenger_pickup": "42423674",
+        "passenger_destination": "42439836",
+        "pickup_wait_time": 2.4166211686167656,
+        "dropoff_time": 6.222526185171283,
+        "wait_from_passenger_request": 13.623007782300313,
+        "total_wait": 22.26215513608836
+    },
+    {
+        "driver_location": "596776057",
+        "passenger_pickup": "42439078",
+        "passenger_destination": "42445426",
+        "pickup_wait_time": 10.94276041687607,
+        "dropoff_time": 18.3955731901045,
+        "wait_from_passenger_request": 13.762756768862406,
+        "total_wait": 43.10109037584297
+    },
+    {
+        "driver_location": "42499494",
+        "passenger_pickup": "42434954",
+        "passenger_destination": "42518554",
+        "pickup_wait_time": 18.397847193371636,
+        "dropoff_time": 20.42457345129226,
+        "wait_from_passenger_request": 13.63408076763153,
+        "total_wait": 52.456501412295424
+    },
+    {
+        "driver_location": "42449893",
+        "passenger_pickup": "42437688",
+        "passenger_destination": "42438791",
+        "pickup_wait_time": 5.747146893099276,
+        "dropoff_time": 8.82886279732173,
+        "wait_from_passenger_request": 14.0,
+        "total_wait": 28.576009690421007
+    },
+    {
+        "driver_location": "42466196",
+        "passenger_pickup": "42436941",
+        "passenger_destination": "42844256",
+        "pickup_wait_time": 12.716443721613546,
+        "dropoff_time": 10.368389689233211,
+        "wait_from_passenger_request": 13.904166054725646,
+        "total_wait": 36.988999465572405
+    },
+    {
+        "driver_location": "42528857",
+        "passenger_pickup": "42442983",
+        "passenger_destination": "42448701",
+        "pickup_wait_time": 22.740727650589864,
+        "dropoff_time": 7.301891116616627,
+        "wait_from_passenger_request": 13.0,
+        "total_wait": 43.04261876720649
+    },
+    {
+        "driver_location": "42845788",
+        "passenger_pickup": "42435250",
+        "passenger_destination": "42513623",
+        "pickup_wait_time": 22.65459933574853,
+        "dropoff_time": 19.141856821097726,
+        "wait_from_passenger_request": 13.732690958182017,
+        "total_wait": 55.52914711502827
+    },
+    {
+        "driver_location": "42431154",
+        "passenger_pickup": "561042188",
+        "passenger_destination": "42433611",
+        "pickup_wait_time": 6.231653569863881,
+        "dropoff_time": 2.958689926475544,
+        "wait_from_passenger_request": 12.263199563821157,
+        "total_wait": 21.453543060160584
+    },
+    {
+        "driver_location": "42427386",
+        "passenger_pickup": "42429661",
+        "passenger_destination": "42428321",
+        "pickup_wait_time": 1.7974377211525738,
+        "dropoff_time": 5.977404938006281,
+        "wait_from_passenger_request": 12.492183876037597,
+        "total_wait": 20.26702653519645
+    },
+    {
+        "driver_location": "42436484",
+        "passenger_pickup": "42423674",
+        "passenger_destination": "42439823",
+        "pickup_wait_time": 4.006913037303343,
+        "dropoff_time": 7.313335370178841,
+        "wait_from_passenger_request": 13.0,
+        "total_wait": 24.320248407482183
+    },
+    {
+        "driver_location": "42439836",
+        "passenger_pickup": "42516607",
+        "passenger_destination": "42436746",
+        "pickup_wait_time": 15.166546569311494,
+        "dropoff_time": 12.515064328066012,
+        "wait_from_passenger_request": 13.262155135472616,
+        "total_wait": 40.94376603285012
+    },
+    {
+        "driver_location": "42443810",
+        "passenger_pickup": "42439840",
+        "passenger_destination": "42438961",
+        "pickup_wait_time": 4.211364726790277,
+        "dropoff_time": 12.035561445553782,
+        "wait_from_passenger_request": 12.700955696900685,
+        "total_wait": 28.947881869244746
+    },
+    {
+        "driver_location": "42437058",
+        "passenger_pickup": "42431656",
+        "passenger_destination": "42436308",
+        "pickup_wait_time": 8.751049611953777,
+        "dropoff_time": 13.30257746106441,
+        "wait_from_passenger_request": 13.0,
+        "total_wait": 35.053627073018184
+    },
+    {
+        "driver_location": "42437358",
+        "passenger_pickup": "42435283",
+        "passenger_destination": "2395270098",
+        "pickup_wait_time": 6.1037537402142314,
+        "dropoff_time": 11.530887523653062,
+        "wait_from_passenger_request": 13.46392140785853,
+        "total_wait": 31.098562671725823
+    },
+    {
+        "driver_location": "42446991",
+        "passenger_pickup": "42476614",
+        "passenger_destination": "4443775464",
+        "pickup_wait_time": 14.795506421634089,
+        "dropoff_time": 16.333311347476442,
+        "wait_from_passenger_request": 13.238232350349426,
+        "total_wait": 44.36705011945996
+    },
+    {
+        "driver_location": "42437346",
+        "passenger_pickup": "42446987",
+        "passenger_destination": "595786268",
+        "pickup_wait_time": 9.041477824375516,
+        "dropoff_time": 17.401340118434693,
+        "wait_from_passenger_request": 13.633158977826437,
+        "total_wait": 40.07597692063665
+    },
+    {
+        "driver_location": "42428013",
+        "passenger_pickup": "42429664",
+        "passenger_destination": "42433330",
+        "pickup_wait_time": 13.591769174264556,
+        "dropoff_time": 7.856247627668039,
+        "wait_from_passenger_request": 15.900467308362325,
+        "total_wait": 37.34848411029492
+    },
+    {
+        "driver_location": "42428321",
+        "passenger_pickup": "42442842",
+        "passenger_destination": "42432744",
+        "pickup_wait_time": 10.104531082175683,
+        "dropoff_time": 18.666230202995802,
+        "wait_from_passenger_request": 15.26702653169632,
+        "total_wait": 44.037787816867805
+    },
+    {
+        "driver_location": "42433611",
+        "passenger_pickup": "42435610",
+        "passenger_destination": "42430358",
+        "pickup_wait_time": 3.3633807854831463,
+        "dropoff_time": 5.484941529215041,
+        "wait_from_passenger_request": 16.453543063004812,
+        "total_wait": 25.301865377703
+    },
+    {
+        "driver_location": "589100228",
+        "passenger_pickup": "42432178",
+        "passenger_destination": "42436475",
+        "pickup_wait_time": 6.230431061192599,
+        "dropoff_time": 12.397256246234925,
+        "wait_from_passenger_request": 16.0,
+        "total_wait": 34.62768730742752
+    },
+    {
+        "driver_location": "42438791",
+        "passenger_pickup": "42428308",
+        "passenger_destination": "42430796",
+        "pickup_wait_time": 4.800072748315668,
+        "dropoff_time": 7.275307001729635,
+        "wait_from_passenger_request": 15.576009690761566,
+        "total_wait": 27.65138944080687
+    },
+    {
+        "driver_location": "276060683",
+        "passenger_pickup": "596775930",
+        "passenger_destination": "1701651380",
+        "pickup_wait_time": 18.429825708234084,
+        "dropoff_time": 37.08401590194099,
+        "wait_from_passenger_request": 15.77489389181137,
+        "total_wait": 71.28873550198644
+    },
+    {
+        "driver_location": "42439823",
+        "passenger_pickup": "1919595912",
+        "passenger_destination": "42428441",
+        "pickup_wait_time": 5.8076874210831,
+        "dropoff_time": 2.972873816239914,
+        "wait_from_passenger_request": 16.320248409112295,
+        "total_wait": 25.10080964643531
+    },
+    {
+        "driver_location": "42445409",
+        "passenger_pickup": "42439191",
+        "passenger_destination": "1773084410",
+        "pickup_wait_time": 4.062651817759668,
+        "dropoff_time": 4.673246917576897,
+        "wait_from_passenger_request": 18.284900494416554,
+        "total_wait": 27.02079922975312
+    },
+    {
+        "driver_location": "1692433935",
+        "passenger_pickup": "42430257",
+        "passenger_destination": "42444414",
+        "pickup_wait_time": 2.461869288671856,
+        "dropoff_time": 8.286459967787302,
+        "wait_from_passenger_request": 19.043326473236085,
+        "total_wait": 29.791655729695243
+    },
+    {
+        "driver_location": "42430358",
+        "passenger_pickup": "596776083",
+        "passenger_destination": "42457728",
+        "pickup_wait_time": 5.329826505332352,
+        "dropoff_time": 11.71802686484544,
+        "wait_from_passenger_request": 21.301865379015606,
+        "total_wait": 38.3497187491934
+    },
+    {
+        "driver_location": "42438961",
+        "passenger_pickup": "42433573",
+        "passenger_destination": "42432063",
+        "pickup_wait_time": 16.520914958214593,
+        "dropoff_time": 3.8085401060891284,
+        "wait_from_passenger_request": 20.947881869475047,
+        "total_wait": 41.27733693377877
+    },
+    {
+        "driver_location": "42844256",
+        "passenger_pickup": "2061592973",
+        "passenger_destination": "42449098",
+        "pickup_wait_time": 12.707172803721459,
+        "dropoff_time": 8.060643195435956,
+        "wait_from_passenger_request": 22.98899946610133,
+        "total_wait": 43.75681546525874
+    },
+    {
+        "driver_location": "1398594308",
+        "passenger_pickup": "42439181",
+        "passenger_destination": "42430274",
+        "pickup_wait_time": 25.589667719164403,
+        "dropoff_time": 4.387366151225136,
+        "wait_from_passenger_request": 22.091836619377137,
+        "total_wait": 52.06887048976668
+    },
+    {
+        "driver_location": "2395270098",
+        "passenger_pickup": "42456986",
+        "passenger_destination": "42445896",
+        "pickup_wait_time": 21.365938407777826,
+        "dropoff_time": 6.541152454048832,
+        "wait_from_passenger_request": 22.09856267372767,
+        "total_wait": 50.00565353555433
+    },
+    {
+        "driver_location": "42428441",
+        "passenger_pickup": "42430861",
+        "passenger_destination": "42440290",
+        "pickup_wait_time": 2.6937013887659935,
+        "dropoff_time": 6.389228505609707,
+        "wait_from_passenger_request": 23.10080964565277,
+        "total_wait": 32.18373954002847
+    },
+    {
+        "driver_location": "42430571",
+        "passenger_pickup": "42502927",
+        "passenger_destination": "42428441",
+        "pickup_wait_time": 11.901223861868855,
+        "dropoff_time": 11.869214608628123,
+        "wait_from_passenger_request": 23.186379178365073,
+        "total_wait": 46.95681764886205
+    },
+    {
+        "driver_location": "42430796",
+        "passenger_pickup": "596776095",
+        "passenger_destination": "42452067",
+        "pickup_wait_time": 12.236505934361803,
+        "dropoff_time": 14.516551218537915,
+        "wait_from_passenger_request": 22.651389443874358,
+        "total_wait": 49.40444659677408
+    },
+    {
+        "driver_location": "42449600",
+        "passenger_pickup": "42437305",
+        "passenger_destination": "42436575",
+        "pickup_wait_time": 15.212260924014318,
+        "dropoff_time": 11.053969817312105,
+        "wait_from_passenger_request": 23.020076139767966,
+        "total_wait": 49.28630688109439
+    },
+    {
+        "driver_location": "1773084410",
+        "passenger_pickup": "42487588",
+        "passenger_destination": "2087152389",
+        "pickup_wait_time": 14.440346580318636,
+        "dropoff_time": 33.8268370044803,
+        "wait_from_passenger_request": 22.020799227555592,
+        "total_wait": 70.28798281235453
+    },
+    {
+        "driver_location": "599041406",
+        "passenger_pickup": "42443027",
+        "passenger_destination": "42490236",
+        "pickup_wait_time": 38.85407516739875,
+        "dropoff_time": 31.586526630611253,
+        "wait_from_passenger_request": 22.157212809721628,
+        "total_wait": 92.59781460773162
+    },
+    {
+        "driver_location": "42436308",
+        "passenger_pickup": "42445291",
+        "passenger_destination": "42443811",
+        "pickup_wait_time": 1.9670568661384618,
+        "dropoff_time": 11.843809010453304,
+        "wait_from_passenger_request": 23.05362706979116,
+        "total_wait": 36.864492946382924
+    },
+    {
+        "driver_location": "42469972",
+        "passenger_pickup": "42439323",
+        "passenger_destination": "42434072",
+        "pickup_wait_time": 30.435502755242062,
+        "dropoff_time": 6.760688264514234,
+        "wait_from_passenger_request": 23.500597421328226,
+        "total_wait": 60.69678844108452
+    },
+    {
+        "driver_location": "42437670",
+        "passenger_pickup": "42445378",
+        "passenger_destination": "42477109",
+        "pickup_wait_time": 4.686713870161783,
+        "dropoff_time": 25.742908521249166,
+        "wait_from_passenger_request": 23.524332197507224,
+        "total_wait": 53.95395458891817
+    },
+    {
+        "driver_location": "42444414",
+        "passenger_pickup": "596799866",
+        "passenger_destination": "42509273",
+        "pickup_wait_time": 16.353911776574513,
+        "dropoff_time": 19.03281309092421,
+        "wait_from_passenger_request": 23.79165572722753,
+        "total_wait": 59.17838059472626
+    },
+    {
+        "driver_location": "42471707",
+        "passenger_pickup": "42453902",
+        "passenger_destination": "42428313",
+        "pickup_wait_time": 8.606822177802524,
+        "dropoff_time": 14.259466704720467,
+        "wait_from_passenger_request": 24.236637763182323,
+        "total_wait": 47.10292664570531
+    },
+    {
+        "driver_location": "42448701",
+        "passenger_pickup": "42436484",
+        "passenger_destination": "42427797",
+        "pickup_wait_time": 7.782374832867743,
+        "dropoff_time": 7.673445725123334,
+        "wait_from_passenger_request": 25.04261876742045,
+        "total_wait": 40.498439325411525
+    },
+    {
+        "driver_location": "42433330",
+        "passenger_pickup": "42455181",
+        "passenger_destination": "42455039",
+        "pickup_wait_time": 6.527913422390801,
+        "dropoff_time": 2.097828792038034,
+        "wait_from_passenger_request": 24.348484110832214,
+        "total_wait": 32.97422632526105
+    },
+    {
+        "driver_location": "42436971",
+        "passenger_pickup": "42449945",
+        "passenger_destination": "42440009",
+        "pickup_wait_time": 8.241144606081688,
+        "dropoff_time": 4.090495921510355,
+        "wait_from_passenger_request": 24.371313989162445,
+        "total_wait": 36.70295451675449
+    },
+    {
+        "driver_location": "42436475",
+        "passenger_pickup": "42452040",
+        "passenger_destination": "42428183",
+        "pickup_wait_time": 12.33319023181896,
+        "dropoff_time": 5.2227293310947625,
+        "wait_from_passenger_request": 24.627687307198844,
+        "total_wait": 42.18360687011257
+    },
+    {
+        "driver_location": "42436746",
+        "passenger_pickup": "42443024",
+        "passenger_destination": "42432818",
+        "pickup_wait_time": 8.756626737037873,
+        "dropoff_time": 4.458351841640233,
+        "wait_from_passenger_request": 24.943766033649446,
+        "total_wait": 38.15874461232755
+    },
+    {
+        "driver_location": "42442269",
+        "passenger_pickup": "42430924",
+        "passenger_destination": "42431024",
+        "pickup_wait_time": 4.6969034422430935,
+        "dropoff_time": 16.106126627121526,
+        "wait_from_passenger_request": 25.437033434708912,
+        "total_wait": 46.24006350407353
+    },
+    {
+        "driver_location": "595786268",
+        "passenger_pickup": "42428308",
+        "passenger_destination": "42429340",
+        "pickup_wait_time": 17.98463468607014,
+        "dropoff_time": 8.129929864669661,
+        "wait_from_passenger_request": 26.075976920127868,
+        "total_wait": 52.19054147086767
+    },
+    {
+        "driver_location": "42440290",
+        "passenger_pickup": "42482202",
+        "passenger_destination": "42435663",
+        "pickup_wait_time": 12.157604899850647,
+        "dropoff_time": 18.735581660219303,
+        "wait_from_passenger_request": 25.18373954296112,
+        "total_wait": 56.07692610303107
+    },
+    {
+        "driver_location": "599041406",
+        "passenger_pickup": "42451604",
+        "passenger_destination": "42464435",
+        "pickup_wait_time": 38.494741513671755,
+        "dropoff_time": 23.806347680197582,
+        "wait_from_passenger_request": 28.0,
+        "total_wait": 90.30108919386933
+    },
+    {
+        "driver_location": "42518554",
+        "passenger_pickup": "4015418422",
+        "passenger_destination": "42445489",
+        "pickup_wait_time": 15.923529696332475,
+        "dropoff_time": 3.230319023197752,
+        "wait_from_passenger_request": 27.456501412391663,
+        "total_wait": 46.61035013192189
+    },
+    {
+        "driver_location": "42457728",
+        "passenger_pickup": "42442913",
+        "passenger_destination": "42430265",
+        "pickup_wait_time": 6.384005275032289,
+        "dropoff_time": 4.23826065031014,
+        "wait_from_passenger_request": 28.349718749523163,
+        "total_wait": 38.971984674865595
+    },
+    {
+        "driver_location": "4443775464",
+        "passenger_pickup": "42467823",
+        "passenger_destination": "42430138",
+        "pickup_wait_time": 17.704043110899757,
+        "dropoff_time": 12.58135564555063,
+        "wait_from_passenger_request": 27.367050119241078,
+        "total_wait": 57.65244887569146
+    },
+    {
+        "driver_location": "42428234",
+        "passenger_pickup": "3892037906",
+        "passenger_destination": "42436793",
+        "pickup_wait_time": 5.629537067771425,
+        "dropoff_time": 2.39771742492966,
+        "wait_from_passenger_request": 27.0,
+        "total_wait": 35.02725449270108
+    },
+    {
+        "driver_location": "42455039",
+        "passenger_pickup": "1815133244",
+        "passenger_destination": "42455695",
+        "pickup_wait_time": 11.730300460459546,
+        "dropoff_time": 7.062067998916072,
+        "wait_from_passenger_request": 26.974226327737174,
+        "total_wait": 45.766594787112794
+    },
+    {
+        "driver_location": "42432744",
+        "passenger_pickup": "42434352",
+        "passenger_destination": "42430857",
+        "pickup_wait_time": 16.491237112655384,
+        "dropoff_time": 1.633129785800952,
+        "wait_from_passenger_request": 26.037787814935047,
+        "total_wait": 44.16215471339139
+    },
+    {
+        "driver_location": "42443811",
+        "passenger_pickup": "42449893",
+        "passenger_destination": "246580758",
+        "pickup_wait_time": 5.3033146061817,
+        "dropoff_time": 6.273080285658197,
+        "wait_from_passenger_request": 27.864492944876353,
+        "total_wait": 39.44088783671625
+    },
+    {
+        "driver_location": "42432063",
+        "passenger_pickup": "42502658",
+        "passenger_destination": "42440453",
+        "pickup_wait_time": 10.31653187671068,
+        "dropoff_time": 18.710053617290605,
+        "wait_from_passenger_request": 27.277336935202282,
+        "total_wait": 56.30392242920357
+    },
+    {
+        "driver_location": "42513623",
+        "passenger_pickup": "42436396",
+        "passenger_destination": "3575033059",
+        "pickup_wait_time": 14.778092455418658,
+        "dropoff_time": 14.246856074550962,
+        "wait_from_passenger_request": 29.52914711634318,
+        "total_wait": 58.5540956463128
+    },
+    {
+        "driver_location": "42440009",
+        "passenger_pickup": "42443658",
+        "passenger_destination": "42432152",
+        "pickup_wait_time": 15.609055023930393,
+        "dropoff_time": 24.76901384408482,
+        "wait_from_passenger_request": 29.70295451482137,
+        "total_wait": 70.08102338283658
+    },
+    {
+        "driver_location": "42449098",
+        "passenger_pickup": "42428473",
+        "passenger_destination": "42833012",
+        "pickup_wait_time": 4.371960189802686,
+        "dropoff_time": 19.842933552152655,
+        "wait_from_passenger_request": 29.756815465291343,
+        "total_wait": 53.97170920724668
+    },
+    {
+        "driver_location": "42432818",
+        "passenger_pickup": "42430384",
+        "passenger_destination": "42437401",
+        "pickup_wait_time": 0.6517776076941181,
+        "dropoff_time": 13.195778003901511,
+        "wait_from_passenger_request": 30.15874461332957,
+        "total_wait": 44.0063002249252
+    },
+    {
+        "driver_location": "42427797",
+        "passenger_pickup": "42457319",
+        "passenger_destination": "42427764",
+        "pickup_wait_time": 5.24286143597073,
+        "dropoff_time": 9.440104263037771,
+        "wait_from_passenger_request": 30.49843932390213,
+        "total_wait": 45.18140502291063
+    },
+    {
+        "driver_location": "42436793",
+        "passenger_pickup": "42440721",
+        "passenger_destination": "599041406",
+        "pickup_wait_time": 2.565622240014054,
+        "dropoff_time": 40.403440603286,
+        "wait_from_passenger_request": 29.027254490057626,
+        "total_wait": 71.99631733335768
+    },
+    {
+        "driver_location": "42428441",
+        "passenger_pickup": "42436073",
+        "passenger_destination": "42430521",
+        "pickup_wait_time": 2.555131608318714,
+        "dropoff_time": 1.8887685930457858,
+        "wait_from_passenger_request": 30.95681765079498,
+        "total_wait": 35.40071785215948
+    },
+    {
+        "driver_location": "42430265",
+        "passenger_pickup": "42429999",
+        "passenger_destination": "1692433911",
+        "pickup_wait_time": 8.267591108801478,
+        "dropoff_time": 12.653065419907806,
+        "wait_from_passenger_request": 29.97198467652003,
+        "total_wait": 50.89264120522931
+    },
+    {
+        "driver_location": "599047142",
+        "passenger_pickup": "42437949",
+        "passenger_destination": "42434420",
+        "pickup_wait_time": 41.54332610714705,
+        "dropoff_time": 7.379598819222334,
+        "wait_from_passenger_request": 31.0,
+        "total_wait": 79.92292492636939
+    },
+    {
+        "driver_location": "42428183",
+        "passenger_pickup": "598227892",
+        "passenger_destination": "42482234",
+        "pickup_wait_time": 16.565622374158867,
+        "dropoff_time": 12.595354925134233,
+        "wait_from_passenger_request": 31.183606866995493,
+        "total_wait": 60.3445841662886
+    },
+    {
+        "driver_location": "42445896",
+        "passenger_pickup": "42432142",
+        "passenger_destination": "42442569",
+        "pickup_wait_time": 6.522880356073098,
+        "dropoff_time": 18.59739921367414,
+        "wait_from_passenger_request": 32.005653536319734,
+        "total_wait": 57.125933106066974
+    },
+    {
+        "driver_location": "42428313",
+        "passenger_pickup": "42430265",
+        "passenger_destination": "596775876",
+        "pickup_wait_time": 5.233278303395552,
+        "dropoff_time": 5.473533550385034,
+        "wait_from_passenger_request": 33.10292664368947,
+        "total_wait": 43.80973849747006
+    },
+    {
+        "driver_location": "42436575",
+        "passenger_pickup": "42446013",
+        "passenger_destination": "42428441",
+        "pickup_wait_time": 8.04751194252675,
+        "dropoff_time": 12.500565305918155,
+        "wait_from_passenger_request": 33.2863068819046,
+        "total_wait": 53.834384130349505
+    },
+    {
+        "driver_location": "42430521",
+        "passenger_pickup": "42445867",
+        "passenger_destination": "42427369",
+        "pickup_wait_time": 7.740270426643854,
+        "dropoff_time": 1.4578815558422462,
+        "wait_from_passenger_request": 32.40071785449982,
+        "total_wait": 41.59886983698592
+    },
+    {
+        "driver_location": "42452067",
+        "passenger_pickup": "42452048",
+        "passenger_destination": "42430347",
+        "pickup_wait_time": 1.761250239906906,
+        "dropoff_time": 8.611465268630027,
+        "wait_from_passenger_request": 31.404446597894033,
+        "total_wait": 41.777162106430964
+    },
+    {
+        "driver_location": "246580758",
+        "passenger_pickup": "42432082",
+        "passenger_destination": "42435646",
+        "pickup_wait_time": 7.266261282746161,
+        "dropoff_time": 8.00239042405006,
+        "wait_from_passenger_request": 31.440887836615243,
+        "total_wait": 46.709539543411466
+    },
+    {
+        "driver_location": "42450030",
+        "passenger_pickup": "42427236",
+        "passenger_destination": "588593353",
+        "pickup_wait_time": 19.928584081271104,
+        "dropoff_time": 2.7820151302627445,
+        "wait_from_passenger_request": 32.0,
+        "total_wait": 54.71059921153385
+    },
+    {
+        "driver_location": "42430274",
+        "passenger_pickup": "1918039901",
+        "passenger_destination": "42481702",
+        "pickup_wait_time": 5.022340517173495,
+        "dropoff_time": 19.417949089520505,
+        "wait_from_passenger_request": 32.068870488802595,
+        "total_wait": 56.5091600954966
+    },
+    {
+        "driver_location": "42445489",
+        "passenger_pickup": "42456060",
+        "passenger_destination": "42443807",
+        "pickup_wait_time": 15.220365076221864,
+        "dropoff_time": 6.854674407365303,
+        "wait_from_passenger_request": 34.610350131988525,
+        "total_wait": 56.685389615575694
+    },
+    {
+        "driver_location": "42430857",
+        "passenger_pickup": "42433272",
+        "passenger_destination": "42427369",
+        "pickup_wait_time": 1.6167351069085858,
+        "dropoff_time": 2.560794300457956,
+        "wait_from_passenger_request": 35.16215471426646,
+        "total_wait": 39.339684121633
+    },
+    {
+        "driver_location": "42455695",
+        "passenger_pickup": "42430274",
+        "passenger_destination": "42436701",
+        "pickup_wait_time": 9.138983498970424,
+        "dropoff_time": 4.911411100938234,
+        "wait_from_passenger_request": 35.76659478743871,
+        "total_wait": 49.81698938734737
+    },
+    {
+        "driver_location": "42477109",
+        "passenger_pickup": "42477256",
+        "passenger_destination": "42436914",
+        "pickup_wait_time": 9.745848773598796,
+        "dropoff_time": 24.81271708699024,
+        "wait_from_passenger_request": 35.953954589366916,
+        "total_wait": 70.51252044995596
+    },
+    {
+        "driver_location": "42437401",
+        "passenger_pickup": "42834825",
+        "passenger_destination": "42437626",
+        "pickup_wait_time": 37.40842935705122,
+        "dropoff_time": 35.604532860294974,
+        "wait_from_passenger_request": 34.00630022684733,
+        "total_wait": 107.01926244419353
+    },
+    {
+        "driver_location": "42429340",
+        "passenger_pickup": "42436088",
+        "passenger_destination": "42435668",
+        "pickup_wait_time": 15.783777400142835,
+        "dropoff_time": 8.887468111240091,
+        "wait_from_passenger_request": 32.19054147005081,
+        "total_wait": 56.86178698143374
+    },
+    {
+        "driver_location": "42427764",
+        "passenger_pickup": "42440326",
+        "passenger_destination": "42436340",
+        "pickup_wait_time": 6.9043331609754715,
+        "dropoff_time": 7.372872728540513,
+        "wait_from_passenger_request": 32.181405023733774,
+        "total_wait": 46.45861091324976
+    },
+    {
+        "driver_location": "42427369",
+        "passenger_pickup": "42444810",
+        "passenger_destination": "387180916",
+        "pickup_wait_time": 10.158404146366008,
+        "dropoff_time": 14.421417984396848,
+        "wait_from_passenger_request": 33.339684124787645,
+        "total_wait": 57.9195062555505
+    },
+    {
+        "driver_location": "42427369",
+        "passenger_pickup": "42438174",
+        "passenger_destination": "42439840",
+        "pickup_wait_time": 1.425658256556564,
+        "dropoff_time": 3.3911159146892764,
+        "wait_from_passenger_request": 32.598869836330415,
+        "total_wait": 37.415644007576255
+    },
+    {
+        "driver_location": "42430347",
+        "passenger_pickup": "42428332",
+        "passenger_destination": "42434270",
+        "pickup_wait_time": 2.57297541993351,
+        "dropoff_time": 6.498560888580771,
+        "wait_from_passenger_request": 33.77716210683187,
+        "total_wait": 42.84869841534615
+    },
+    {
+        "driver_location": "596775876",
+        "passenger_pickup": "42430673",
+        "passenger_destination": "42435684",
+        "pickup_wait_time": 5.377737657734611,
+        "dropoff_time": 3.0554347782674585,
+        "wait_from_passenger_request": 33.80973849693934,
+        "total_wait": 42.24291093294141
+    },
+    {
+        "driver_location": "42435663",
+        "passenger_pickup": "42436756",
+        "passenger_destination": "42440951",
+        "pickup_wait_time": 6.060237115567175,
+        "dropoff_time": 6.504211213051296,
+        "wait_from_passenger_request": 34.0769261042277,
+        "total_wait": 46.64137443284618
+    },
+    {
+        "driver_location": "42509273",
+        "passenger_pickup": "42427381",
+        "passenger_destination": "42434090",
+        "pickup_wait_time": 12.990038033531718,
+        "dropoff_time": 7.840659325958595,
+        "wait_from_passenger_request": 34.17838059663772,
+        "total_wait": 55.00907795612804
+    },
+    {
+        "driver_location": "42434072",
+        "passenger_pickup": "42453601",
+        "passenger_destination": "42437644",
+        "pickup_wait_time": 8.11642152202111,
+        "dropoff_time": 6.833726407224007,
+        "wait_from_passenger_request": 34.69678844213486,
+        "total_wait": 49.64693637137998
+    },
+    {
+        "driver_location": "42428034",
+        "passenger_pickup": "42430603",
+        "passenger_destination": "42430361",
+        "pickup_wait_time": 15.816412252401648,
+        "dropoff_time": 6.523088834306874,
+        "wait_from_passenger_request": 36.0,
+        "total_wait": 58.33950108670852
+    },
+    {
+        "driver_location": "42430138",
+        "passenger_pickup": "42527806",
+        "passenger_destination": "42429324",
+        "pickup_wait_time": 13.174072577322246,
+        "dropoff_time": 18.00391328720904,
+        "wait_from_passenger_request": 37.65244887669881,
+        "total_wait": 68.8304347412301
+    },
+    {
+        "driver_location": "42435646",
+        "passenger_pickup": "42430394",
+        "passenger_destination": "42430673",
+        "pickup_wait_time": 4.708766151245971,
+        "dropoff_time": 5.840672477571721,
+        "wait_from_passenger_request": 36.70953954458237,
+        "total_wait": 47.25897817340007
+    },
+    {
+        "driver_location": "42833012",
+        "passenger_pickup": "42531870",
+        "passenger_destination": "42437890",
+        "pickup_wait_time": 17.20015512628782,
+        "dropoff_time": 15.156972831671606,
+        "wait_from_passenger_request": 35.971709207693735,
+        "total_wait": 68.32883716565317
+    },
+    {
+        "driver_location": "1692433911",
+        "passenger_pickup": "1691133691",
+        "passenger_destination": "42454679",
+        "pickup_wait_time": 17.813921380878643,
+        "dropoff_time": 31.53774925917209,
+        "wait_from_passenger_request": 36.89264120260874,
+        "total_wait": 86.24431184265947
+    },
+    {
+        "driver_location": "1701651380",
+        "passenger_pickup": "42452610",
+        "passenger_destination": "42445369",
+        "pickup_wait_time": 42.351893681333,
+        "dropoff_time": 7.8084859695250515,
+        "wait_from_passenger_request": 36.28873550097148,
+        "total_wait": 86.44911515182953
+    },
+    {
+        "driver_location": "42440453",
+        "passenger_pickup": "42446800",
+        "passenger_destination": "596776132",
+        "pickup_wait_time": 12.107270987972989,
+        "dropoff_time": 18.92830663664647,
+        "wait_from_passenger_request": 37.303922430674234,
+        "total_wait": 68.3395000552937
+    },
+    {
+        "driver_location": "42435684",
+        "passenger_pickup": "42443329",
+        "passenger_destination": "42432706",
+        "pickup_wait_time": 3.658092263643744,
+        "dropoff_time": 4.393810969856418,
+        "wait_from_passenger_request": 38.24291093349457,
+        "total_wait": 46.29481416699473
+    },
+    {
+        "driver_location": "42436701",
+        "passenger_pickup": "42469489",
+        "passenger_destination": "42506300",
+        "pickup_wait_time": 16.699282836800105,
+        "dropoff_time": 1.9791915532646638,
+        "wait_from_passenger_request": 37.81698939005534,
+        "total_wait": 56.495463780120105
+    },
+    {
+        "driver_location": "42434270",
+        "passenger_pickup": "42434271",
+        "passenger_destination": "4207788765",
+        "pickup_wait_time": 0.913673126049642,
+        "dropoff_time": 14.630654790232315,
+        "wait_from_passenger_request": 36.84869841734568,
+        "total_wait": 52.39302633362764
+    },
+    {
+        "driver_location": "42435761",
+        "passenger_pickup": "599041406",
+        "passenger_destination": "42445011",
+        "pickup_wait_time": 40.79689167084815,
+        "dropoff_time": 42.93454864372674,
+        "wait_from_passenger_request": 36.0,
+        "total_wait": 119.73144031457488
+    },
+    {
+        "driver_location": "3575033059",
+        "passenger_pickup": "589100228",
+        "passenger_destination": "246580797",
+        "pickup_wait_time": 8.728643473481569,
+        "dropoff_time": 9.868910778018174,
+        "wait_from_passenger_request": 36.5540956457456,
+        "total_wait": 55.15164989724534
+    },
+    {
+        "driver_location": "42428441",
+        "passenger_pickup": "42736818",
+        "passenger_destination": "42436129",
+        "pickup_wait_time": 39.518700851254316,
+        "dropoff_time": 39.453536203207484,
+        "wait_from_passenger_request": 35.83438413143158,
+        "total_wait": 114.80662118589338
+    },
+    {
+        "driver_location": "2087152389",
+        "passenger_pickup": "42436492",
+        "passenger_destination": "596776017",
+        "pickup_wait_time": 20.236355276555905,
+        "dropoff_time": 3.2083681656814984,
+        "wait_from_passenger_request": 36.28798280954361,
+        "total_wait": 59.73270625178101
+    },
+    {
+        "driver_location": "42436340",
+        "passenger_pickup": "42434233",
+        "passenger_destination": "1701651380",
+        "pickup_wait_time": 7.10767338596346,
+        "dropoff_time": 39.60719069027022,
+        "wait_from_passenger_request": 36.458610916137694,
+        "total_wait": 83.17347499237138
+    },
+    {
+        "driver_location": "588593353",
+        "passenger_pickup": "42442889",
+        "passenger_destination": "42449942",
+        "pickup_wait_time": 10.772648780355116,
+        "dropoff_time": 3.209323009035966,
+        "wait_from_passenger_request": 36.71059921185176,
+        "total_wait": 50.69257100124284
+    },
+    {
+        "driver_location": "42442569",
+        "passenger_pickup": "42443347",
+        "passenger_destination": "276299050",
+        "pickup_wait_time": 5.179870570259344,
+        "dropoff_time": 17.817950679816022,
+        "wait_from_passenger_request": 36.12593310674031,
+        "total_wait": 59.12375435681568
+    },
+    {
+        "driver_location": "42440951",
+        "passenger_pickup": "42434439",
+        "passenger_destination": "42440012",
+        "pickup_wait_time": 4.931116065505727,
+        "dropoff_time": 3.445828548781344,
+        "wait_from_passenger_request": 36.64137442906698,
+        "total_wait": 45.01831904335405
+    },
+    {
+        "driver_location": "42481702",
+        "passenger_pickup": "1825841742",
+        "passenger_destination": "599044149",
+        "pickup_wait_time": 30.38780717182173,
+        "dropoff_time": 40.94090104545851,
+        "wait_from_passenger_request": 37.50916009346644,
+        "total_wait": 108.83786831074667
+    },
+    {
+        "driver_location": "42443807",
+        "passenger_pickup": "42430924",
+        "passenger_destination": "4443775465",
+        "pickup_wait_time": 7.975039715369543,
+        "dropoff_time": 9.087876697300631,
+        "wait_from_passenger_request": 37.685389614105226,
+        "total_wait": 54.748306026775396
+    },
+    {
+        "driver_location": "42430673",
+        "passenger_pickup": "1815133244",
+        "passenger_destination": "1773084405",
+        "pickup_wait_time": 3.0191657838606725,
+        "dropoff_time": 10.96610398897331,
+        "wait_from_passenger_request": 36.2589781721433,
+        "total_wait": 50.24424794497729
+    },
+    {
+        "driver_location": "42482234",
+        "passenger_pickup": "42449017",
+        "passenger_destination": "42432063",
+        "pickup_wait_time": 13.556615849452903,
+        "dropoff_time": 2.7325404915135416,
+        "wait_from_passenger_request": 35.34458416700363,
+        "total_wait": 51.633740507970074
+    },
+    {
+        "driver_location": "42432706",
+        "passenger_pickup": "42818139",
+        "passenger_destination": "42448593",
+        "pickup_wait_time": 12.720608119912537,
+        "dropoff_time": 19.385799370760328,
+        "wait_from_passenger_request": 36.29481416940689,
+        "total_wait": 68.40122166007976
+    },
+    {
+        "driver_location": "42437644",
+        "passenger_pickup": "42454701",
+        "passenger_destination": "106685872",
+        "pickup_wait_time": 9.40160150783618,
+        "dropoff_time": 14.719770208877346,
+        "wait_from_passenger_request": 34.646936368942264,
+        "total_wait": 58.76830808565579
+    },
+    {
+        "driver_location": "42435668",
+        "passenger_pickup": "42430677",
+        "passenger_destination": "42490911",
+        "pickup_wait_time": 2.094427059387312,
+        "dropoff_time": 23.24301226570552,
+        "wait_from_passenger_request": 38.8617869814237,
+        "total_wait": 64.19922630651652
+    },
+    {
+        "driver_location": "42432152",
+        "passenger_pickup": "4347550071",
+        "passenger_destination": "42444960",
+        "pickup_wait_time": 10.900326252026922,
+        "dropoff_time": 4.912057845680263,
+        "wait_from_passenger_request": 38.08102338314056,
+        "total_wait": 53.89340748084774
+    },
+    {
+        "driver_location": "42434090",
+        "passenger_pickup": "42519250",
+        "passenger_destination": "42818120",
+        "pickup_wait_time": 19.70477559308421,
+        "dropoff_time": 19.336283971304074,
+        "wait_from_passenger_request": 39.009077954292295,
+        "total_wait": 78.05013751868057
+    },
+    {
+        "driver_location": "42440012",
+        "passenger_pickup": "42437067",
+        "passenger_destination": "42430338",
+        "pickup_wait_time": 12.951469241125672,
+        "dropoff_time": 10.98999691525929,
+        "wait_from_passenger_request": 39.0183190425237,
+        "total_wait": 62.95978519890866
+    },
+    {
+        "driver_location": "387180916",
+        "passenger_pickup": "42428303",
+        "passenger_destination": "42430356",
+        "pickup_wait_time": 6.585980014537265,
+        "dropoff_time": 1.3883473937348518,
+        "wait_from_passenger_request": 39.91950625578563,
+        "total_wait": 47.893833664057745
+    },
+    {
+        "driver_location": "42445174",
+        "passenger_pickup": "486868138",
+        "passenger_destination": "4557517555",
+        "pickup_wait_time": 6.05628945991845,
+        "dropoff_time": 7.955247352361724,
+        "wait_from_passenger_request": 40.0,
+        "total_wait": 54.01153681228017
+    },
+    {
+        "driver_location": "4207788765",
+        "passenger_pickup": "42468479",
+        "passenger_destination": "42447009",
+        "pickup_wait_time": 4.098503604178968,
+        "dropoff_time": 19.306340699713434,
+        "wait_from_passenger_request": 40.39302633603414,
+        "total_wait": 63.79787063992654
+    },
+    {
+        "driver_location": "42430361",
+        "passenger_pickup": "42445914",
+        "passenger_destination": "42427915",
+        "pickup_wait_time": 2.984494781963154,
+        "dropoff_time": 8.43644039363703,
+        "wait_from_passenger_request": 39.33950108687083,
+        "total_wait": 50.76043626247102
+    },
+    {
+        "driver_location": "599041406",
+        "passenger_pickup": "42471145",
+        "passenger_destination": "42448578",
+        "pickup_wait_time": 34.2815804727345,
+        "dropoff_time": 12.334373033126576,
+        "wait_from_passenger_request": 39.9963173309962,
+        "total_wait": 86.61227083685728
+    },
+    {
+        "driver_location": "42449942",
+        "passenger_pickup": "42450030",
+        "passenger_destination": "42443671",
+        "pickup_wait_time": 8.280676716480277,
+        "dropoff_time": 12.045873901017924,
+        "wait_from_passenger_request": 40.69257100025813,
+        "total_wait": 61.019121617756326
+    },
+    {
+        "driver_location": "42506300",
+        "passenger_pickup": "42446800",
+        "passenger_destination": "42439580",
+        "pickup_wait_time": 16.226109387729664,
+        "dropoff_time": 3.98915959070247,
+        "wait_from_passenger_request": 40.49546378056208,
+        "total_wait": 60.71073275899422
+    },
+    {
+        "driver_location": "246580797",
+        "passenger_pickup": "42438894",
+        "passenger_destination": "42435610",
+        "pickup_wait_time": 9.872010918663488,
+        "dropoff_time": 8.518174732925473,
+        "wait_from_passenger_request": 41.151649896303816,
+        "total_wait": 59.541835547892774
+    },
+    {
+        "driver_location": "42447144",
+        "passenger_pickup": "42430685",
+        "passenger_destination": "42444985",
+        "pickup_wait_time": 11.181421361842801,
+        "dropoff_time": 2.270384746966386,
+        "wait_from_passenger_request": 42.0,
+        "total_wait": 55.45180610880919
+    },
+    {
+        "driver_location": "1773084405",
+        "passenger_pickup": "42435802",
+        "passenger_destination": "42445666",
+        "pickup_wait_time": 21.56769711497596,
+        "dropoff_time": 16.719558971728954,
+        "wait_from_passenger_request": 42.24424794514974,
+        "total_wait": 80.53150403185465
+    },
+    {
+        "driver_location": "42421741",
+        "passenger_pickup": "42436439",
+        "passenger_destination": "42439527",
+        "pickup_wait_time": 15.352958308231413,
+        "dropoff_time": 4.366668908359002,
+        "wait_from_passenger_request": 42.0,
+        "total_wait": 61.71962721659041
+    },
+    {
+        "driver_location": "42436914",
+        "passenger_pickup": "42437078",
+        "passenger_destination": "42442459",
+        "pickup_wait_time": 14.274332100017931,
+        "dropoff_time": 17.093127802663982,
+        "wait_from_passenger_request": 42.512520452340446,
+        "total_wait": 73.87998035502235
+    },
+    {
+        "driver_location": "42430356",
+        "passenger_pickup": "42442960",
+        "passenger_destination": "42433062",
+        "pickup_wait_time": 3.6812070530085426,
+        "dropoff_time": 20.769778103927454,
+        "wait_from_passenger_request": 42.89383366505305,
+        "total_wait": 67.34481882198905
+    },
+    {
+        "driver_location": "42432063",
+        "passenger_pickup": "42437626",
+        "passenger_destination": "42445953",
+        "pickup_wait_time": 1.8836265437837998,
+        "dropoff_time": 9.970060466845153,
+        "wait_from_passenger_request": 43.633740508556365,
+        "total_wait": 55.48742751918532
+    },
+    {
+        "driver_location": "4443775465",
+        "passenger_pickup": "42447235",
+        "passenger_destination": "42443950",
+        "pickup_wait_time": 8.697857219547085,
+        "dropoff_time": 6.2614502275458435,
+        "wait_from_passenger_request": 41.7483060280482,
+        "total_wait": 56.70761347514113
+    },
+    {
+        "driver_location": "42490236",
+        "passenger_pickup": "42440022",
+        "passenger_destination": "42451766",
+        "pickup_wait_time": 26.830917791206303,
+        "dropoff_time": 8.983187627446673,
+        "wait_from_passenger_request": 42.597814607620236,
+        "total_wait": 78.41192002627321
+    },
+    {
+        "driver_location": "596776017",
+        "passenger_pickup": "42439001",
+        "passenger_destination": "42430361",
+        "pickup_wait_time": 11.428710596501698,
+        "dropoff_time": 10.005617517778312,
+        "wait_from_passenger_request": 43.73270625273387,
+        "total_wait": 65.16703436701388
+    },
+    {
+        "driver_location": "42434420",
+        "passenger_pickup": "42514554",
+        "passenger_destination": "42744875",
+        "pickup_wait_time": 13.460577412911578,
+        "dropoff_time": 35.399390190609815,
+        "wait_from_passenger_request": 43.92292492787043,
+        "total_wait": 92.78289253139182
+    },
+    {
+        "driver_location": "1701116526",
+        "passenger_pickup": "42471058",
+        "passenger_destination": "42860613",
+        "pickup_wait_time": 9.174039362414824,
+        "dropoff_time": 19.492175032667507,
+        "wait_from_passenger_request": 43.0,
+        "total_wait": 71.66621439508233
+    },
+    {
+        "driver_location": "42464435",
+        "passenger_pickup": "596776594",
+        "passenger_destination": "42440463",
+        "pickup_wait_time": 41.79973024682804,
+        "dropoff_time": 11.967047486139888,
+        "wait_from_passenger_request": 43.30108919541041,
+        "total_wait": 97.06786692837835
+    },
+    {
+        "driver_location": "42429324",
+        "passenger_pickup": "42442459",
+        "passenger_destination": "42514549",
+        "pickup_wait_time": 5.333386482743051,
+        "dropoff_time": 20.51915070911467,
+        "wait_from_passenger_request": 42.83043473958969,
+        "total_wait": 68.68297193144741
+    },
+    {
+        "driver_location": "276299050",
+        "passenger_pickup": "42428063",
+        "passenger_destination": "42429412",
+        "pickup_wait_time": 17.939161761247373,
+        "dropoff_time": 10.62569893761848,
+        "wait_from_passenger_request": 43.12375435431798,
+        "total_wait": 71.68861505318384
+    },
+    {
+        "driver_location": "42427915",
+        "passenger_pickup": "42439440",
+        "passenger_destination": "42436037",
+        "pickup_wait_time": 8.760586463307304,
+        "dropoff_time": 8.709216395324711,
+        "wait_from_passenger_request": 41.760436260700224,
+        "total_wait": 59.23023911933224
+    },
+    {
+        "driver_location": "42444960",
+        "passenger_pickup": "42430736",
+        "passenger_destination": "42439323",
+        "pickup_wait_time": 4.060503981145902,
+        "dropoff_time": 12.032745590249343,
+        "wait_from_passenger_request": 41.893407479921976,
+        "total_wait": 57.98665705131722
+    },
+    {
+        "driver_location": "1698103521",
+        "passenger_pickup": "42434226",
+        "passenger_destination": "599029182",
+        "pickup_wait_time": 27.679726124468317,
+        "dropoff_time": 38.76796602479772,
+        "wait_from_passenger_request": 42.0,
+        "total_wait": 108.44769214926603
+    },
+    {
+        "driver_location": "42437890",
+        "passenger_pickup": "42442881",
+        "passenger_destination": "1698103521",
+        "pickup_wait_time": 4.973409003158904,
+        "dropoff_time": 25.672262763465945,
+        "wait_from_passenger_request": 41.32883716821671,
+        "total_wait": 71.97450893484157
+    },
+    {
+        "driver_location": "4557517555",
+        "passenger_pickup": "42435310",
+        "passenger_destination": "42445025",
+        "pickup_wait_time": 13.199575466567921,
+        "dropoff_time": 6.479575466918317,
+        "wait_from_passenger_request": 42.01153680880864,
+        "total_wait": 61.690687742294884
+    },
+    {
+        "driver_location": "596776132",
+        "passenger_pickup": "42445924",
+        "passenger_destination": "42434145",
+        "pickup_wait_time": 6.619808466316778,
+        "dropoff_time": 8.250448681217723,
+        "wait_from_passenger_request": 41.339500053723654,
+        "total_wait": 56.20975720125816
+    },
+    {
+        "driver_location": "276318084",
+        "passenger_pickup": "42431614",
+        "passenger_destination": "42429633",
+        "pickup_wait_time": 18.033551986034837,
+        "dropoff_time": 1.854595028317914,
+        "wait_from_passenger_request": 42.0,
+        "total_wait": 61.888147014352754
+    },
+    {
+        "driver_location": "106685872",
+        "passenger_pickup": "42431614",
+        "passenger_destination": "42470385",
+        "pickup_wait_time": 32.51948971068573,
+        "dropoff_time": 13.184654820903312,
+        "wait_from_passenger_request": 40.76830808718999,
+        "total_wait": 86.47245261877904
+    },
+    {
+        "driver_location": "42444985",
+        "passenger_pickup": "42436336",
+        "passenger_destination": "42455335",
+        "pickup_wait_time": 8.803227690007901,
+        "dropoff_time": 32.94661728888287,
+        "wait_from_passenger_request": 41.451806112130484,
+        "total_wait": 83.20165109102126
+    },
+    {
+        "driver_location": "42445953",
+        "passenger_pickup": "42435707",
+        "passenger_destination": "42445950",
+        "pickup_wait_time": 3.301956791645479,
+        "dropoff_time": 3.1194716319238203,
+        "wait_from_passenger_request": 41.48742752075195,
+        "total_wait": 47.908855944321246
+    },
+    {
+        "driver_location": "42430338",
+        "passenger_pickup": "42524143",
+        "passenger_destination": "246649429",
+        "pickup_wait_time": 21.91828885225087,
+        "dropoff_time": 17.881878158791583,
+        "wait_from_passenger_request": 42.959785199165346,
+        "total_wait": 82.7599522102078
+    },
+    {
+        "driver_location": "42490911",
+        "passenger_pickup": "42443044",
+        "passenger_destination": "42446932",
+        "pickup_wait_time": 24.151469065565628,
+        "dropoff_time": 11.548023737443296,
+        "wait_from_passenger_request": 43.199226307868955,
+        "total_wait": 78.89871911087788
+    },
+    {
+        "driver_location": "42443950",
+        "passenger_pickup": "1698103521",
+        "passenger_destination": "1773121032",
+        "pickup_wait_time": 24.751147153397497,
+        "dropoff_time": 27.80743092992664,
+        "wait_from_passenger_request": 43.70761347611745,
+        "total_wait": 96.26619155944158
+    },
+    {
+        "driver_location": "42443671",
+        "passenger_pickup": "42445505",
+        "passenger_destination": "596775985",
+        "pickup_wait_time": 4.440097226870711,
+        "dropoff_time": 10.927701979862087,
+        "wait_from_passenger_request": 44.01912161509196,
+        "total_wait": 59.38692082182476
+    },
+    {
+        "driver_location": "42439580",
+        "passenger_pickup": "42495124",
+        "passenger_destination": "42492216",
+        "pickup_wait_time": 28.690115647889158,
+        "dropoff_time": 21.62290465778196,
+        "wait_from_passenger_request": 42.71073276201884,
+        "total_wait": 93.02375306768997
+    },
+    {
+        "driver_location": "42447009",
+        "passenger_pickup": "42853431",
+        "passenger_destination": "42430378",
+        "pickup_wait_time": 39.18274600609195,
+        "dropoff_time": 41.40735469828805,
+        "wait_from_passenger_request": 42.797870639959974,
+        "total_wait": 123.38797134433997
+    },
+    {
+        "driver_location": "42439527",
+        "passenger_pickup": "42450028",
+        "passenger_destination": "42450028",
+        "pickup_wait_time": 16.17928399964585,
+        "dropoff_time": 0,
+        "wait_from_passenger_request": 43.71962721745173,
+        "total_wait": 59.89891121709758
+    },
+    {
+        "driver_location": "42445950",
+        "passenger_pickup": "42432082",
+        "passenger_destination": "42449098",
+        "pickup_wait_time": 11.07418024471147,
+        "dropoff_time": 5.21385158143098,
+        "wait_from_passenger_request": 42.90885594685872,
+        "total_wait": 59.19688777300117
+    },
+    {
+        "driver_location": "42439323",
+        "passenger_pickup": "42422006",
+        "passenger_destination": "42454660",
+        "pickup_wait_time": 16.57629332323743,
+        "dropoff_time": 10.264908749052676,
+        "wait_from_passenger_request": 45.98665705124537,
+        "total_wait": 72.82785912353548
+    },
+    {
+        "driver_location": "42434145",
+        "passenger_pickup": "42429659",
+        "passenger_destination": "42443811",
+        "pickup_wait_time": 4.45243648691325,
+        "dropoff_time": 5.839285209264505,
+        "wait_from_passenger_request": 45.20975720087687,
+        "total_wait": 55.501478897054625
+    },
+    {
+        "driver_location": "42436037",
+        "passenger_pickup": "42439286",
+        "passenger_destination": "42446971",
+        "pickup_wait_time": 5.369310538342302,
+        "dropoff_time": 7.872602138271463,
+        "wait_from_passenger_request": 46.23023912111918,
+        "total_wait": 59.47215179773295
+    },
+    {
+        "driver_location": "42454679",
+        "passenger_pickup": "42436486",
+        "passenger_destination": "248607283",
+        "pickup_wait_time": 2.517803445511344,
+        "dropoff_time": 20.929835395584895,
+        "wait_from_passenger_request": 45.24431184132894,
+        "total_wait": 68.69195068242517
+    },
+    {
+        "driver_location": "42433062",
+        "passenger_pickup": "597844772",
+        "passenger_destination": "42436894",
+        "pickup_wait_time": 37.70870866522294,
+        "dropoff_time": 11.478984506725597,
+        "wait_from_passenger_request": 45.34481882254283,
+        "total_wait": 94.53251199449136
+    },
+    {
+        "driver_location": "42430361",
+        "passenger_pickup": "42443020",
+        "passenger_destination": "42449570",
+        "pickup_wait_time": 6.562332406219632,
+        "dropoff_time": 15.866535557257775,
+        "wait_from_passenger_request": 45.167034367720284,
+        "total_wait": 67.59590233119769
     }
 ]
