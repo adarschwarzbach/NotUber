@@ -1,10 +1,10 @@
 import json
 
 #  T1_results.json | T1_extra.txt | T2_results.json | T2_extra.txt | T3_results.json | T3_extra.txt
-with open('T1_results.json', 'r') as f:
+with open('T3_results.json', 'r') as f:
     T1_results = json.load(f)
 
-print('--T1 Results--')
+print('--T5 Results--')
 average_waiting_time = 0
 for result in T1_results:
     average_waiting_time += result['total_wait']

@@ -467,7 +467,7 @@ def simulate_t1(graph, passenger_queue, driver_queue):
         
 
     print('average stops', total_stops / 400 )
-    return matches, total_time_drivers_travel_to_passengers, total_in_car_time, wait_from_passenger_request, failute_count, trips_per_driver, 
+    return matches
 
 
 # When there is a choice, passenger will be assigned to closest availible driver
@@ -599,7 +599,7 @@ def simulate_t2(graph, passenger_queue, driver_queue):
         trips_per_driver.append(driver['number_of_trips'])
         
 
-    return matches, total_time_drivers_travel_to_passengers, total_in_car_time, wait_from_passenger_request, failute_count, trips_per_driver, 
+    return matches
 
 
 # When there is a choice, passenger will be assigned to the driver with the shortest time to drive to them
@@ -734,7 +734,7 @@ def simulate_t3(graph, passenger_queue, driver_queue):
         trips_per_driver.append(driver['number_of_trips'])
         
 
-    return matches, total_time_drivers_travel_to_passengers, total_in_car_time, wait_from_passenger_request, failute_count, trips_per_driver, 
+    return matches
 
 
 
@@ -883,11 +883,126 @@ def simulate_t4_b(passenger_queue, driver_queue):
     for driver in all_drivers:
         trips_per_driver.append(driver['number_of_trips'])
         
-    return matches, total_time_drivers_travel_to_passengers, total_in_car_time, wait_from_passenger_request, failute_count, trips_per_driver, 
+    return matches
 
 
 
+# Optimize for drivers and parrelelize the simulation
+def simulate_t5(graph, passenger_queue, driver_queue):
+    print('Running T5 simulation...')
+    matches = []  # Track every trip
+    total_time_drivers_travel_to_passengers = 0
+    total_in_car_time = 0
+    failure_count = 0
+    exited_drivers = []
 
+    passenger_queue = passenger_queue[-200:]
+
+    while passenger_queue: 
+
+        driver_available_time, driver_id, driver = heapq.heappop(driver_queue)
+
+        # Find the top 8 passengers available for this driver
+        top_passengers = []
+        while passenger_queue and len(top_passengers) < 8:
+            passenger_request_time, _, passenger = passenger_queue[-1]
+            if passenger_request_time <= driver_available_time:
+                top_passengers.append(passenger_queue.pop())
+            else:
+                break
+
+        # If there are no available passengers for this driver, select the top passenger
+        if not top_passengers:
+            time, _, passenger = passenger_queue.pop()
+            optimal_choice = (time, passenger)
+        else:
+        # Determine the best passenger for this driver
+            optimal_choice = None
+            min_travel_time = float('inf')
+            for passenger_request_time, _, passenger in top_passengers:
+                travel_time = dijkstra(graph, driver['node'], passenger['node'], driver['Hour'], driver['DayType'])
+                if travel_time < min_travel_time:
+                    min_travel_time = travel_time
+                    optimal_choice = (passenger_request_time, passenger)
+
+
+        if top_passengers:
+            for non_selected_passenger in top_passengers:
+                if non_selected_passenger[2] != optimal_choice[1]:
+                    passenger_queue.append(non_selected_passenger)
+
+        # Get the driver's current location and passenger's pickup location
+        driver_location = driver['node']
+        passenger_pickup = optimal_choice[1]['node']
+
+        # Calculate time from passenger making request to driver becoming available
+        wait_from_passenger_request = (driver_available_time - optimal_choice[0]) / 60
+
+        # Calculate time for driver to reach the optimal passenger's pickup location
+        travel_to_pickup_time = dijkstra(graph, driver_location, passenger_pickup, driver['Hour'], driver['DayType'])
+
+        if travel_to_pickup_time == float('inf'):
+            print('No path to passenger', optimal_choice[1], driver)
+            failure_count += 1
+            continue
+
+        # Calculate time for driver to drop passenger at the destination
+        passenger_destination = optimal_choice[1]['destination_node']
+        dropoff_time = dijkstra(graph, passenger_pickup, passenger_destination, optimal_choice[1]['Hour'],
+                                optimal_choice[1]['DayType'])
+
+        if dropoff_time == float('inf'):
+            print('No path to destination', optimal_choice[1], driver)
+            failure_count += 1
+            continue
+
+        # Calculate the driver's new available time
+        new_driver_time = driver_available_time + travel_to_pickup_time * 60 + dropoff_time * 60
+
+        # Update the driver's information
+        driver['node'] = passenger_destination
+        driver['Hour'] = optimal_choice[1]['Hour']
+        driver['DayType'] = optimal_choice[1]['DayType']
+        driver['Date/Time'] = new_driver_time
+        driver['number_of_trips'] += 1
+
+        # Add this trip to the matches list
+        matches.append({
+            'driver_location': driver_location,
+            'passenger_pickup': passenger_pickup,
+            'passenger_destination': passenger_destination,
+            'pickup_wait_time': travel_to_pickup_time,
+            'dropoff_time': dropoff_time,
+            'wait_from_passenger_request': wait_from_passenger_request,
+            'total_wait': travel_to_pickup_time + dropoff_time + wait_from_passenger_request,
+        })
+
+        # Simulate drivers stopping to drive
+        if driver['number_of_trips'] > 10 and len(driver_queue) > 20:
+            random_number = random.randint(1, 10)
+
+            # 1/10 chance of driver stopping after 10 trips
+            if random_number == 1:
+                heapq.heappush(driver_queue, (new_driver_time, driver_id, driver))
+            else:
+                exited_drivers.append(driver)
+        else:
+            # Re-insert the driver into the priority queue with the new available time
+            heapq.heappush(driver_queue, (new_driver_time, driver_id, driver))
+
+        total_time_drivers_travel_to_passengers += travel_to_pickup_time
+        total_in_car_time += dropoff_time
+
+        if len(passenger_queue) % 100 == 0:
+            print(len(passenger_queue), 'passengers in queue')
+            print(len(driver_queue), 'drivers in queue')
+
+    trips_per_driver = []
+    all_drivers = [driver for _, _, driver in driver_queue] + exited_drivers
+    for driver in all_drivers:
+        trips_per_driver.append(driver['number_of_trips'])
+
+    return matches
 
 
 
@@ -922,13 +1037,15 @@ def wrapper(given_simulation = 'T1', reprocess_data=False, rebuild_graph=False):
 
     # Run simulation
     if given_simulation == 'T1':
-        matches, total_time_drivers_travel_to_passengers, total_in_car_time, wait_from_passenger_request, failute_count, trips_per_driver = simulate_t1(graph, passenger_queue, driver_queue)
+        matches = simulate_t1(graph, passenger_queue, driver_queue)
     elif given_simulation == 'T2':
-        matches, total_time_drivers_travel_to_passengers, total_in_car_time, wait_from_passenger_request, failute_count, trips_per_driver = simulate_t2(graph, passenger_queue, driver_queue)
+        matches = simulate_t2(graph, passenger_queue, driver_queue)
     elif given_simulation == 'T3':
-        matches, total_time_drivers_travel_to_passengers, total_in_car_time, wait_from_passenger_request, failute_count, trips_per_driver = simulate_t3(graph, passenger_queue, driver_queue)
+        matches = simulate_t3(graph, passenger_queue, driver_queue)
     elif given_simulation == 'T4_B':
-        matches, total_time_drivers_travel_to_passengers, total_in_car_time, wait_from_passenger_request, failute_count, trips_per_driver = simulate_t4_b(passenger_queue, driver_queue)
+        matches= simulate_t4_b(passenger_queue, driver_queue)
+    elif given_simulation == 'T5':
+        matches = simulate_t5(graph, passenger_queue, driver_queue)
 
     # Write results to file
     if given_simulation == 'T1':
@@ -939,6 +1056,9 @@ def wrapper(given_simulation = 'T1', reprocess_data=False, rebuild_graph=False):
         results_file = 'T3_extra.json'
     elif given_simulation == 'T4_B':
         results_file = 'T4_B_extra.json'
+    
+    elif given_simulation == 'T5':
+        results_file = 'T5_results.json'
 
     with open(results_file, 'w') as f:
         json.dump(matches, f, indent=4)
@@ -946,4 +1066,4 @@ def wrapper(given_simulation = 'T1', reprocess_data=False, rebuild_graph=False):
 
 
 if __name__ == "__main__":
-    wrapper('T4_B', False, False)
+    wrapper('T5', False, False)
