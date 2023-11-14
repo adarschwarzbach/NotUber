@@ -1,6 +1,7 @@
 T1 results
 Average trip time:  34.996842746679306
 Number of trips over 100 mins:  89
+average stops 63.4375
 
 T2 results 
 Average trip time:  30.238035597753147
@@ -9,3 +10,6 @@ Number of trips over 100 mins:  64
 T3 Results
 Average trip time:  28.58269535600861
 Number of trips over 100 mins:  53
+
+T4
+average stops 4.84

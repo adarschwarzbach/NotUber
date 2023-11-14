@@ -187,6 +187,21 @@ def load_updated_data():
 
     return drivers_data, passengers_data
 
+
+# Load pre-processed data
+def load_tiny_graph_updated_data():
+    drivers_file = 'tiny_graph_drivers.json'
+    passengers_file = 'tiny_graph_passengers.json'
+
+    with open(drivers_file, 'r') as f:
+        drivers_data = json.load(f)
+
+    with open(passengers_file, 'r') as f:
+        passengers_data = json.load(f)
+
+    return drivers_data, passengers_data
+
+
 def load_graph():
     graph_file = 'graph.json'
     with open(graph_file, 'r') as f:
@@ -275,6 +290,82 @@ def dijkstra(graph, start, end, hour, day_type):
     return float('inf')
 
 
+
+
+def dijkstra_for_num_stops(graph, start, end, hour, day_type):
+    # Initialize the priority queue with the start node, zero time, and zero stops
+    queue = [(0, start, 0)]  # (cumulative_time, node, num_stops)
+    visited = set()
+    # Map to store shortest distance and number of stops to a node
+    distances = {node: (float('inf'), float('inf')) for node in graph}
+    distances[start] = (0, 0)
+
+    while queue:
+        # Get the node with the smallest cumulative time
+        cumulative_time, node, num_stops = heapq.heappop(queue)
+        if node not in visited:
+            visited.add(node)
+
+            # Reached destination
+            if node == end:
+                return cumulative_time, num_stops
+
+            for neighbor, edges in graph[node]['connections'].items():
+                # Filter edges based on day_type and hour
+                valid_edges = [edge for edge in edges if edge['day_type'] == day_type and edge['hour'] == hour]
+
+                if not valid_edges:
+                    continue
+
+                edge = valid_edges[0]
+                travel_time = edge['time'] * 60  # Convert hours to minutes
+                new_time = cumulative_time + travel_time
+                new_stops = num_stops + 1
+
+                if new_time < distances[neighbor][0]:
+                    distances[neighbor] = (new_time, new_stops)
+                    heapq.heappush(queue, (new_time, neighbor, new_stops))
+
+    # If the destination is not reachable, return infinity for both time and stops
+    return float('inf'), float('inf')
+
+
+# Djikstra's implementation for the tiny graph
+def tiny_graph_dijkstra(graph, start, end, hour, day_type):
+    queue = [(0, start, 0)]  # (cumulative_time, node, num_stops)
+    visited = set()
+    # Map to store shortest distance to a node along with number of stops
+    distances = {node: (float('inf'), float('inf')) for node in graph}
+    distances[start] = (0, 0)
+
+    while queue:
+        # Get the node with the smallest cumulative time
+        cumulative_time, node, num_stops = heapq.heappop(queue)
+        if node not in visited:
+            visited.add(node)
+
+            # Reached destination
+            if node == end:
+                return cumulative_time, num_stops
+
+            for neighbor in graph[node]['connections']:
+                # Select edge based on day_type and hour
+                edge = graph[node]['connections'][neighbor][f"{day_type}_{hour}"]
+                travel_time = edge * 60 * 7.42   # Convert hours to minutes and multiply by 7.42 as there are on average 7.42 fewer edges in a given trip
+                new_time = cumulative_time + travel_time
+                new_stops = num_stops + 1
+
+                if new_time < distances[neighbor][0]:
+                    distances[neighbor] = (new_time, new_stops)
+                    heapq.heappush(queue, (new_time, neighbor, new_stops))
+
+    # If the destination is not reachable, return infinity for both time and stops
+    return float('inf'), float('inf')
+
+
+
+
+
 # Baseline simulation
 def simulate_t1(graph, passenger_queue, driver_queue):
     print('Running T1 simulation...')
@@ -284,8 +375,10 @@ def simulate_t1(graph, passenger_queue, driver_queue):
     failute_count = 0
     exited_drivers = []
 
+    total_stops = 0
+
     #test on smaller queue
-    # passenger_queue = passenger_queue[1000:1200]
+    passenger_queue = passenger_queue[1000:1200]
     
     while passenger_queue:  # Continue until one of the queues is empty
         # Passenger and driver details
@@ -305,7 +398,7 @@ def simulate_t1(graph, passenger_queue, driver_queue):
 
 
         # Calculate time for driver to reach passenger
-        travel_to_pickup_time = dijkstra(graph, driver_location, passenger_pickup, driver['Hour'], driver['DayType'])
+        travel_to_pickup_time, stops_a = dijkstra_for_num_stops(graph, driver_location, passenger_pickup, driver['Hour'], driver['DayType'])
         
         if travel_to_pickup_time == float('inf'):
             print('No path to passenger', passenger, driver)
@@ -315,7 +408,7 @@ def simulate_t1(graph, passenger_queue, driver_queue):
         
         # Calculate time for driver to drop passenger at the destination
         passenger_destination = passenger['destination_node']
-        dropoff_time = dijkstra(graph, passenger_pickup, passenger_destination, passenger['Hour'], passenger['DayType'])
+        dropoff_time, stops_b = dijkstra_for_num_stops(graph, passenger_pickup, passenger_destination, passenger['Hour'], passenger['DayType'])
 
         if dropoff_time == float('inf'):
             print('No path to destination', passenger, driver)
@@ -359,10 +452,12 @@ def simulate_t1(graph, passenger_queue, driver_queue):
         total_time_drivers_travel_to_passengers += travel_to_pickup_time
         total_in_car_time += dropoff_time
         
+        total_stops += stops_a + stops_b
 
         if len(passenger_queue) % 100 == 0:
             print(len(passenger_queue), 'passengers in queue')
             print(len(driver_queue), 'drivers in queue')
+            print(stops_a, stops_b)
 
 
     trips_per_driver = []
@@ -371,6 +466,7 @@ def simulate_t1(graph, passenger_queue, driver_queue):
         trips_per_driver.append(driver['number_of_trips'])
         
 
+    print('average stops', total_stops / 400 )
     return matches, total_time_drivers_travel_to_passengers, total_in_car_time, wait_from_passenger_request, failute_count, trips_per_driver, 
 
 
@@ -644,6 +740,151 @@ def simulate_t3(graph, passenger_queue, driver_queue):
 
 
 
+# Optimize T3: use approximate times with the tiny graph of clusters
+def simulate_t4_b(passenger_queue, driver_queue):
+    print('Running T4 B simulation...')
+
+    with open('graph.json', 'r') as f:
+        g = json.load(f)
+        print('g', len(g))
+    # load tiny_graph.json
+    with open('tiny_graph.json', 'r') as f:
+        tiny_graph = json.load(f)
+
+    matches = []  # Track every trip
+    total_time_drivers_travel_to_passengers = 0
+    total_in_car_time = 0
+    failute_count = 0
+    exited_drivers = []
+    total_stops = 0
+
+    # passenger_queue = passenger_queue[4900:5100]
+
+    
+    while passenger_queue:  # Continue until one of the queues is empty
+        # Passenger and driver details
+        passenger_request_time, _, passenger = passenger_queue.pop()  
+
+
+        available_drivers = []
+
+        while driver_queue and driver_queue[0][0] <= passenger_request_time:
+            available_drivers.append(heapq.heappop(driver_queue))
+
+        # Pop all available drivers whose availability time is less than or equal to the passenger request time
+        driver = None
+        given_travel_to_pickup_time = None
+        if available_drivers:
+            # print(len(available_drivers), 'drivers available')
+            driver_distances = []
+            for driver_time, id, d in available_drivers:
+
+                # Calculate the time it would take for the driver to reach the passenger
+                projected_travel_to_pickup_time, _ = tiny_graph_dijkstra(tiny_graph, d['cluster'], passenger['cluster'], d['Hour'], d['DayType'])
+                
+                driver_distances.append((projected_travel_to_pickup_time, driver_time, id, d))
+
+
+            driver_distances.sort()
+            # Select the driver with the shortest time to get there
+            shortest_travel_to_pickup_time, driver_time, id, driver = driver_distances[0]
+            given_travel_to_pickup_time = shortest_travel_to_pickup_time
+            
+            # Re-insert the other drivers into the priority queue
+            for d_time, id, d in available_drivers:
+                if d != driver:
+                    heapq.heappush(driver_queue, (d_time, id, d))
+
+        else:
+            # If no drivers are available yet, take the earliest available driver
+            driver_time, id, driver = heapq.heappop(driver_queue)
+
+        ###
+        # Get the driver's current location and passenger's pickup location
+        driver_location = driver['cluster']
+        passenger_pickup = passenger['cluster']
+        
+        # Calculate time from passenger making request to driver becoming available
+        wait_from_passenger_request = 0
+        if passenger_request_time < driver_time:
+            wait_from_passenger_request = (driver_time - passenger_request_time) / 60
+
+
+
+        # Calculate time for driver to reach passenger, unless we have already computed it
+        if given_travel_to_pickup_time is None:
+            travel_to_pickup_time, _ = tiny_graph_dijkstra(tiny_graph, driver_location, passenger_pickup, driver['Hour'], driver['DayType'])
+        else:
+            travel_to_pickup_time = given_travel_to_pickup_time
+        
+        if travel_to_pickup_time == float('inf'):
+            print('No path to passenger', passenger, driver)
+            failute_count += 1
+            continue
+
+        
+        # Calculate time for driver to drop passenger at the destination
+        passenger_destination = passenger['destination_cluster']
+        dropoff_time, stops_a = tiny_graph_dijkstra(tiny_graph, passenger_pickup, passenger_destination, passenger['Hour'], passenger['DayType'])
+
+        total_stops += stops_a
+        if dropoff_time == float('inf'):
+            print('No path to destination', passenger, driver)
+            failute_count += 1
+            continue
+
+        
+        # Calculate the driver's new available time
+        new_driver_time = driver_time + travel_to_pickup_time  * 60 + dropoff_time * 60
+        
+        # Update the driver's information
+        driver['cluster'] = passenger_destination
+        driver['Hour'] = passenger['Hour']
+        driver['DayType'] = passenger['DayType']
+        driver['Date/Time'] = new_driver_time
+        driver['number_of_trips'] += 1
+        
+        # Add this trip to the matches list
+        matches.append({
+            'driver_location': driver_location,
+            'passenger_pickup': passenger_pickup,
+            'passenger_destination': passenger_destination,
+            'pickup_wait_time': travel_to_pickup_time,
+            'dropoff_time': dropoff_time,
+            'wait_from_passenger_request': wait_from_passenger_request,
+            'total_wait': travel_to_pickup_time + dropoff_time + wait_from_passenger_request,
+        })
+        
+        # simulate drivers stopping to drive
+        if driver['number_of_trips'] > 10 and len(driver_queue) > 20:
+            random_number = random.randint(1, 10)
+
+            # 1/10 chance of driver stopping after 10 trips
+            if random_number == 1:
+                heapq.heappush(driver_queue, (new_driver_time, id, driver))
+            else:
+                exited_drivers.append(driver)
+        else:
+            # Re-insert the driver into the priority queue with the new available time
+            heapq.heappush(driver_queue, (new_driver_time, id, driver))
+        
+        total_time_drivers_travel_to_passengers += travel_to_pickup_time
+        total_in_car_time += dropoff_time
+        
+
+        if len(passenger_queue) % 100 == 0:
+            print(len(passenger_queue), 'passengers in queue')
+            print(len(driver_queue), 'drivers in queue')
+
+
+
+    trips_per_driver = []
+    all_drivers = [driver for _, _, driver in driver_queue] + exited_drivers
+    for driver in all_drivers:
+        trips_per_driver.append(driver['number_of_trips'])
+        
+    return matches, total_time_drivers_travel_to_passengers, total_in_car_time, wait_from_passenger_request, failute_count, trips_per_driver, 
+
 
 
 
@@ -671,7 +912,10 @@ def wrapper(given_simulation = 'T1', reprocess_data=False, rebuild_graph=False):
         simple_pre_processing(graph, drivers_data, passengers_data)
 
     # Load pre-processed data
-    drivers_data, passengers_data = load_updated_data()
+    if given_simulation == 'T4_B':
+          drivers_data, passengers_data = load_tiny_graph_updated_data()
+    else:
+        drivers_data, passengers_data = load_updated_data()
 
     # Construct queues
     passenger_queue, driver_queue = construct_queues(drivers_data, passengers_data)
@@ -681,16 +925,20 @@ def wrapper(given_simulation = 'T1', reprocess_data=False, rebuild_graph=False):
         matches, total_time_drivers_travel_to_passengers, total_in_car_time, wait_from_passenger_request, failute_count, trips_per_driver = simulate_t1(graph, passenger_queue, driver_queue)
     elif given_simulation == 'T2':
         matches, total_time_drivers_travel_to_passengers, total_in_car_time, wait_from_passenger_request, failute_count, trips_per_driver = simulate_t2(graph, passenger_queue, driver_queue)
-    else:
+    elif given_simulation == 'T3':
         matches, total_time_drivers_travel_to_passengers, total_in_car_time, wait_from_passenger_request, failute_count, trips_per_driver = simulate_t3(graph, passenger_queue, driver_queue)
+    elif given_simulation == 'T4_B':
+        matches, total_time_drivers_travel_to_passengers, total_in_car_time, wait_from_passenger_request, failute_count, trips_per_driver = simulate_t4_b(passenger_queue, driver_queue)
 
     # Write results to file
     if given_simulation == 'T1':
         results_file = 'T1_extra.json'
     elif given_simulation == 'T2':
         results_file = 'T2_extra.json'
-    else:
+    elif given_simulation == 'T3':
         results_file = 'T3_extra.json'
+    elif given_simulation == 'T4_B':
+        results_file = 'T4_B_extra.json'
 
     with open(results_file, 'w') as f:
         json.dump(matches, f, indent=4)
@@ -698,5 +946,4 @@ def wrapper(given_simulation = 'T1', reprocess_data=False, rebuild_graph=False):
 
 
 if __name__ == "__main__":
-    # wrapper('T1', False, False)
-    tiny_graph_pre_processing()
+    wrapper('T4_B', False, False)
