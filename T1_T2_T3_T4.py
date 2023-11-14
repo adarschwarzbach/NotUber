@@ -130,6 +130,50 @@ def simple_pre_processing(graph, drivers_data, passengers_data):
         json.dump(passengers_data, f, indent=4)
 
 
+def tiny_graph_pre_processing():
+    print('Finding nearest cluster for each driver...')
+    drivers_data, passengers_data = load_updated_data()
+    # load tiny_graph.json
+    with open('tiny_graph.json', 'r') as f:
+        graph = json.load(f)
+
+    # load updated_drivers.json and updated_passengers.json
+    with open('updated_drivers.json', 'r') as f:
+        drivers_data = json.load(f)
+    
+    with open('updated_passengers.json', 'r') as f:
+        passengers_data = json.load(f)
+
+    for driver in drivers_data:
+        for node in graph.keys():
+            if driver['node'] in graph[node]['members']:
+                driver['cluster'] = node
+                break
+
+    for passenger in passengers_data:
+        for node in graph.keys():
+            if passenger['node'] in graph[node]['members']:
+                passenger['cluster'] = node
+                break
+    
+    for passenger in passengers_data:
+        for node in graph.keys():
+            if passenger['destination_node'] in graph[node]['members']:
+                passenger['destination_cluster'] = node
+                break
+
+    
+    # write the tiny_graph_drivers and tiny_graph_passengers to file
+    with open('tiny_graph_drivers.json', 'w') as f:
+        json.dump(drivers_data, f, indent=4)
+
+    with open('tiny_graph_passengers.json', 'w') as f:
+        json.dump(passengers_data, f, indent=4)
+
+
+
+
+
 # Load pre-processed data
 def load_updated_data():
     drivers_file = 'updated_drivers.json'
@@ -606,8 +650,6 @@ def simulate_t3(graph, passenger_queue, driver_queue):
 
 
 
-
-
 # Compute dependencies and run simulation
 def wrapper(given_simulation = 'T1', reprocess_data=False, rebuild_graph=False):
 
@@ -656,4 +698,5 @@ def wrapper(given_simulation = 'T1', reprocess_data=False, rebuild_graph=False):
 
 
 if __name__ == "__main__":
-    wrapper('T1', False, False)
+    # wrapper('T1', False, False)
+    tiny_graph_pre_processing()
