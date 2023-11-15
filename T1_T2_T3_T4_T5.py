@@ -1056,11 +1056,10 @@ def simulate_t5(graph, passenger_queue, driver_queue):
     matches = []  # Track every trip
     total_time_drivers_travel_to_passengers = 0
     total_in_car_time = 0
-    failute_count = 0
     exited_drivers = []
     num_processes = multiprocessing.cpu_count()
 
-    # passenger_queue = passenger_queue[-50:]
+    passenger_queue = passenger_queue[-50:]
 
     
     while passenger_queue:  # Continue until one of the queues is empty
@@ -1069,29 +1068,38 @@ def simulate_t5(graph, passenger_queue, driver_queue):
         driver_available_time, driver_id, driver = heapq.heappop(driver_queue)
 
 
+        # simulate higher paying customer who does not want to wait
+        priority_customer = random.randint(1, 20) == 1
+
+        if not priority_customer:
         # passenger_request_time, _, passenger = passenger_queue.pop()  
-        availible_passengers = []
+            availible_passengers = []
 
-        while passenger_queue and passenger_queue[-1][0] >= driver_available_time and len(availible_passengers) < 8:
-            availible_passengers.append(passenger_queue.pop())
+            while passenger_queue and passenger_queue[-1][0] >= driver_available_time and len(availible_passengers) < 6:
+                availible_passengers.append(passenger_queue.pop())
 
-        if len(availible_passengers) == 0:
-            availible_passengers.append(passenger_queue.pop())
+            if len(availible_passengers) == 0:
+                availible_passengers.append(passenger_queue.pop())
 
-        with concurrent.futures.ThreadPoolExecutor(max_workers=num_processes) as executor:
-            # Parallelize the Dijkstra calculations for available drivers
-            results = list(executor.map(lambda p: calculate_trip_ratio(p, driver, graph), availible_passengers))
+            with concurrent.futures.ThreadPoolExecutor(max_workers=num_processes) as executor:
+                # Parallelize the Dijkstra calculations for available drivers
+                results = list(executor.map(lambda p: calculate_trip_ratio(p[2], driver['node'], driver, graph), availible_passengers))
 
-        
-        results.sort(reverse=True)
+            
+            results.sort(reverse=True)
 
-        _, travel_to_pickup_time, dropoff_time, optimal_passenger = results[0]
+            _, travel_to_pickup_time, dropoff_time, optimal_passenger = results[0]
 
-        availible_passengers.sort(key=lambda x: x[0], reverse=True)
+            availible_passengers.sort(key=lambda x: x[0], reverse=True)
 
-        for passenger_request_time, _, passenger in availible_passengers:
-            if passenger != optimal_passenger:
-                passenger_queue.append((passenger_request_time, _, passenger))
+            for passenger_request_time, _, passenger in availible_passengers:
+                if passenger != optimal_passenger:
+                    passenger_queue.append((passenger_request_time, _, passenger))
+
+        else:
+            _, _, optimal_passenger = passenger_queue.pop()
+            travel_to_pickup_time = dijkstra(graph, driver['node'], optimal_passenger['node'], driver['Hour'], driver['DayType'])
+            dropoff_time = dijkstra(graph, optimal_passenger['node'], optimal_passenger['destination_node'], driver['Hour'], driver['DayType'])
 
 
         wait_from_passenger_request = 0
@@ -1118,6 +1126,7 @@ def simulate_t5(graph, passenger_queue, driver_queue):
             'dropoff_time': dropoff_time,
             'wait_from_passenger_request': wait_from_passenger_request,
             'total_wait': travel_to_pickup_time + dropoff_time + wait_from_passenger_request,
+            'priority_customer': priority_customer
         })
         
         # simulate drivers stopping to drive
@@ -1340,7 +1349,7 @@ def wrapper(given_simulation = 'T1', reprocess_data=False, rebuild_graph=False):
         results_file = 'T4_B_extra.json'
     
     elif given_simulation == 'T5':
-        results_file = 'T5_results.json'
+        results_file = 'T5_extra.json'
 
     with open(results_file, 'w') as f:
         json.dump(matches, f, indent=4)
