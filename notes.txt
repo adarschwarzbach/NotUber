@@ -23,9 +23,9 @@ Average stops: 8.39
 
 T5 Results
 -Total
-Average trip time:  28.58269535600861
-Number of trips over 100 mins:  53
-Average driver profit:  5.224517219602349
+Average trip time:  30.710811423665003
+Number of trips over 100 mins:  74
+Average driver profit:  3.947549455861584
 
 
 - 200 drivers with 20 choices

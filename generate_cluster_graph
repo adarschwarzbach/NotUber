@@ -83,14 +83,19 @@ def assign_to_nearest_cluster(node, clusters):
 
     return assigned_cluster
 
-def assign_nodes_to_clusters(nodes, initial_cluster_centers):
-    # Initialize clusters
-    clusters = {i: {'center': center, 'members': set()} for i, center in enumerate(initial_cluster_centers)}
+def assign_nodes_to_clusters(nodes, initial_cluster_centers, graph):
+    clusters = {}
+    # Initialize clusters'
+    for c in initial_cluster_centers:
+        c_id = list(c.keys())[0]
+        c_vals = list(c.values())[0]
+        clusters[c_id] = {'center':c_vals}
+        clusters[c_id]['members'] = []
 
     # Assign each node to the nearest cluster center
     for node_id, node in nodes.items():
         assigned_cluster = assign_to_nearest_cluster(node, clusters)
-        clusters[assigned_cluster]['members'].add(node_id)
+        clusters[assigned_cluster]['members'].append(node_id)
 
     return clusters
 
@@ -216,6 +221,8 @@ def dijkstra(graph, start, end, hour, day_type):
     # If the destination is not reachable, return infinity
     return float('inf')
 
+
+# build connections from cluster center to all others
 def build_time_dependent_paths(graph, selected_nodes):
     day_types = ['weekday', 'weekend']
     hours = list(range(0,24, 8))  # 0 to 23 with a step of 8
@@ -245,9 +252,22 @@ def build_time_dependent_paths(graph, selected_nodes):
     return paths
 
 
+def build_clustered_graph(paths, clusters):
+    for cluster in clusters:
+        clusters[cluster]['connections'] = paths[cluster]
+    
+    return clusters
     
 
-def knn_wrapper():
+def build_centers_from_paths(paths, graph):
+    for node in paths.keys():
+        paths[node]['lat'] = graph[node]['coordinates']['lat']
+        paths[node]['lon'] = graph[node]['coordinates']['lon']
+    return paths
+
+
+
+def knn_wrapper(build_paths=False):
     # Load node data from your JSON file
     print('Loading graph data...')
     with open('graph.json', 'r') as file:
@@ -260,17 +280,34 @@ def knn_wrapper():
     print('Initializing cluster centers...')
     selected_nodes = initialize_cluster_centers(node_data)
 
-    print('Determing shortest path for each node...')
 
-    paths = build_time_dependent_paths(graph_data, selected_nodes)
+    if build_paths:
+        paths = build_time_dependent_paths(graph_data, selected_nodes)
 
-    paths_file = 'paths.json'
-    with open(paths_file, 'w') as f:
-        json.dump(paths, f, indent=4)
+        paths_file = 'paths.json'
+        with open(paths_file, 'w') as f:
+            json.dump(paths, f, indent=4)
 
-    # print('Running geospatial clustering...')
-    # initial_cluster_centers = [{'lat': node_data[node_id]['lat'], 'lon': node_data[node_id]['lon']} for node_id in selected_nodes]
-    # clusters = assign_nodes_to_clusters(node_data, initial_cluster_centers)
+    with open('paths.json', 'r') as f:
+        paths = json.load(f)
+
+    print('Running geospatial clustering...')
+    if not build_paths:
+        initial_cluster_centers = build_centers_from_paths(paths, graph_data)
+    else:
+        initial_cluster_centers = [{ node_id: {'lat': node_data[node_id]['lat'], 'lon': node_data[node_id]['lon']}} for node_id in selected_nodes]
+        
+    clusters = assign_nodes_to_clusters(node_data, initial_cluster_centers, graph_data)
+
+    print(clusters.keys())
+    print('Building new graph...')
+    clustered_graph = build_clustered_graph(paths, clusters)
+    print(clustered_graph )
+    
+    results_file = 'clustered_graph.json'
+    with open(results_file, 'w') as f:
+        json.dump(clustered_graph, f, indent=4)
+
 
     # cluster_connections = aggregate_cluster_connections(graph_data, clusters)
 
