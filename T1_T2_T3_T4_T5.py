@@ -6,6 +6,9 @@ from math import radians, cos, sin, asin, sqrt
 import heapq
 from datetime import datetime, timedelta
 import random
+import multiprocessing
+import concurrent.futures
+
 
 
 
@@ -887,92 +890,371 @@ def simulate_t4_b(passenger_queue, driver_queue):
 
 
 
-# Optimize for drivers and parrelelize the simulation
+# # Optimize for drivers and parrelelize the simulation
+# def simulate_t5(graph, passenger_queue, driver_queue):
+#     print('Running T5 simulation...')
+#     matches = []  # Track every trip
+#     total_time_drivers_travel_to_passengers = 0
+#     total_in_car_time = 0
+#     failure_count = 0
+#     exited_drivers = []
+
+#     passenger_queue = passenger_queue[-200:]
+
+#     while passenger_queue: 
+
+#         driver_available_time, driver_id, driver = heapq.heappop(driver_queue)
+
+#         # Find the top 8 passengers available for this driver
+#         top_passengers = []
+#         while passenger_queue and len(top_passengers) < 8:
+#             passenger_request_time, _, passenger = passenger_queue[-1]
+#             if passenger_request_time <= driver_available_time:
+#                 top_passengers.append(passenger_queue.pop())
+#             else:
+#                 break
+
+        
+#         travel_to_passenger = None
+#         given_trip_distance = None
+#         # If there are no available passengers for this driver, select the top passenger
+#         if not top_passengers:
+#             time, _, passenger = passenger_queue.pop()
+#             optimal_choice = (time, passenger)
+#         else:
+#         # Determine the best passenger for this driver
+#             optimal_choice = None
+#             optimal_score = float('-inf')
+#             for passenger_request_time, _, p in top_passengers:
+#                 travel_time = dijkstra(graph, driver['node'], p['node'], driver['Hour'], driver['DayType'])
+#                 trip_distance = dijkstra(graph, p['node'], p['destination_node'], driver['Hour'], driver['DayType'])
+                
+#                 # Heuristic: prioritize longer trips while considering pickup time
+#                 score = trip_distance / (travel_time + 1)
+#                 if score > optimal_score:
+#                     optimal_score = score
+#                     optimal_choice = (passenger_request_time, p)
+#                     travel_to_passenger = travel_time
+#                     given_trip_distance = trip_distance
+
+#         if top_passengers:
+#             for non_selected_passenger in top_passengers:
+#                 if non_selected_passenger[2] != optimal_choice[1]:
+#                     passenger_queue.append(non_selected_passenger)
+
+#         # Get the driver's current location and passenger's pickup location
+#         driver_location = driver['node']
+#         passenger_pickup = optimal_choice[1]['node']
+
+#         # Calculate time from passenger making request to driver becoming available
+#         wait_from_passenger_request = 0
+#         if optimal_choice[0] < driver_available_time:
+#             wait_from_passenger_request = (driver_available_time - optimal_choice[0]) / 60
+
+
+#         if travel_to_passenger is None:
+#             # Calculate time for driver to reach the optimal passenger's pickup location
+#             travel_to_pickup_time = dijkstra(graph, driver_location, passenger_pickup, driver['Hour'], driver['DayType'])
+
+#             if travel_to_pickup_time == float('inf'):
+#                 print('No path to passenger', optimal_choice[1], driver)
+#                 failure_count += 1
+#                 continue
+
+#             # Calculate time for driver to drop passenger at the destination
+#             passenger_destination = optimal_choice[1]['destination_node']
+#             dropoff_time = dijkstra(graph, passenger_pickup, passenger_destination, optimal_choice[1]['Hour'],
+#                                     optimal_choice[1]['DayType'])
+            
+#         else:
+#             passenger_destination = optimal_choice[1]['destination_node']
+#             travel_to_pickup_time = travel_to_passenger
+#             dropoff_time = given_trip_distance
+
+
+
+#         # Calculate the driver's new available time
+#         new_driver_time = driver_available_time + travel_to_pickup_time * 60 + dropoff_time * 60
+
+#         # Update the driver's information
+#         driver['node'] = passenger_destination
+#         driver['Hour'] = optimal_choice[1]['Hour']
+#         driver['DayType'] = optimal_choice[1]['DayType']
+#         driver['Date/Time'] = new_driver_time
+#         driver['number_of_trips'] += 1
+
+#         # Add this trip to the matches list
+#         matches.append({
+#             'driver_location': driver_location,
+#             'passenger_pickup': passenger_pickup,
+#             'passenger_destination': passenger_destination,
+#             'pickup_wait_time': travel_to_pickup_time,
+#             'dropoff_time': dropoff_time,
+#             'wait_from_passenger_request': wait_from_passenger_request,
+#             'total_wait': travel_to_pickup_time + dropoff_time + wait_from_passenger_request,
+#         })
+
+#         # Simulate drivers stopping to drive
+#         if driver['number_of_trips'] > 10 and len(driver_queue) > 20:
+#             random_number = random.randint(1, 10)
+
+#             # 1/10 chance of driver stopping after 10 trips
+#             if random_number == 1:
+#                 heapq.heappush(driver_queue, (new_driver_time, driver_id, driver))
+#             else:
+#                 exited_drivers.append(driver)
+#         else:
+#             # Re-insert the driver into the priority queue with the new available time
+#             heapq.heappush(driver_queue, (new_driver_time, driver_id, driver))
+
+#         total_time_drivers_travel_to_passengers += travel_to_pickup_time
+#         total_in_car_time += dropoff_time
+
+#         if len(passenger_queue) % 100 == 0:
+#             print(len(passenger_queue), 'passengers in queue')
+#             print(len(driver_queue), 'drivers in queue')
+
+#     trips_per_driver = []
+#     all_drivers = [driver for _, _, driver in driver_queue] + exited_drivers
+#     for driver in all_drivers:
+#         trips_per_driver.append(driver['number_of_trips'])
+
+#     return matches
+
+
+
+def calculate_driver_distances(driver, passenger_node, graph):
+    driver_time, id, d = driver
+
+    # Calculate the time it would take for the driver to reach the passenger
+    projected_travel_to_pickup_time = dijkstra(graph, d['node'], passenger_node, d['Hour'], d['DayType'])
+    
+    return (projected_travel_to_pickup_time, driver_time, id, d)
+
+
+# t5 I wrote from scratch
 def simulate_t5(graph, passenger_queue, driver_queue):
     print('Running T5 simulation...')
     matches = []  # Track every trip
     total_time_drivers_travel_to_passengers = 0
     total_in_car_time = 0
-    failure_count = 0
+    failute_count = 0
     exited_drivers = []
+    num_processes = multiprocessing.cpu_count()
 
-    passenger_queue = passenger_queue[-200:]
+    passenger_queue = passenger_queue[-400:]
 
-    while passenger_queue: 
+    
+    while passenger_queue:  # Continue until one of the queues is empty
+        # Passenger and driver details
 
         driver_available_time, driver_id, driver = heapq.heappop(driver_queue)
 
-        # Find the top 8 passengers available for this driver
-        top_passengers = []
-        while passenger_queue and len(top_passengers) < 8:
-            passenger_request_time, _, passenger = passenger_queue[-1]
-            if passenger_request_time <= driver_available_time:
-                top_passengers.append(passenger_queue.pop())
-            else:
-                break
 
-        # If there are no available passengers for this driver, select the top passenger
-        if not top_passengers:
-            time, _, passenger = passenger_queue.pop()
-            optimal_choice = (time, passenger)
-        else:
-        # Determine the best passenger for this driver
-            optimal_choice = None
-            optimal_score = float('-inf')
-            for passenger_request_time, _, p in top_passengers:
-                travel_time = dijkstra(graph, driver['node'], p['node'], driver['Hour'], driver['DayType'])
-                trip_distance = dijkstra(graph, p['node'], p['destination_node'], driver['Hour'], driver['DayType'])
-                
-                # Heuristic: prioritize longer trips while considering pickup time
-                score = trip_distance / (travel_time + 1)
-                if score > optimal_score:
-                    optimal_score = score
-                    optimal_choice = (passenger_request_time, p)
+        # passenger_request_time, _, passenger = passenger_queue.pop()  
+        availible_passengers = []
+
+        while passenger_queue and passenger_queue[-1][0] >= driver_available_time and len(availible_passengers) < 8:
+            availible_passengers.append(passenger_queue.pop())
+
+        if len(availible_passengers) == 0:
+            availible_passengers.append(passenger_queue.pop())
+
+        with concurrent.futures.ThreadPoolExecutor(max_workers=num_processes) as executor:
+            # Parallelize the Dijkstra calculations for available drivers
+            passenger_distances = list(executor.map(calculate_driver_distances, availible_passengers, [driver['node']] * len(availible_passengers), [graph] * len(availible_passengers)))
+
+        
+        passenger_distances.sort()
+
+        travel_to_pickup_time, _, _, optimal_passenger = passenger_distances[0]
 
 
-        if top_passengers:
-            for non_selected_passenger in top_passengers:
-                if non_selected_passenger[2] != optimal_choice[1]:
-                    passenger_queue.append(non_selected_passenger)
 
-        # Get the driver's current location and passenger's pickup location
-        driver_location = driver['node']
-        passenger_pickup = optimal_choice[1]['node']
+        # travel_to_pickup_time = float('inf')
+        # optimal_passenger = None
+        # for passenger_request_time, _, passenger in availible_passengers:
+        #     curr_travel_to_pickup_time = dijkstra(graph, driver['node'], passenger['node'], driver['Hour'], driver['DayType'])
+        #     if travel_to_pickup_time > curr_travel_to_pickup_time:
+        #         travel_to_pickup_time = curr_travel_to_pickup_time
+        #         optimal_passenger = passenger
 
-        # Calculate time from passenger making request to driver becoming available
+        availible_passengers.sort(key=lambda x: x[0], reverse=True)
+
+        for passenger_request_time, _, passenger in availible_passengers:
+            if passenger != optimal_passenger:
+                passenger_queue.append((passenger_request_time, _, passenger))
+
+
         wait_from_passenger_request = 0
-        if optimal_choice[0] < driver_available_time:
-            wait_from_passenger_request = (driver_available_time - optimal_choice[0]) / 60
-
-
-        # Calculate time for driver to reach the optimal passenger's pickup location
-        travel_to_pickup_time = dijkstra(graph, driver_location, passenger_pickup, driver['Hour'], driver['DayType'])
-
-        if travel_to_pickup_time == float('inf'):
-            print('No path to passenger', optimal_choice[1], driver)
-            failure_count += 1
-            continue
-
-        # Calculate time for driver to drop passenger at the destination
-        passenger_destination = optimal_choice[1]['destination_node']
-        dropoff_time = dijkstra(graph, passenger_pickup, passenger_destination, optimal_choice[1]['Hour'],
-                                optimal_choice[1]['DayType'])
-
-        if dropoff_time == float('inf'):
-            print('No path to destination', optimal_choice[1], driver)
-            failure_count += 1
-            continue
-
+        if passenger_request_time < driver_available_time:
+            wait_from_passenger_request = (driver_available_time - passenger_request_time) / 60
+        
+        dropoff_time = dijkstra(graph, optimal_passenger['node'], optimal_passenger['destination_node'], driver['Hour'], driver['DayType'])
+        
         # Calculate the driver's new available time
-        new_driver_time = driver_available_time + travel_to_pickup_time * 60 + dropoff_time * 60
-
+        new_driver_time = driver_available_time + travel_to_pickup_time  * 60 + dropoff_time * 60
+        
+        driver_location = driver['node']
         # Update the driver's information
-        driver['node'] = passenger_destination
-        driver['Hour'] = optimal_choice[1]['Hour']
-        driver['DayType'] = optimal_choice[1]['DayType']
+        driver['node'] = optimal_passenger['destination_node']
+        driver['Hour'] = optimal_passenger['Hour']
+        driver['DayType'] = optimal_passenger['DayType']
         driver['Date/Time'] = new_driver_time
         driver['number_of_trips'] += 1
+        
+        # Add this trip to the matches list
+        matches.append({
+            'driver_location': driver_location,
+            'passenger_pickup': optimal_passenger['node'],
+            'passenger_destination': optimal_passenger['destination_node'],
+            'pickup_wait_time': travel_to_pickup_time,
+            'dropoff_time': dropoff_time,
+            'wait_from_passenger_request': wait_from_passenger_request,
+            'total_wait': travel_to_pickup_time + dropoff_time + wait_from_passenger_request,
+        })
+        
+        # simulate drivers stopping to drive
+        if driver['number_of_trips'] > 10 and len(driver_queue) > 20:
+            random_number = random.randint(1, 10)
 
+            # 1/10 chance of driver stopping after 10 trips
+            if random_number == 1:
+                heapq.heappush(driver_queue, (new_driver_time, id, driver))
+            else:
+                exited_drivers.append(driver)
+        else:
+            # Re-insert the driver into the priority queue with the new available time
+            heapq.heappush(driver_queue, (new_driver_time, id, driver))
+        
+        total_time_drivers_travel_to_passengers += travel_to_pickup_time
+        total_in_car_time += dropoff_time
+        
+
+        if len(passenger_queue) % 100 == 0:
+            print(len(passenger_queue), 'passengers in queue')
+            print(len(driver_queue), 'drivers in queue')
+
+
+    trips_per_driver = []
+    all_drivers = [driver for _, _, driver in driver_queue] + exited_drivers
+    for driver in all_drivers:
+        trips_per_driver.append(driver['number_of_trips'])
+        
+
+    return matches
+
+
+
+# T5 in parrallel 
+def simulate_t5_p(graph, passenger_queue, driver_queue):
+    print('Running T5 simulation in prll...')
+    matches = []  # Track every trip
+    total_time_drivers_travel_to_passengers = 0
+    total_in_car_time = 0
+    failute_count = 0
+    exited_drivers = []
+
+    passenger_queue = passenger_queue[-200:]
+    num_processes = multiprocessing.cpu_count()
+    
+    while passenger_queue:  # Continue until one of the queues is empty
+        # Passenger and driver details
+        passenger_request_time, _, passenger = passenger_queue.pop()  
+
+
+        available_drivers = []
+
+        while driver_queue and driver_queue[0][0] > passenger_request_time and len(available_drivers) < num_processes :
+            available_drivers.append(heapq.heappop(driver_queue))
+
+        # Pop all available drivers whose availability time is less than or equal to the passenger request time
+
+        driver = None
+        given_travel_to_pickup_time = None
+
+        if available_drivers:
+
+            with concurrent.futures.ThreadPoolExecutor(max_workers=num_processes) as executor:
+                # Parallelize the Dijkstra calculations for available drivers
+                driver_distances = list(executor.map(calculate_driver_distances, available_drivers, [passenger['node']] * len(available_drivers), [graph] * len(available_drivers)))
+
+            driver_distances.sort()
+            # Select the driver with the shortest time to get there
+            shortest_travel_to_pickup_time, driver_time, id, driver = driver_distances[0]
+            given_travel_to_pickup_time = shortest_travel_to_pickup_time
+
+            with concurrent.futures.ThreadPoolExecutor(max_workers=num_processes) as executor:
+                for d_time, id, d in available_drivers:
+                    if d != driver:
+                        executor.submit(heapq.heappush, driver_queue, (d_time, id, d))
+
+            # pool = multiprocessing.Pool(processes=num_processes//3)
+
+            # # Parallelize the Dijkstra calculations for available drivers
+            # driver_distances = pool.starmap(calculate_driver_distances, [(driver, passenger['node'], graph) for driver in available_drivers])
+            
+            # # Close the pool of processes
+            # pool.close()
+            # pool.join()
+
+            # driver_distances.sort()
+            # # Select the driver with the shortest time to get there
+            # shortest_travel_to_pickup_time, driver_time, id, driver = driver_distances[0]
+            # given_travel_to_pickup_time = shortest_travel_to_pickup_time
+            
+            # # Re-insert the other drivers into the priority queue
+            # for d_time, id, d in available_drivers:
+            #     if d != driver:
+            #         heapq.heappush(driver_queue, (d_time, id, d))
+
+        else:
+            # If no drivers are available yet, take the earliest available driver
+            driver_time, id, driver = heapq.heappop(driver_queue)
+
+        ###
+        # Get the driver's current location and passenger's pickup location
+        driver_location = driver['node']
+        passenger_pickup = passenger['node']
+        
+        # Calculate time from passenger making request to driver becoming available
+        wait_from_passenger_request = 0
+        if passenger_request_time < driver_time:
+            wait_from_passenger_request = (driver_time - passenger_request_time) / 60
+
+
+
+        # Calculate time for driver to reach passenger, unless we have already computed it
+        if given_travel_to_pickup_time is None:
+            travel_to_pickup_time = dijkstra(graph, driver_location, passenger_pickup, driver['Hour'], driver['DayType'])
+        else:
+            travel_to_pickup_time = given_travel_to_pickup_time
+        
+        if travel_to_pickup_time == float('inf'):
+            print('No path to passenger', passenger, driver)
+            failute_count += 1
+            continue
+
+        
+        # Calculate time for driver to drop passenger at the destination
+        passenger_destination = passenger['destination_node']
+        dropoff_time = dijkstra(graph, passenger_pickup, passenger_destination, passenger['Hour'], passenger['DayType'])
+
+        if dropoff_time == float('inf'):
+            print('No path to destination', passenger, driver)
+            failute_count += 1
+            continue
+        
+        # Calculate the driver's new available time
+        new_driver_time = driver_time + travel_to_pickup_time  * 60 + dropoff_time * 60
+        
+        # Update the driver's information
+        driver['node'] = passenger_destination
+        driver['Hour'] = passenger['Hour']
+        driver['DayType'] = passenger['DayType']
+        driver['Date/Time'] = new_driver_time
+        driver['number_of_trips'] += 1
+        
         # Add this trip to the matches list
         matches.append({
             'driver_location': driver_location,
@@ -983,34 +1265,36 @@ def simulate_t5(graph, passenger_queue, driver_queue):
             'wait_from_passenger_request': wait_from_passenger_request,
             'total_wait': travel_to_pickup_time + dropoff_time + wait_from_passenger_request,
         })
-
-        # Simulate drivers stopping to drive
+        
+        # simulate drivers stopping to drive
         if driver['number_of_trips'] > 10 and len(driver_queue) > 20:
             random_number = random.randint(1, 10)
 
             # 1/10 chance of driver stopping after 10 trips
             if random_number == 1:
-                heapq.heappush(driver_queue, (new_driver_time, driver_id, driver))
+                heapq.heappush(driver_queue, (new_driver_time, id, driver))
             else:
                 exited_drivers.append(driver)
         else:
             # Re-insert the driver into the priority queue with the new available time
-            heapq.heappush(driver_queue, (new_driver_time, driver_id, driver))
-
+            heapq.heappush(driver_queue, (new_driver_time, id, driver))
+        
         total_time_drivers_travel_to_passengers += travel_to_pickup_time
         total_in_car_time += dropoff_time
+        
 
         if len(passenger_queue) % 100 == 0:
             print(len(passenger_queue), 'passengers in queue')
             print(len(driver_queue), 'drivers in queue')
 
+
     trips_per_driver = []
     all_drivers = [driver for _, _, driver in driver_queue] + exited_drivers
     for driver in all_drivers:
         trips_per_driver.append(driver['number_of_trips'])
+        
 
     return matches
-
 
 
 # Compute dependencies and run simulation
@@ -1023,9 +1307,6 @@ def wrapper(given_simulation = 'T1', reprocess_data=False, rebuild_graph=False):
     # Load graph
     graph = load_graph()
     
-    # pretty_graph = json.dumps(graph, indent=4)
-    # print(pretty_graph)
-
     if reprocess_data:
         # Read in un-proccessed data
         drivers_data, passengers_data = read_base_data()
