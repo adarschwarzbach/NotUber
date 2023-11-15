@@ -1042,7 +1042,7 @@ def simulate_t5(graph, passenger_queue, driver_queue):
     exited_drivers = []
     num_processes = multiprocessing.cpu_count()
 
-    passenger_queue = passenger_queue[-400:]
+    passenger_queue = passenger_queue[-50:]
 
     
     while passenger_queue:  # Continue until one of the queues is empty
@@ -1070,14 +1070,6 @@ def simulate_t5(graph, passenger_queue, driver_queue):
         travel_to_pickup_time, _, _, optimal_passenger = passenger_distances[0]
 
 
-
-        # travel_to_pickup_time = float('inf')
-        # optimal_passenger = None
-        # for passenger_request_time, _, passenger in availible_passengers:
-        #     curr_travel_to_pickup_time = dijkstra(graph, driver['node'], passenger['node'], driver['Hour'], driver['DayType'])
-        #     if travel_to_pickup_time > curr_travel_to_pickup_time:
-        #         travel_to_pickup_time = curr_travel_to_pickup_time
-        #         optimal_passenger = passenger
 
         availible_passengers.sort(key=lambda x: x[0], reverse=True)
 
