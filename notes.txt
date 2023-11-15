@@ -36,3 +36,7 @@ Average dropoff wait time:  11.01647984155854
 Average pickup wait time:  8.046435679430795
 
 - 400 with 5 choices
+
+
+
+For T5 we wanted to consider an algorithm that would be more equitable to drivers, allowing them to select 
