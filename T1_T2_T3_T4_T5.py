@@ -1,10 +1,9 @@
 import csv
 from datetime import datetime
-from collections import deque
 import json
 from math import radians, cos, sin, asin, sqrt
 import heapq
-from datetime import datetime, timedelta
+from datetime import datetime
 import random
 import multiprocessing
 import concurrent.futures
@@ -33,7 +32,6 @@ def read_base_data():
     passengers_data = read_csv_file(passengers_filepath)
 
     return drivers_data, passengers_data
-
 
 
 # Helper to read a JSON file
@@ -75,7 +73,6 @@ def build_graph():
         json.dump(graph, f, indent=4)  # Use indent=4 for pretty-printing
 
 
-
 # Helper to calculate the great-circle distance between two points
 def haversine(lon1, lat1, lon2, lat2):
     # Convert decimal degrees to radians
@@ -104,9 +101,6 @@ def find_nearest_node(graph, latitude, longitude):
             nearest_distance = distance
     
     return nearest_node
-
-
-
 
 
 # Pre-process data to determine closest node to driver/pickup/destination
@@ -178,7 +172,6 @@ def tiny_graph_pre_processing():
         json.dump(passengers_data, f, indent=4)
 
 
-
 # Load pre-processed data
 def load_updated_data():
     drivers_file = 'updated_drivers.json'
@@ -220,7 +213,6 @@ def load_tiny_graph_updated_data():
     return drivers_data, passengers_data
 
 
-
 def load_graph():
     graph_file = 'graph.json'
     with open(graph_file, 'r') as f:
@@ -239,6 +231,7 @@ def parse_datetime_to_unix(datetime_str):
     except ValueError as e:
         print(f"Error parsing datetime: {e}")
         return None, None, None
+
 
 def construct_queues(drivers_data, passengers_data):
     # Convert Date/Time for all passengers and drivers to Unix timestamps within the data
@@ -268,7 +261,6 @@ def construct_queues(drivers_data, passengers_data):
 
 
     return passenger_queue, driver_queue
-
 
 
 # Djikstra's implementation to determine time for a given trip
@@ -307,7 +299,6 @@ def dijkstra(graph, start, end, hour, day_type):
 
     # If the destination is not reachable, return infinity
     return float('inf')
-
 
 
 # Helper to determine how many stops there are on the optimal path
@@ -380,8 +371,6 @@ def tiny_graph_dijkstra(graph, start, end, hour, day_type):
 
     # If the destination is not reachable, return infinity for both time and stops
     return float('inf'), float('inf')
-
-
 
 
 
@@ -1010,9 +999,6 @@ def simulate_t4_b(passenger_queue, driver_queue):
     return matches
 
 
-
-
-
 # T5, locally optimal choice for driver with parallelization
 def simulate_t5(graph, passenger_queue, driver_queue):
     print('Running T5 simulation...')
@@ -1121,7 +1107,6 @@ def simulate_t5(graph, passenger_queue, driver_queue):
         
 
     return matches
-
 
 
 # T5 with multiprocesssors for parallelization
