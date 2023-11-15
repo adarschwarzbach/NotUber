@@ -1042,7 +1042,7 @@ def simulate_t5(graph, passenger_queue, driver_queue):
     exited_drivers = []
     num_processes = multiprocessing.cpu_count()
 
-    passenger_queue = passenger_queue[-50:]
+    # passenger_queue = passenger_queue[-50:]
 
     
     while passenger_queue:  # Continue until one of the queues is empty
