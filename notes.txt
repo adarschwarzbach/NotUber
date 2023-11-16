@@ -1,3 +1,9 @@
+ToDo:
+    - Update T4_A algorithm to pick the most central node in each grid cell
+    - Update T5 to have a cost hueristic to disuade drivers from taking drives that put them in low density areas
+
+
+
 T1 results
 Average trip time:  34.996842746679306
 Number of trips over 100 mins:  89
@@ -20,6 +26,19 @@ Number of trips over 100 mins:  94
 Average driver profit:  5.556325969004302
 Average stops: 8.39
 
+--
+Average trip time:  39.37166873585565
+Number of trips over 100 mins:  269
+Average driver profit:  4.916419480837742
+Average dropoff wait time:  14.885779747330378
+Average pickup wait time:  9.969360266492657
+--
+
+Average trip time:  39.1474066065772
+Number of trips over 100 mins:  272
+Average driver profit:  5.086760080076974
+Average dropoff wait time:  14.945813885666942
+Average pickup wait time:  9.859053805589975
 
 T5 Results
 -Total

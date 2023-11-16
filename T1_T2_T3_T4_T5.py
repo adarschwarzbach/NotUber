@@ -361,7 +361,7 @@ def tiny_graph_dijkstra(graph, start, end, hour, day_type):
             for neighbor in graph[node]['connections']:
                 # Select edge based on day_type and hour
                 edge = graph[node]['connections'][neighbor][f"{day_type}_{hour}"]
-                travel_time = edge * 60 * 7.42   # Convert hours to minutes and multiply by 7.42 as there are on average 7.42 fewer edges in a given trip
+                travel_time = edge * 60 * 6.42   # Convert hours to minutes and multiply by 7.42 as there are on average 7.42 fewer edges in a given trip
                 new_time = cumulative_time + travel_time
                 new_stops = num_stops + 1
 
@@ -859,9 +859,8 @@ def simulate_t4_b(passenger_queue, driver_queue):
 
     with open('graph.json', 'r') as f:
         g = json.load(f)
-        print('g', len(g))
     # load tiny_graph.json
-    with open('tiny_graph.json', 'r') as f:
+    with open('tiny_graph_2.json', 'r') as f:
         tiny_graph = json.load(f)
 
     matches = []  # Track every trip
@@ -1328,4 +1327,4 @@ def wrapper(given_simulation = 'T1', reprocess_data=False, rebuild_graph=False):
 
 
 if __name__ == "__main__":
-    wrapper('T4_A', False, False)
+    wrapper('T4_B', False, False)
