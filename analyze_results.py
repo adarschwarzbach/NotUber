@@ -38,8 +38,3 @@ average_dropoff_wait_time /= len(T1_results)
 print('Average driver profit: ', average_driver_profit)
 print('Average dropoff wait time: ', average_dropoff_wait_time)
 print('Average pickup wait time: ', average_pickup_wait_time)
-
-# with open('graph.json', 'r') as f:
-#     g = json.load(f)
-
-# print(len(g))

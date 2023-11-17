@@ -55,3 +55,9 @@ Average dropoff wait time:  11.01647984155854
 Average pickup wait time:  8.046435679430795
 
 - 400 with 5 choices
+
+
+
+
+Density work:
+Average requests per cell 15x15: 22.23111111111111

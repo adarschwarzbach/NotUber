@@ -40,7 +40,7 @@ def initialize_cluster_centers(node_data):
 
     # Select nodes
     selected_nodes = []
-    additional_nodes_needed = int(len(node_data) ** (1/1.352)) # ~550 nodes, exponentially less then original graph
+    additional_nodes_needed = int(len(node_data) ** (1/1.352)) # ~exponentially less then original graph
     for row in grid:
         for cell in row:
             if cell:
