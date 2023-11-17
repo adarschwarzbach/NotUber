@@ -266,10 +266,7 @@ def construct_queues(drivers_data, passengers_data):
 def dijkstra(graph, start, end, hour, day_type):
     queue = [(0, start)]  # (cumulative_time, node)
     visited = set()
-    # Map to store shortest distance to a node
-    distances = {node: float('inf') for node in graph}
-    distances[start] = 0
-
+    distances = {start: 0}  # Initialize the start node
 
     while queue:
         # Get the node with the smallest cumulative time
@@ -284,7 +281,6 @@ def dijkstra(graph, start, end, hour, day_type):
             for neighbor, edges in graph[node]['connections'].items():
                 # Filter edges based on day_type and hour
                 valid_edges = [edge for edge in edges if edge['day_type'] == day_type and edge['hour'] == hour]
-
                 if not valid_edges:
                     continue
 
@@ -292,7 +288,8 @@ def dijkstra(graph, start, end, hour, day_type):
                 travel_time = edge['time'] * 60  # Convert hours to minutes
                 new_time = cumulative_time + travel_time
 
-                if new_time < distances[neighbor]:
+                # Initialize and update the distance to the neighbor
+                if neighbor not in distances or new_time < distances[neighbor]:
                     distances[neighbor] = new_time
                     heapq.heappush(queue, (new_time, neighbor))
 
@@ -1004,15 +1001,42 @@ def simulate_t4_b(passenger_queue, driver_queue):
     return matches
 
 
+from datetime import datetime
+
+# determine given time block
+def get_time_block_index(current_epoch_time, earliest_epoch_time, block_duration_hours=4):
+    # Convert epoch times to datetime objects
+    current_time = datetime.utcfromtimestamp(current_epoch_time)
+    earliest_time = datetime.utcfromtimestamp(earliest_epoch_time)
+
+    # Calculate the number of hours since the earliest time
+    hours_since_earliest = (current_time - earliest_time).total_seconds() / 3600
+
+    # Determine the time block
+    time_block_index = int(hours_since_earliest / block_duration_hours)
+    return time_block_index
+
+
 # generate a penalty for travelling somewhere with a low density of rides
-def optimal_with_density_penalty(passengers):
-    with open('density_grid.json', 'r') as file:
+def optimal_with_density_penalty(passengers, curr_time):
+    with open('time_density.json', 'r') as file:
         d_grid = json.load(file)
-    density_grid = d_grid['density_grid']
-    average_density = d_grid['average_density']
+
+
+
+    density_grids = d_grid['time_block_grids']
+    average_ds = d_grid['density_stats']
+
+    earliest_time = 1398409200
+
+    time_index = get_time_block_index(curr_time, earliest_time)
+
+    average_density = average_ds[time_index]['average_requests']
+    density_grid = density_grids[time_index]
+    
     num_rows = len(density_grid)
     num_cols = len(density_grid[0])
-    
+
     # stay the same as we have the same graph
     min_lat = 40.4983687
     max_lat = 40.912507
@@ -1027,14 +1051,12 @@ def optimal_with_density_penalty(passengers):
         row = min(int((float(passenger['Dest Lat']) - min_lat) / lat_step), num_rows - 1)
         col = min(int((float(passenger['Dest Lon']) - min_lon) / lon_step), num_cols - 1)
 
-        density_meaning = max(density_grid[row][col] / average_density, .5)
-
         # weighted_ratio = log(density_meaning) / 4 + current_ratio #  ** 2
 
         weighted_ratio = log(max(density_grid[row][col] / average_density, .5)) / 4 + current_ratio
 
         updated_passengers.append((weighted_ratio,travel_to_pickup_time, dropoff_time, passenger))
-        print( 'weighted ratio:',weighted_ratio, 'OG ratio:', current_ratio, 'Density:', density_grid[row][col])
+        # print( 'weighted ratio:',weighted_ratio, 'OG ratio:', current_ratio, 'Density:', density_grid[row][col])
     
     
     updated_passengers.sort(key=lambda x: x[0], reverse=True)
@@ -1051,7 +1073,7 @@ def simulate_t5(graph, passenger_queue, driver_queue):
     exited_drivers = []
     num_processes = multiprocessing.cpu_count()
 
-    passenger_queue = passenger_queue[-100:]
+    # passenger_queue = passenger_queue[-200:]
 
     
     while passenger_queue:  # Continue until one of the queues is empty
@@ -1061,9 +1083,8 @@ def simulate_t5(graph, passenger_queue, driver_queue):
 
 
         # simulate higher paying customer who does not want to wait
-        priority_customer = random.randint(1, 20) == 1
+        priority_customer = random.randint(1, 25) == 1
   
-
         if not priority_customer:
         # passenger_request_time, _, passenger = passenger_queue.pop()  
             availible_passengers = []
@@ -1079,7 +1100,7 @@ def simulate_t5(graph, passenger_queue, driver_queue):
                 results = list(executor.map(lambda p: calculate_trip_ratio(p[2], driver['node'], driver, graph), availible_passengers))
 
             
-            _, travel_to_pickup_time, dropoff_time, optimal_passenger = optimal_with_density_penalty(results)
+            _, travel_to_pickup_time, dropoff_time, optimal_passenger = optimal_with_density_penalty(results, driver_available_time)
 
             availible_passengers.sort(key=lambda x: x[0], reverse=True)
 
@@ -1160,7 +1181,7 @@ def calculate_trip_ratio(passenger, driver_node, driver, graph):
 
     # Calculate the ratio of trip time to pickup time
     if travel_to_pickup > 0:
-        ratio = dropoff_time / travel_to_pickup
+        ratio = dropoff_time / travel_to_pickup 
     else:
         ratio = float('inf')  # Handle the case where pickup time is 0 to avoid division by zero
 

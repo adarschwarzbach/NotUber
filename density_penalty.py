@@ -1,8 +1,7 @@
 import random
 import math
 import json
-
-
+from datetime import datetime
 
 
 
@@ -50,17 +49,23 @@ def initialize_cluster_centers(node_data):
         pickup_location_grid[row][col] += 1
 
     average_cell_requests = 0
+    all_requests = []
 
     for r in pickup_location_grid:
         for cell in r:
             average_cell_requests += cell
+            all_requests.append(cell)
+
 
     average_cell_requests /= (num_cols * num_rows)
+    all_requests.sort()
+    median_cell_requests = all_requests[len(all_requests) - num_cols * 2]
     print(pickup_location_grid)
     print(average_cell_requests)
+    print(median_cell_requests)
 
     with open('density_grid.json', 'w') as f:
-        json.dump({ 'density_grid':pickup_location_grid, 'average_density':average_cell_requests}, f, indent=4)
+        json.dump({ 'density_grid':pickup_location_grid, 'average_density':average_cell_requests, 'median_cell_requests':median_cell_requests}, f, indent=4)
 
 
 
@@ -92,6 +97,74 @@ def initialize_cluster_centers(node_data):
 
 
 
+def convert_to_hours(date_time_str):
+    date_time_obj = datetime.strptime(date_time_str, '%m/%d/%Y %H:%M:%S')
+    return date_time_obj.hour + date_time_obj.minute / 60 + date_time_obj.second / 3600
+
+
+def time_based_density(node_data):
+    num_rows =  25 
+    num_cols = 25
+
+    # Calculate the boundaries of the grid
+    min_lat = min(node['lat'] for node in node_data.values())
+    max_lat = max(node['lat'] for node in node_data.values())
+    min_lon = min(node['lon'] for node in node_data.values())
+    max_lon = max(node['lon'] for node in node_data.values())
+
+    lat_step = (max_lat - min_lat) / num_rows
+    lon_step = (max_lon - min_lon) / num_cols
+
+    # Load passenger data
+    with open('updated_passengers.json', 'r') as file:
+        passenger_data = json.load(file)
+
+    # Find the earliest and latest ride times
+    earliest_date_time = min(datetime.strptime(ride['Date/Time'], '%m/%d/%Y %H:%M:%S') for ride in passenger_data)
+    latest_date_time = max(datetime.strptime(ride['Date/Time'], '%m/%d/%Y %H:%M:%S') for ride in passenger_data)
+
+    # Calculate total duration in hours
+    total_duration = (latest_date_time - earliest_date_time).total_seconds() / 3600
+
+    # Calculate the number of 4-hour blocks
+    time_blocks = math.ceil(total_duration / 4)
+
+    # Initialize grids for each time block
+    time_block_grids = [[[0 for _ in range(num_cols)] for _ in range(num_rows)] for _ in range(time_blocks)]
+
+    # Populate grids based on time blocks
+    for ride in passenger_data:
+        ride_time = datetime.strptime(ride['Date/Time'], '%m/%d/%Y %H:%M:%S')
+        hours_since_start = (ride_time - earliest_date_time).total_seconds() / 3600
+        block_index = int(hours_since_start / 4)
+        
+        row = min(int((float(ride['Source Lat']) - min_lat) / lat_step), num_rows - 1)
+        col = min(int((float(ride['Source Lon']) - min_lon) / lon_step), num_cols - 1)
+
+        time_block_grids[block_index][row][col] += 1
+
+    # Calculate statistics for each grid
+    density_stats = []
+
+    for grid in time_block_grids:
+        total_requests = sum(sum(cell for cell in row) for row in grid)
+        all_requests = [cell for row in grid for cell in row]
+        all_requests.sort()
+        average_requests = total_requests / (num_rows * num_cols)
+        median_requests = all_requests[len(all_requests) // 2] if all_requests else 0
+
+        density_stats.append({
+            'average_requests': average_requests,
+            'median_requests': median_requests
+        })
+
+    # Write to JSON
+    with open('time_density.json', 'w') as f:
+        json.dump({
+            'time_block_grids': time_block_grids,
+            'density_stats': density_stats,
+        }, f, indent=4)
+
 
 
 def develop_method():
@@ -101,7 +174,7 @@ def develop_method():
 
     node_data = {node_id: {'lat': graph_data[node_id]['coordinates']['lat'], 'lon': graph_data[node_id]['coordinates']['lon']} for node_id in graph_data}
 
-    centers = initialize_cluster_centers(node_data)
+    centers = time_based_density(node_data)
 
 
 if __name__ == "__main__":

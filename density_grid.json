@@ -10201,5 +10201,6 @@
             6
         ]
     ],
-    "average_density": 0.5002
+    "average_density": 0.5002,
+    "median_cell_requests": 4
 }

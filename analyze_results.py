@@ -5,7 +5,7 @@ file = 'T5_extra.json'
 with open(file, 'r') as f:
     T1_results = json.load(f)
 
-print(f"-- {file} Results--")
+print(f"-- {file[:-5]} Results--")
 average_waiting_time = 0
 for result in T1_results:
     average_waiting_time += result['total_wait']

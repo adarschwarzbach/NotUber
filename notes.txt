@@ -21,7 +21,7 @@ Average trip time:  28.58269535600861
 Number of trips over 100 mins:  53
 Average driver profit:  5.224517219602349
 
-T4 Results
+T4 Results - 5 mins
 Average trip time:  27.218256525719912
 Number of trips over 100 mins:  94
 Average driver profit:  5.556325969004302
@@ -41,12 +41,15 @@ Average driver profit:  5.086760080076974
 Average dropoff wait time:  14.945813885666942
 Average pickup wait time:  9.859053805589975
 
-T5 Results
+T5 Results - 2703 seconds
 -Total
 Average trip time:  30.710811423665003
 Number of trips over 100 mins:  74
 Average driver profit:  3.947549455861584
 
+Average trip time:  30.710811423665003
+Number of trips over 100 mins:  74
+Average driver profit:  3.947549455861584
 
 - 200 drivers with 20 choices
 Average trip time:  32.581220364790646
