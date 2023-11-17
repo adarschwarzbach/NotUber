@@ -1,14 +1,13 @@
 import csv
 from datetime import datetime
 import json
-from math import radians, cos, sin, asin, sqrt
+from math import radians, cos, sin, asin, sqrt, log
 import heapq
 from datetime import datetime
 import random
 import multiprocessing
 import concurrent.futures
 import time
-
 
 
 
@@ -373,6 +372,13 @@ def tiny_graph_dijkstra(graph, start, end, hour, day_type):
     return float('inf'), float('inf')
 
 
+def calculate_driver_distances(driver, passenger_node, graph):
+    driver_time, id, d = driver
+
+    # Calculate the time it would take for the driver to reach the passenger
+    projected_travel_to_pickup_time = dijkstra(graph, d['node'], passenger_node, d['Hour'], d['DayType'])
+    
+    return (projected_travel_to_pickup_time, driver_time, id, d)
 
 class Node:
   # Build the tree node class
@@ -727,7 +733,7 @@ def simulate_t3(graph, passenger_queue, driver_queue):
     failute_count = 0
     exited_drivers = []
 
-    # passenger_queue = passenger_queue[4900:5100]
+    passenger_queue = passenger_queue[100:]
 
     
     while passenger_queue:  # Continue until one of the queues is empty
@@ -998,6 +1004,39 @@ def simulate_t4_b(passenger_queue, driver_queue):
     return matches
 
 
+# generate a penalty for travelling somewhere with a low density of rides
+def optimal_with_density_penalty(passengers):
+    density_grid = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 1, 5, 1, 0, 0, 0, 0, 0, 1], [0, 0, 1, 1, 0, 1, 8, 2, 2, 2, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 7, 17, 8, 4, 0, 2, 65, 1, 1], [0, 8, 6, 0, 1, 0, 39, 159, 62, 8, 5, 2, 3, 1, 2], [0, 1, 11, 0, 0, 3, 337, 168, 100, 10, 4, 0, 3, 0, 1], [1, 0, 2, 0, 1, 24, 909, 983, 74, 4, 6, 4, 4, 1, 1], [0, 0, 0, 0, 0, 2, 120, 1170, 104, 25, 53, 7, 0, 1, 0], [0, 0, 2, 0, 1, 2, 1, 191, 124, 3, 0, 2, 0, 0, 0], [1, 0, 1, 0, 3, 0, 0, 20, 36, 2, 1, 0, 0, 0, 2], [0, 0, 1, 0, 0, 0, 0, 0, 8, 2, 0, 1, 0, 0, 1], [0, 0, 0, 0, 0, 0, 0, 0, 4, 6, 1, 2, 0, 0, 0], [2, 0, 0, 0, 1, 2, 1, 1, 0, 1, 4, 1, 2, 1, 7]]
+    average_density = 22.2311
+    num_rows = len(density_grid)
+    num_cols = len(density_grid[0])
+    # stay the same as we have the same grapg
+    min_lat = 40.4983687
+    max_lat = 40.912507
+    min_lon = -74.2552929
+    max_lon = -73.7004728
+
+    lat_step = (max_lat - min_lat) / num_rows
+    lon_step = (max_lon - min_lon) / num_cols
+
+    updated_passengers = []
+    for current_ratio, travel_to_pickup_time, dropoff_time, passenger in passengers:
+        row = min(int((float(passenger['Dest Lat']) - min_lat) / lat_step), num_rows - 1)
+        col = min(int((float(passenger['Dest Lon']) - min_lon) / lon_step), num_cols - 1)
+
+        density_meaning = max(density_grid[row][col] / average_density, .5)
+
+        weighted_ratio = log(density_meaning) / 4 + current_ratio #  ** 2
+
+        updated_passengers.append((weighted_ratio,travel_to_pickup_time, dropoff_time, passenger))
+        print( 'weighted ratio:',weighted_ratio, 'OG ratio:', current_ratio, 'Density:', density_grid[row][col])
+    
+    
+    updated_passengers.sort(key=lambda x: x[0], reverse=True)
+
+    # print(updated_passengers[0][0], updated_passengers[-1][0])
+    return updated_passengers[0] 
+
 # T5, locally optimal choice for driver with parallelization
 def simulate_t5(graph, passenger_queue, driver_queue):
     print('Running T5 simulation...')
@@ -1007,7 +1046,7 @@ def simulate_t5(graph, passenger_queue, driver_queue):
     exited_drivers = []
     num_processes = multiprocessing.cpu_count()
 
-    passenger_queue = passenger_queue[-50:]
+    passenger_queue = passenger_queue[-400:]
 
     
     while passenger_queue:  # Continue until one of the queues is empty
@@ -1035,9 +1074,7 @@ def simulate_t5(graph, passenger_queue, driver_queue):
                 results = list(executor.map(lambda p: calculate_trip_ratio(p[2], driver['node'], driver, graph), availible_passengers))
 
             
-            results.sort(reverse=True)
-
-            _, travel_to_pickup_time, dropoff_time, optimal_passenger = results[0]
+            _, travel_to_pickup_time, dropoff_time, optimal_passenger = optimal_with_density_penalty(results)
 
             availible_passengers.sort(key=lambda x: x[0], reverse=True)
 
@@ -1046,7 +1083,7 @@ def simulate_t5(graph, passenger_queue, driver_queue):
                     passenger_queue.append((passenger_request_time, _, passenger))
 
         else:
-            _, _, optimal_passenger = passenger_queue.pop()
+            passenger_request_time, _, optimal_passenger = passenger_queue.pop()
             travel_to_pickup_time = dijkstra(graph, driver['node'], optimal_passenger['node'], driver['Hour'], driver['DayType'])
             dropoff_time = dijkstra(graph, optimal_passenger['node'], optimal_passenger['destination_node'], driver['Hour'], driver['DayType'])
 
@@ -1107,6 +1144,22 @@ def simulate_t5(graph, passenger_queue, driver_queue):
 
     return matches
 
+
+
+def calculate_trip_ratio(passenger, driver_node, driver, graph):
+    # Compute the time from driver to passenger (pickup time)
+    travel_to_pickup = dijkstra(graph, driver_node, passenger['node'], driver['Hour'], driver['DayType'])
+
+    # Compute the trip time from passenger to destination (dropoff time)
+    dropoff_time = dijkstra(graph, passenger['node'], passenger['destination_node'], driver['Hour'], driver['DayType'])
+
+    # Calculate the ratio of trip time to pickup time
+    if travel_to_pickup > 0:
+        ratio = dropoff_time / travel_to_pickup
+    else:
+        ratio = float('inf')  # Handle the case where pickup time is 0 to avoid division by zero
+
+    return ratio, travel_to_pickup, dropoff_time, passenger
 
 # T5 with multiprocesssors for parallelization
 def simulate_t5_multiprocesssors(graph, passenger_queue, driver_queue):
@@ -1327,4 +1380,4 @@ def wrapper(given_simulation = 'T1', reprocess_data=False, rebuild_graph=False):
 
 
 if __name__ == "__main__":
-    wrapper('T4_B', False, False)
+    wrapper('T5', False, False)

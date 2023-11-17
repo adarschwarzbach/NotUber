@@ -7,14 +7,14 @@ import json
 
 
 def initialize_cluster_centers(node_data):
-    num_rows =  15 
-    num_cols = 15 
+    num_rows =  100 
+    num_cols = 100
 
     min_lat = min(node['lat'] for node in node_data.values())
     max_lat = max(node['lat'] for node in node_data.values())
     min_lon = min(node['lon'] for node in node_data.values())
     max_lon = max(node['lon'] for node in node_data.values())
-
+    print(min_lat, max_lat, min_lon, max_lon)
     lat_step = (max_lat - min_lat) / num_rows
     lon_step = (max_lon - min_lon) / num_cols
 

@@ -57,6 +57,13 @@ Average pickup wait time:  8.046435679430795
 - 400 with 5 choices
 
 
+-- T3_extra.json Results--
+Average trip time:  32.436746816128164
+Number of trips over 100 mins:  0
+Average driver profit:  3.232156770223699
+Average dropoff wait time:  10.940750547411042
+Average pickup wait time:  7.708593777187351
+
 
 
 Density work:
