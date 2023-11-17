@@ -1,6 +1,7 @@
 ToDo:
     - Update T4_A algorithm to pick the most central node in each grid cell
     - Update T5 to have a cost hueristic to disuade drivers from taking drives that put them in low density areas
+    - Update T5 heuristic so that it is based on rides in the next hour or so
 
 
 

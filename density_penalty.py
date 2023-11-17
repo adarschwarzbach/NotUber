@@ -59,6 +59,9 @@ def initialize_cluster_centers(node_data):
     print(pickup_location_grid)
     print(average_cell_requests)
 
+    with open('density_grid.json', 'w') as f:
+        json.dump({ 'density_grid':pickup_location_grid, 'average_density':average_cell_requests}, f, indent=4)
+
 
 
 

@@ -1006,11 +1006,14 @@ def simulate_t4_b(passenger_queue, driver_queue):
 
 # generate a penalty for travelling somewhere with a low density of rides
 def optimal_with_density_penalty(passengers):
-    density_grid = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 1, 5, 1, 0, 0, 0, 0, 0, 1], [0, 0, 1, 1, 0, 1, 8, 2, 2, 2, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 7, 17, 8, 4, 0, 2, 65, 1, 1], [0, 8, 6, 0, 1, 0, 39, 159, 62, 8, 5, 2, 3, 1, 2], [0, 1, 11, 0, 0, 3, 337, 168, 100, 10, 4, 0, 3, 0, 1], [1, 0, 2, 0, 1, 24, 909, 983, 74, 4, 6, 4, 4, 1, 1], [0, 0, 0, 0, 0, 2, 120, 1170, 104, 25, 53, 7, 0, 1, 0], [0, 0, 2, 0, 1, 2, 1, 191, 124, 3, 0, 2, 0, 0, 0], [1, 0, 1, 0, 3, 0, 0, 20, 36, 2, 1, 0, 0, 0, 2], [0, 0, 1, 0, 0, 0, 0, 0, 8, 2, 0, 1, 0, 0, 1], [0, 0, 0, 0, 0, 0, 0, 0, 4, 6, 1, 2, 0, 0, 0], [2, 0, 0, 0, 1, 2, 1, 1, 0, 1, 4, 1, 2, 1, 7]]
-    average_density = 22.2311
+    with open('density_grid.json', 'r') as file:
+        d_grid = json.load(file)
+    density_grid = d_grid['density_grid']
+    average_density = d_grid['average_density']
     num_rows = len(density_grid)
     num_cols = len(density_grid[0])
-    # stay the same as we have the same grapg
+    
+    # stay the same as we have the same graph
     min_lat = 40.4983687
     max_lat = 40.912507
     min_lon = -74.2552929
@@ -1026,7 +1029,9 @@ def optimal_with_density_penalty(passengers):
 
         density_meaning = max(density_grid[row][col] / average_density, .5)
 
-        weighted_ratio = log(density_meaning) / 4 + current_ratio #  ** 2
+        # weighted_ratio = log(density_meaning) / 4 + current_ratio #  ** 2
+
+        weighted_ratio = log(max(density_grid[row][col] / average_density, .5)) / 4 + current_ratio
 
         updated_passengers.append((weighted_ratio,travel_to_pickup_time, dropoff_time, passenger))
         print( 'weighted ratio:',weighted_ratio, 'OG ratio:', current_ratio, 'Density:', density_grid[row][col])
@@ -1046,7 +1051,7 @@ def simulate_t5(graph, passenger_queue, driver_queue):
     exited_drivers = []
     num_processes = multiprocessing.cpu_count()
 
-    passenger_queue = passenger_queue[-400:]
+    passenger_queue = passenger_queue[-100:]
 
     
     while passenger_queue:  # Continue until one of the queues is empty
