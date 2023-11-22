@@ -292,7 +292,6 @@ def dijkstra(graph, start, end, hour, day_type):
                     distances[neighbor] = new_time
                     heapq.heappush(queue, (new_time, neighbor))
 
-    # If the destination is not reachable, return infinity
     return float('inf')
 
 
