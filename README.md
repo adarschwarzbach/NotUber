@@ -1,6 +1,6 @@
 # NotUber
 
-NotUber is a simulation of a ride-hailing system that implements various graph algorithms to match riders and drivers efficiently.
+Simulation of a ride-hailing system to have fun with graph algo's :)
 
 ## Features
 
