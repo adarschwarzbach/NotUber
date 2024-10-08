@@ -1,6 +1,6 @@
 # NotUber
 
-Simulation of a ride-hailing system to have fun with graph algo's :)
+Simulation of a ride-hailing system to have fun with graph algos :)
 
 ## Features
 
